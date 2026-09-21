@@ -1,22 +1,28 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>SentinelNet — Disaster Mesh Simulation</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="topbar">
+
     <div>
         <h1>◉ SENTINELNET</h1>
-        <p>Decentralized Disaster Population Accountability Network</p>
+
+        <p>
+            Decentralized Disaster Population Accountability Network
+        </p>
     </div>
 
     <div class="system-status">
+
         <div id="internetStatus" class="status-pill online">
             ● CELLULAR / INTERNET ONLINE
         </div>
@@ -28,19 +34,28 @@
         <div id="simTime" class="time-display">
             10:00
         </div>
+
     </div>
+
 </header>
 
 
 <main class="layout">
 
-    <!-- LEFT SIDE -->
+
+    <!-- =====================================================
+         LEFT SIDEBAR
+    ====================================================== -->
+
     <aside class="sidebar left-sidebar">
 
+
         <section class="panel">
+
             <h2>POPULATION STATUS</h2>
 
             <div class="population-grid">
+
                 <div>
                     <strong id="totalPeople">15</strong>
                     <span>Total</span>
@@ -60,11 +75,14 @@
                     <strong id="missingPeople">0</strong>
                     <span>No Signal</span>
                 </div>
+
             </div>
+
         </section>
 
 
         <section class="panel">
+
             <h2>NETWORK</h2>
 
             <div class="stat-row">
@@ -86,180 +104,386 @@
                 <span>Verified hops</span>
                 <strong id="verifiedCount">0</strong>
             </div>
+
         </section>
 
 
+        <!-- SELECTED DEVICE -->
+
         <section class="panel">
+
             <h2>SELECTED DEVICE</h2>
 
             <div id="selectedDevice">
+
                 <p class="muted">
                     Click a wearable on the network.
                 </p>
+
             </div>
+
         </section>
 
 
+        <!-- CONTROLS -->
+
         <section class="panel">
+
             <h2>CONTROLS</h2>
 
-            <button id="disasterBtn" class="control-btn">
+            <button
+                id="disasterBtn"
+                class="control-btn">
                 ACTIVATE DISASTER MODE
             </button>
 
-            <button id="threeMinBtn" class="control-btn primary">
-                +3 MIN — STATUS CYCLE
+
+            <button
+                id="threeMinBtn"
+                class="control-btn primary">
+                +3 MIN — COMMAND STATUS REQUEST
             </button>
 
-            <button id="emergencyBtn" class="control-btn emergency">
-                TRIGGER EMERGENCY
+
+            <button
+                id="emergencyBtn"
+                class="control-btn emergency">
+                TRIGGER SELECTED EMERGENCY
             </button>
 
-            <button id="searchBtn" class="control-btn search">
+
+            <button
+                id="blockEmergencyBtn"
+                class="control-btn emergency">
+                SIMULATE BLOCK EMERGENCY
+            </button>
+
+
+            <button
+                id="searchBtn"
+                class="control-btn search">
                 SEARCH SELECTED NODE
             </button>
 
-            <button id="aliveBtn" class="control-btn">
+
+            <button
+                id="aliveBtn"
+                class="control-btn">
                 SEND ALIVE BEACON
             </button>
 
-            <button id="breakBtn" class="control-btn warning-btn">
-                BREAK RANDOM LINK
+
+            <button
+                id="breakBtn"
+                class="control-btn warning-btn">
+                BREAK SELECTED COMMAND CONNECTION
             </button>
 
-            <button id="restoreBtn" class="control-btn">
-                RESTORE ALL LINKS
+
+            <button
+                id="restoreBtn"
+                class="control-btn">
+                RESTORE ALL CONNECTIONS
             </button>
+
         </section>
+
+
+        <!-- DISASTER CONTROL -->
+
+        <section class="panel">
+
+            <h2>DISASTER SIMULATION</h2>
+
+            <label class="field-label">
+                Disaster type
+            </label>
+
+            <select id="disasterType" class="control-select">
+
+                <option value="EARTHQUAKE">
+                    Earthquake
+                </option>
+
+                <option value="FLOOD">
+                    Flood
+                </option>
+
+                <option value="LANDSLIDE">
+                    Landslide
+                </option>
+
+                <option value="VOLCANIC ERUPTION">
+                    Volcanic Eruption
+                </option>
+
+                <option value="TYPHOON">
+                    Typhoon / Severe Storm
+                </option>
+
+            </select>
+
+
+            <label class="field-label">
+                Affected block
+            </label>
+
+            <select id="disasterBlock" class="control-select">
+
+                <option value="Block A">Block A</option>
+                <option value="Block B">Block B</option>
+                <option value="Block C">Block C</option>
+                <option value="Block D">Block D</option>
+
+            </select>
+
+        </section>
+
 
     </aside>
 
 
-    <!-- CENTER NETWORK -->
+
+    <!-- =====================================================
+         CENTER NETWORK
+    ====================================================== -->
+
     <section class="network-section">
 
+
         <div class="network-header">
+
             <div>
+
                 <h2>LIVE SENTINEL MESH</h2>
+
                 <span id="networkMessage">
                     All wearable nodes are operating normally.
                 </span>
+
             </div>
+
 
             <div class="legend">
-                <span><i class="legend-dot active"></i> Active</span>
-                <span><i class="legend-dot emergency"></i> Emergency</span>
-                <span><i class="legend-dot missing"></i> No Signal</span>
-                <span><i class="legend-dot command"></i> Command</span>
+
+                <span>
+                    <i class="legend-dot active"></i>
+                    Active
+                </span>
+
+                <span>
+                    <i class="legend-dot emergency"></i>
+                    Emergency
+                </span>
+
+                <span>
+                    <i class="legend-dot missing"></i>
+                    No Signal
+                </span>
+
+                <span>
+                    <i class="legend-dot command"></i>
+                    Command
+                </span>
+
             </div>
+
         </div>
 
-        <div id="networkCanvas" class="network-canvas">
 
-            <svg id="networkSvg"
-                 viewBox="0 0 1000 700"
-                 preserveAspectRatio="none">
+        <div
+            id="networkCanvas"
+            class="network-canvas">
+
+            <svg
+                id="networkSvg"
+                viewBox="0 0 1000 700"
+                preserveAspectRatio="none">
 
                 <g id="linksLayer"></g>
+
                 <g id="packetsLayer"></g>
+
                 <g id="nodesLayer"></g>
 
             </svg>
 
         </div>
 
+
         <div class="network-footer">
+
             <span>
                 Communication range:
-                <strong id="rangeDisplay">180 m</strong>
+                <strong id="rangeDisplay">185 m</strong>
             </span>
 
             <span>
-                Drag nodes to physically change the network.
+                Drag Sentinels to change physical topology.
             </span>
 
             <span id="routingDisplay">
                 Routing: READY
             </span>
+
         </div>
 
     </section>
 
 
-    <!-- RIGHT SIDE -->
+
+    <!-- =====================================================
+         RIGHT SIDEBAR
+    ====================================================== -->
+
     <aside class="sidebar right-sidebar">
 
-        <section class="panel ai-panel">
-            <h2>◈ SENTINEL AI</h2>
 
-            <div id="aiStatus" class="ai-status">
+        <!-- AI -->
+
+        <section class="panel ai-panel">
+
+            <h2>◈ SENTINEL AI — SITUATION ANALYSIS</h2>
+
+            <div
+                id="aiStatus"
+                class="ai-status">
                 Monitoring network...
             </div>
 
-            <div id="aiMessage" class="ai-message">
-                No active hazard detected.
+
+            <div
+                id="aiMessage"
+                class="ai-message">
+                Waiting for operational data.
             </div>
 
+
             <div class="ai-note">
-                Prototype AI uses offline rule-based guidance.
+
+                Prototype AI uses simulated,
+                rule-based situation analysis.
+                It does not make real emergency or
+                medical determinations.
+
             </div>
+
         </section>
 
 
+        <!-- CURRENT DISASTER -->
+
         <section class="panel">
+
+            <h2>ACTIVE DISASTER</h2>
+
+            <div
+                id="disasterInfo"
+                class="disaster-info">
+
+                No disaster currently simulated.
+
+            </div>
+
+        </section>
+
+
+        <!-- HAZARD SENSOR -->
+
+        <section class="panel">
+
             <h2>HAZARD SENSOR</h2>
 
             <div class="sensor-card">
+
                 <div>
-                    <strong>FLOOD-01</strong>
-                    <span>Water-level sensor</span>
+
+                    <strong id="sensorName">
+                        HAZARD-01
+                    </strong>
+
+                    <span id="sensorDescription">
+                        Multi-hazard environmental sensor
+                    </span>
+
                 </div>
 
-                <div id="floodStatus" class="sensor-status">
+                <div
+                    id="hazardStatus"
+                    class="sensor-status">
+
                     NORMAL
+
                 </div>
+
             </div>
 
-            <button id="floodBtn" class="control-btn hazard-btn">
-                ACTIVATE FLOOD SENSOR
+
+            <button
+                id="hazardBtn"
+                class="control-btn hazard-btn">
+
+                ACTIVATE SELECTED HAZARD
+
             </button>
+
         </section>
 
 
+        <!-- PACKET INSPECTOR -->
+
         <section class="panel">
+
             <h2>PACKET INSPECTOR</h2>
 
             <div id="packetInspector">
+
                 <p class="muted">
                     No packet selected.
                 </p>
+
             </div>
+
         </section>
 
 
+        <!-- SEARCH -->
+
         <section class="panel search-panel">
+
             <h2>SEARCH / VERIFICATION</h2>
 
             <div id="searchInfo">
+
                 <p class="muted">
                     No active search.
                 </p>
+
             </div>
+
         </section>
 
+
+        <!-- EVENT LOG -->
 
         <section class="panel event-panel">
+
             <h2>NETWORK EVENTS</h2>
 
-            <div id="eventLog" class="event-log"></div>
+            <div
+                id="eventLog"
+                class="event-log">
+            </div>
+
         </section>
+
 
     </aside>
 
 </main>
 
+
 <script src="app.js"></script>
 
 </body>
 </html>
-```

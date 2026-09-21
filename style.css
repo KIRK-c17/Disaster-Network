@@ -720,3 +720,184 @@ body {
         border: none;
     }
 }
+/* =========================================================
+   SENTINELNET V2 ADDITIONS
+========================================================= */
+
+
+/* =========================
+   SELECTED LINKS
+========================= */
+
+.network-link.selected-link {
+    stroke: #6edfff;
+    stroke-width: 2.2;
+    opacity: .9;
+}
+
+
+/* =========================
+   ISOLATED SENTINEL
+========================= */
+
+.node.isolated .node-circle {
+    stroke: #ffc45c;
+    stroke-dasharray: 4 3;
+}
+
+.node.isolated .node-status {
+    fill: #ffc45c;
+}
+
+
+/* =========================
+   LOCATION LABEL
+========================= */
+
+.node-location {
+    fill: #526b83;
+    font-size: 7px;
+    text-anchor: middle;
+    pointer-events: none;
+}
+
+
+/* =========================
+   DISASTER INFORMATION
+========================= */
+
+.disaster-info {
+    background: #111f31;
+    border: 1px solid #29415d;
+    border-radius: 5px;
+    padding: 10px;
+    color: #dceafa;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.disaster-info strong {
+    color: #ffcc6a;
+}
+
+
+/* =========================
+   SELECT / FORM
+========================= */
+
+.field-label {
+    display: block;
+    color: #7389a1;
+    font-size: 9px;
+    margin: 8px 0 5px;
+}
+
+.control-select {
+    width: 100%;
+    padding: 9px 8px;
+    border-radius: 5px;
+    border: 1px solid #294362;
+    background: #102137;
+    color: #d9e8f8;
+    font-size: 10px;
+    outline: none;
+}
+
+.control-select:focus {
+    border-color: #5bdcff;
+}
+
+
+/* =========================
+   AI THINKING
+========================= */
+
+.ai-panel {
+    position: relative;
+}
+
+.ai-message {
+    min-height: 145px;
+    overflow-y: auto;
+    white-space: normal;
+}
+
+.ai-status {
+    font-weight: bold;
+    letter-spacing: .4px;
+}
+
+
+/* =========================
+   BETTER EMERGENCY NODE
+========================= */
+
+.node.emergency .node-circle {
+    animation: emergencyPulse 1s infinite;
+}
+
+@keyframes emergencyPulse {
+
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .55;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================
+   SENSOR HAZARD
+========================= */
+
+.node.sensor .node-circle {
+    stroke-width: 2;
+}
+
+.node.sensor .node-ring {
+    opacity: .35;
+}
+
+
+/* =========================
+   PACKET ANIMATION
+========================= */
+
+.packet-glow {
+    filter: drop-shadow(
+        0 0 5px #5de1ff
+    );
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-panel {
+    min-height: 150px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .ai-message {
+        min-height: 100px;
+    }
+
+    .node-location {
+        display: none;
+    }
+
+}
