@@ -1,31 +1,33 @@
-const svg = document.getElementById("network");
+const svg =
+    document.getElementById("network");
 
 const connectionsGroup =
     document.getElementById("connections");
 
-const nodesGroup =
-    document.getElementById("nodes");
+const hazardsGroup =
+    document.getElementById("hazards");
 
 const packetsGroup =
     document.getElementById("packets");
 
+const nodesGroup =
+    document.getElementById("nodes");
+
+const controlCenterGroup =
+    document.getElementById("controlCenter");
+
+
 const deviceInfo =
     document.getElementById("deviceInfo");
+
+const aiInfo =
+    document.getElementById("aiInfo");
 
 const eventLog =
     document.getElementById("eventLog");
 
-const disasterBtn =
-    document.getElementById("disasterBtn");
-
-const emergencyBtn =
-    document.getElementById("emergencyBtn");
-
-const timeBtn =
-    document.getElementById("timeBtn");
-
-const aliveBtn =
-    document.getElementById("aliveBtn");
+const simulationTime =
+    document.getElementById("simulationTime");
 
 
 /* =========================================
@@ -34,35 +36,170 @@ const aliveBtn =
 
 const people = [
 
-    { id: "SN-001", name: "Maria", x: 600, y: 80, hr: 78, status: "ACTIVE" },
+    {
+        id: "SN-001",
+        name: "Maria",
+        x: 600,
+        y: 80,
+        hr: 78,
+        zone: "Zone A",
+        status: "ACTIVE",
+        lastSignal: 0
+    },
 
-    { id: "SN-002", name: "Juan", x: 410, y: 120, hr: 81, status: "ACTIVE" },
+    {
+        id: "SN-002",
+        name: "Juan",
+        x: 420,
+        y: 105,
+        hr: 81,
+        zone: "Zone A",
+        status: "ACTIVE",
+        lastSignal: 0
+    },
 
-    { id: "SN-003", name: "Carlo", x: 790, y: 120, hr: 112, status: "ACTIVE" },
+    {
+        id: "SN-003",
+        name: "Carlo",
+        x: 780,
+        y: 105,
+        hr: 112,
+        zone: "Zone B",
+        status: "ACTIVE",
+        lastSignal: 0
+    },
 
-    { id: "SN-004", name: "Ana", x: 250, y: 220, hr: 76, status: "ACTIVE" },
+    {
+        id: "SN-004",
+        name: "Ana",
+        x: 260,
+        y: 205,
+        hr: 76,
+        zone: "Zone A",
+        status: "ACTIVE",
+        lastSignal: 0
+    },
 
-    { id: "SN-005", name: "Miguel", x: 430, y: 210, hr: 83, status: "ACTIVE" },
+    {
+        id: "SN-005",
+        name: "Miguel",
+        x: 450,
+        y: 210,
+        hr: 83,
+        zone: "Zone A",
+        status: "ACTIVE",
+        lastSignal: 0
+    },
 
-    { id: "SN-006", name: "Sofia", x: 770, y: 210, hr: 79, status: "ACTIVE" },
+    {
+        id: "SN-006",
+        name: "Sofia",
+        x: 750,
+        y: 210,
+        hr: 79,
+        zone: "Zone B",
+        status: "ACTIVE",
+        lastSignal: 0
+    },
 
-    { id: "SN-007", name: "Daniel", x: 950, y: 220, hr: 82, status: "ACTIVE" },
+    {
+        id: "SN-007",
+        name: "Daniel",
+        x: 940,
+        y: 205,
+        hr: 82,
+        zone: "Zone B",
+        status: "ACTIVE",
+        lastSignal: 0
+    },
 
-    { id: "SN-008", name: "Lea", x: 170, y: 350, hr: 80, status: "ACTIVE" },
+    {
+        id: "SN-008",
+        name: "Lea",
+        x: 160,
+        y: 350,
+        hr: 80,
+        zone: "Zone A",
+        status: "ACTIVE",
+        lastSignal: 0
+    },
 
-    { id: "SN-009", name: "Mark", x: 390, y: 330, hr: 75, status: "ACTIVE" },
+    {
+        id: "SN-009",
+        name: "Mark",
+        x: 390,
+        y: 340,
+        hr: 75,
+        zone: "Zone A",
+        status: "ACTIVE",
+        lastSignal: 0
+    },
 
-    { id: "SN-010", name: "Grace", x: 810, y: 330, hr: 84, status: "ACTIVE" },
+    {
+        id: "SN-010",
+        name: "Grace",
+        x: 810,
+        y: 340,
+        hr: 84,
+        zone: "Zone B",
+        status: "ACTIVE",
+        lastSignal: 0
+    },
 
-    { id: "SN-011", name: "Paolo", x: 1030, y: 350, hr: 77, status: "ACTIVE" },
+    {
+        id: "SN-011",
+        name: "Paolo",
+        x: 1040,
+        y: 350,
+        hr: 77,
+        zone: "Zone B",
+        status: "ACTIVE",
+        lastSignal: 0
+    },
 
-    { id: "SN-012", name: "Nina", x: 260, y: 500, hr: 80, status: "ACTIVE" },
+    {
+        id: "SN-012",
+        name: "Nina",
+        x: 250,
+        y: 500,
+        hr: 80,
+        zone: "Zone C",
+        status: "ACTIVE",
+        lastSignal: 0
+    },
 
-    { id: "SN-013", name: "Ethan", x: 470, y: 530, hr: 82, status: "ACTIVE" },
+    {
+        id: "SN-013",
+        name: "Ethan",
+        x: 450,
+        y: 525,
+        hr: 82,
+        zone: "Zone C",
+        status: "ACTIVE",
+        lastSignal: 0
+    },
 
-    { id: "SN-014", name: "Kate", x: 730, y: 530, hr: 79, status: "ACTIVE" },
+    {
+        id: "SN-014",
+        name: "Kate",
+        x: 750,
+        y: 525,
+        hr: 79,
+        zone: "Zone C",
+        status: "ACTIVE",
+        lastSignal: 0
+    },
 
-    { id: "SN-015", name: "Luis", x: 940, y: 500, hr: 81, status: "ACTIVE" }
+    {
+        id: "SN-015",
+        name: "Luis",
+        x: 950,
+        y: 500,
+        hr: 81,
+        zone: "Zone C",
+        status: "ACTIVE",
+        lastSignal: 0
+    }
 
 ];
 
@@ -72,62 +209,103 @@ const people = [
 ========================================= */
 
 const controlCenter = {
+
+    id: "COMMAND",
+
     x: 600,
+
     y: 350
+
 };
 
 
 /* =========================================
-   NETWORK STATE
+   HAZARD SENSOR
+========================================= */
+
+const floodSensor = {
+
+    id: "FLOOD-01",
+
+    x: 600,
+
+    y: 600,
+
+    active: false,
+
+    waterLevel: "NORMAL"
+
+};
+
+
+/* =========================================
+   STATE
 ========================================= */
 
 let disasterMode = false;
 
-let simulatedMinutes = 0;
-
 let selectedPerson = null;
+
+let simulatedMinutes = 0;
 
 let draggingPerson = null;
 
+let failedLinks = new Set();
+
 
 /* =========================================
-   CREATE CONNECTIONS
+   CONNECTIONS
 ========================================= */
 
-function createConnections() {
+function getConnections() {
 
-    connectionsGroup.innerHTML = "";
+    const links = [];
 
     /*
-        Connect people that are close enough.
-
-        This produces a dense mesh instead
-        of a simple chain.
+        Connect nearby people.
+        This creates the spider-web structure.
     */
 
-    for (let i = 0; i < people.length; i++) {
+    for (
+        let i = 0;
+        i < people.length;
+        i++
+    ) {
 
-        for (let j = i + 1; j < people.length; j++) {
+        for (
+            let j = i + 1;
+            j < people.length;
+            j++
+        ) {
 
             const a = people[i];
+
             const b = people[j];
 
-            const dx = a.x - b.x;
-            const dy = a.y - b.y;
+            const dx =
+                a.x - b.x;
+
+            const dy =
+                a.y - b.y;
 
             const distance =
-                Math.sqrt(dx * dx + dy * dy);
+                Math.sqrt(
+                    dx * dx +
+                    dy * dy
+                );
+
 
             /*
-                Maximum connection distance.
-
-                Increase this number to make
-                the web denser.
+                This value controls
+                how dense the web is.
             */
 
-            if (distance < 430) {
+            if (distance < 360) {
 
-                createConnection(a, b);
+                links.push({
+                    a,
+                    b
+                });
 
             }
 
@@ -137,16 +315,119 @@ function createConnections() {
 
 
     /*
-        Connect every person to the
-        Main Control Center.
+        Control Center connections.
     */
 
     people.forEach(person => {
 
-        createConnection(
-            person,
-            controlCenter,
-            true
+        links.push({
+
+            a: person,
+
+            b: controlCenter
+
+        });
+
+    });
+
+
+    return links;
+
+}
+
+
+/* =========================================
+   DRAW CONNECTIONS
+========================================= */
+
+function drawConnections() {
+
+    connectionsGroup.innerHTML = "";
+
+    const links =
+        getConnections();
+
+
+    links.forEach(link => {
+
+        const line =
+            document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "line"
+            );
+
+
+        line.setAttribute(
+            "x1",
+            link.a.x
+        );
+
+        line.setAttribute(
+            "y1",
+            link.a.y
+        );
+
+        line.setAttribute(
+            "x2",
+            link.b.x
+        );
+
+        line.setAttribute(
+            "y2",
+            link.b.y
+        );
+
+
+        line.classList.add(
+            "connection"
+        );
+
+
+        /*
+            Unique link ID.
+        */
+
+        const id =
+            getLinkId(
+                link.a,
+                link.b
+            );
+
+
+        line.dataset.link =
+            id;
+
+
+        if (
+            failedLinks.has(id)
+        ) {
+
+            line.classList.add(
+                "failed"
+            );
+
+        }
+
+
+        /*
+            Clicking a string
+            breaks that connection.
+        */
+
+        line.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+                toggleLink(id);
+
+            }
+        );
+
+
+        connectionsGroup.appendChild(
+            line
         );
 
     });
@@ -155,32 +436,48 @@ function createConnections() {
 
 
 /* =========================================
-   DRAW CONNECTION
+   LINK ID
 ========================================= */
 
-function createConnection(a, b, center = false) {
+function getLinkId(a, b) {
 
-    const line =
-        document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "line"
+    return [
+        a.id,
+        b.id
+    ]
+        .sort()
+        .join("--");
+
+}
+
+
+/* =========================================
+   BREAK LINK
+========================================= */
+
+function toggleLink(id) {
+
+    if (
+        failedLinks.has(id)
+    ) {
+
+        failedLinks.delete(id);
+
+        addEvent(
+            `Connection restored: ${id}`
         );
 
-    line.setAttribute("x1", a.x);
-    line.setAttribute("y1", a.y);
+    } else {
 
-    line.setAttribute("x2", b.x);
-    line.setAttribute("y2", b.y);
+        failedLinks.add(id);
 
-    line.classList.add("connection");
-
-    if (center) {
-
-        line.style.opacity = "0.35";
+        addEvent(
+            `Connection failure simulated: ${id}`
+        );
 
     }
 
-    connectionsGroup.appendChild(line);
+    drawConnections();
 
 }
 
@@ -193,6 +490,7 @@ function drawPeople() {
 
     nodesGroup.innerHTML = "";
 
+
     people.forEach(person => {
 
         const group =
@@ -201,17 +499,41 @@ function drawPeople() {
                 "g"
             );
 
-        group.classList.add("person-node");
 
-        group.setAttribute(
-            "transform",
-            `translate(${person.x}, ${person.y})`
+        group.classList.add(
+            "person-node"
         );
 
 
-        /*
-            Person circle
-        */
+        if (
+            person.status ===
+            "EMERGENCY"
+        ) {
+
+            group.classList.add(
+                "emergency"
+            );
+
+        }
+
+
+        if (
+            person.status ===
+            "NO SIGNAL"
+        ) {
+
+            group.classList.add(
+                "no-signal"
+            );
+
+        }
+
+
+        group.setAttribute(
+            "transform",
+            `translate(${person.x},${person.y})`
+        );
+
 
         const circle =
             document.createElementNS(
@@ -219,35 +541,20 @@ function drawPeople() {
                 "circle"
             );
 
-        circle.setAttribute("r", 22);
+        circle.setAttribute(
+            "r",
+            22
+        );
 
-        circle.classList.add("person-circle");
-
-        group.appendChild(circle);
-
-
-        /*
-            Person ID
-        */
-
-        const label =
-            document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "text"
-            );
-
-        label.setAttribute("y", 42);
-
-        label.classList.add("person-label");
-
-        label.textContent = person.id;
-
-        group.appendChild(label);
+        circle.classList.add(
+            "person-circle"
+        );
 
 
-        /*
-            Heartbeat
-        */
+        group.appendChild(
+            circle
+        );
+
 
         const heart =
             document.createElementNS(
@@ -255,49 +562,66 @@ function drawPeople() {
                 "text"
             );
 
-        heart.setAttribute("y", 5);
+        heart.setAttribute(
+            "y",
+            4
+        );
 
-        heart.classList.add("person-heart");
+        heart.classList.add(
+            "heartbeat"
+        );
 
         heart.textContent =
             `♥ ${person.hr}`;
 
-        group.appendChild(heart);
 
-
-        /*
-            Emergency class
-        */
-
-        if (person.status === "EMERGENCY") {
-
-            group.classList.add("emergency");
-
-        }
-
-
-        /*
-            Click
-        */
-
-        group.addEventListener(
-            "click",
-            () => selectPerson(person)
+        group.appendChild(
+            heart
         );
 
 
-        /*
-            Dragging
-        */
+        const label =
+            document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text"
+            );
+
+        label.setAttribute(
+            "y",
+            40
+        );
+
+        label.classList.add(
+            "person-label"
+        );
+
+        label.textContent =
+            person.id;
+
+
+        group.appendChild(
+            label
+        );
+
+
+        group.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+                selectPerson(person);
+
+            }
+        );
+
 
         group.addEventListener(
             "mousedown",
             event => {
 
-                draggingPerson = {
-                    person,
-                    group
-                };
+                draggingPerson =
+                    person;
 
                 event.stopPropagation();
 
@@ -305,7 +629,9 @@ function drawPeople() {
         );
 
 
-        nodesGroup.appendChild(group);
+        nodesGroup.appendChild(
+            group
+        );
 
     });
 
@@ -313,16 +639,12 @@ function drawPeople() {
 
 
 /* =========================================
-   DRAW CONTROL CENTER
+   CONTROL CENTER
 ========================================= */
 
 function drawControlCenter() {
 
-    const group =
-        document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "g"
-        );
+    controlCenterGroup.innerHTML = "";
 
 
     const ring =
@@ -330,6 +652,7 @@ function drawControlCenter() {
             "http://www.w3.org/2000/svg",
             "circle"
         );
+
 
     ring.setAttribute(
         "cx",
@@ -347,10 +670,13 @@ function drawControlCenter() {
     );
 
     ring.classList.add(
-        "control-center-ring"
+        "control-ring"
     );
 
-    group.appendChild(ring);
+
+    controlCenterGroup.appendChild(
+        ring
+    );
 
 
     const circle =
@@ -358,6 +684,7 @@ function drawControlCenter() {
             "http://www.w3.org/2000/svg",
             "circle"
         );
+
 
     circle.setAttribute(
         "cx",
@@ -371,14 +698,169 @@ function drawControlCenter() {
 
     circle.setAttribute(
         "r",
-        42
+        43
     );
 
     circle.classList.add(
         "control-center"
     );
 
-    group.appendChild(circle);
+
+    controlCenterGroup.appendChild(
+        circle
+    );
+
+
+    const text =
+        document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text"
+        );
+
+
+    text.setAttribute(
+        "x",
+        controlCenter.x
+    );
+
+    text.setAttribute(
+        "y",
+        controlCenter.y + 4
+    );
+
+    text.classList.add(
+        "control-text"
+    );
+
+    text.textContent =
+        "COMMAND";
+
+
+    controlCenterGroup.appendChild(
+        text
+    );
+
+
+    const text2 =
+        document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text"
+        );
+
+
+    text2.setAttribute(
+        "x",
+        controlCenter.x
+    );
+
+    text2.setAttribute(
+        "y",
+        controlCenter.y + 19
+    );
+
+    text2.classList.add(
+        "control-text"
+    );
+
+    text2.style.fontSize =
+        "9px";
+
+    text2.textContent =
+        "CENTER";
+
+
+    controlCenterGroup.appendChild(
+        text2
+    );
+
+}
+
+
+/* =========================================
+   DRAW FLOOD SENSOR
+========================================= */
+
+function drawHazard() {
+
+    hazardsGroup.innerHTML = "";
+
+
+    if (
+        !floodSensor.active
+    ) {
+
+        return;
+
+    }
+
+
+    const group =
+        document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "g"
+        );
+
+
+    const circle =
+        document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "circle"
+        );
+
+
+    circle.setAttribute(
+        "cx",
+        floodSensor.x
+    );
+
+    circle.setAttribute(
+        "cy",
+        floodSensor.y
+    );
+
+    circle.setAttribute(
+        "r",
+        25
+    );
+
+    circle.classList.add(
+        "hazard-circle"
+    );
+
+
+    group.appendChild(
+        circle
+    );
+
+
+    const text =
+        document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text"
+        );
+
+
+    text.setAttribute(
+        "x",
+        floodSensor.x
+    );
+
+    text.setAttribute(
+        "y",
+        floodSensor.y + 4
+    );
+
+    text.classList.add(
+        "hazard-text"
+    );
+
+    text.textContent =
+        "⚠";
+
+
+    group.appendChild(
+        text
+    );
 
 
     const label =
@@ -387,53 +869,33 @@ function drawControlCenter() {
             "text"
         );
 
+
     label.setAttribute(
         "x",
-        controlCenter.x
+        floodSensor.x
     );
 
     label.setAttribute(
         "y",
-        controlCenter.y + 5
+        floodSensor.y + 45
     );
 
     label.classList.add(
-        "control-label"
+        "hazard-text"
     );
 
-    label.textContent = "CONTROL";
+    label.textContent =
+        "FLOOD SENSOR";
 
-    group.appendChild(label);
 
-
-    const subLabel =
-        document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "text"
-        );
-
-    subLabel.setAttribute(
-        "x",
-        controlCenter.x
+    group.appendChild(
+        label
     );
 
-    subLabel.setAttribute(
-        "y",
-        controlCenter.y + 20
+
+    hazardsGroup.appendChild(
+        group
     );
-
-    subLabel.classList.add(
-        "control-label"
-    );
-
-    subLabel.style.fontSize = "9px";
-
-    subLabel.textContent = "CENTER";
-
-    group.appendChild(subLabel);
-
-
-    nodesGroup.appendChild(group);
 
 }
 
@@ -444,23 +906,39 @@ function drawControlCenter() {
 
 function selectPerson(person) {
 
-    selectedPerson = person;
+    selectedPerson =
+        person;
+
+
+    let statusClass =
+        person.status ===
+        "EMERGENCY"
+            ? "emergency-text"
+            : "active-text";
+
 
     deviceInfo.innerHTML = `
 
-        <strong>${person.name}</strong><br>
+        <div class="device-name">
+            ${person.name}
+        </div>
 
         Device ID:
-        ${person.id}<br>
+        <strong>${person.id}</strong><br>
 
         Heartbeat:
         ♥ ${person.hr} BPM<br>
 
-        Status:
-        ${person.status}<br>
+        Location:
+        📍 ${person.zone}<br>
 
-        Network:
-        MESH CONNECTED
+        Status:
+        <span class="${statusClass}">
+            ${person.status}
+        </span><br>
+
+        Last signal:
+        ${formatSimulationTime()}
 
     `;
 
@@ -471,166 +949,426 @@ function selectPerson(person) {
    DISASTER MODE
 ========================================= */
 
-disasterBtn.addEventListener(
-    "click",
-    () => {
+document
+    .getElementById("disasterBtn")
+    .addEventListener(
+        "click",
+        () => {
 
-        disasterMode = !disasterMode;
-
-        disasterBtn.classList.toggle(
-            "active",
-            disasterMode
-        );
+            disasterMode =
+                !disasterMode;
 
 
-        if (disasterMode) {
+            const button =
+                document.getElementById(
+                    "disasterBtn"
+                );
 
-            addEvent(
-                "DISASTER MODE activated — cellular/internet unavailable."
+
+            button.classList.toggle(
+                "active",
+                disasterMode
             );
 
-        } else {
 
-            addEvent(
-                "DISASTER MODE deactivated."
-            );
+            const status =
+                document.getElementById(
+                    "networkStatus"
+                );
+
+
+            if (
+                disasterMode
+            ) {
+
+                status.textContent =
+                    "CELLULAR OFFLINE • SENTINEL MESH ACTIVE";
+
+
+                addEvent(
+                    "Disaster Mode activated."
+                );
+
+                addEvent(
+                    "Cellular/internet unavailable."
+                );
+
+            } else {
+
+                status.textContent =
+                    "MESH NETWORK ONLINE";
+
+
+                addEvent(
+                    "Disaster Mode deactivated."
+                );
+
+            }
 
         }
-
-    }
-);
+    );
 
 
 /* =========================================
-   TRIGGER EMERGENCY
+   FLOOD SENSOR
 ========================================= */
 
-emergencyBtn.addEventListener(
-    "click",
-    () => {
+document
+    .getElementById("hazardBtn")
+    .addEventListener(
+        "click",
+        () => {
 
-        if (!selectedPerson) {
+            floodSensor.active =
+                true;
 
-            selectedPerson = people[2];
+            floodSensor.waterLevel =
+                "HIGH";
+
+
+            drawHazard();
+
+
+            aiInfo.innerHTML = `
+
+                <div class="ai-warning">
+                    ⚠ HAZARD DETECTED
+                </div>
+
+                <div class="ai-message">
+                    Dangerous water detected
+                    in ${selectedPerson
+                        ? selectedPerson.zone
+                        : "Zone B"}.
+                </div>
+
+                <div class="ai-action">
+                    AI GUIDANCE:
+                    Avoid this route.
+                </div>
+
+            `;
+
+
+            addEvent(
+                "Flood sensor detected HIGH water."
+            );
+
+
+            addEvent(
+                "Hazard information injected into mesh."
+            );
+
+
+            sendHazardPacket();
 
         }
+    );
 
 
-        selectedPerson.status =
-            "EMERGENCY";
+/* =========================================
+   EMERGENCY
+========================================= */
+
+document
+    .getElementById("emergencyBtn")
+    .addEventListener(
+        "click",
+        () => {
+
+            if (
+                !selectedPerson
+            ) {
+
+                selectedPerson =
+                    people[2];
+
+            }
 
 
-        drawPeople();
+            selectedPerson.status =
+                "EMERGENCY";
 
 
-        selectPerson(
-            selectedPerson
-        );
+            selectPerson(
+                selectedPerson
+            );
 
 
-        addEvent(
-            `${selectedPerson.id} emergency signal activated.`
-        );
+            addEvent(
+                `${selectedPerson.id} emergency activated.`
+            );
 
 
-        sendPacket(
-            selectedPerson
-        );
+            sendEmergencyPacket(
+                selectedPerson
+            );
 
-    }
-);
+
+            updatePopulation();
+
+            render();
+
+        }
+    );
+
+
+/* =========================================
+   ALIVE
+========================================= */
+
+document
+    .getElementById("aliveBtn")
+    .addEventListener(
+        "click",
+        () => {
+
+            if (
+                !selectedPerson
+            ) {
+
+                selectedPerson =
+                    people[0];
+
+            }
+
+
+            selectedPerson.status =
+                "ACTIVE";
+
+
+            selectedPerson.lastSignal =
+                simulatedMinutes;
+
+
+            addEvent(
+                `${selectedPerson.id} sent ALIVE beacon.`
+            );
+
+
+            sendPacketToCenter(
+                selectedPerson,
+                "alive"
+            );
+
+
+            updatePopulation();
+
+            render();
+
+        }
+    );
 
 
 /* =========================================
    +3 MINUTES
 ========================================= */
 
-timeBtn.addEventListener(
-    "click",
-    () => {
+document
+    .getElementById("timeBtn")
+    .addEventListener(
+        "click",
+        () => {
 
-        simulatedMinutes += 3;
+            simulatedMinutes += 3;
 
 
-        people.forEach(person => {
+            people.forEach(
+                person => {
 
-            /*
-                Small heartbeat variation.
-            */
+                    /*
+                        Simulated heartbeat
+                        variation.
+                    */
 
-            const change =
-                Math.floor(
-                    Math.random() * 7
-                ) - 3;
+                    const change =
+                        Math.floor(
+                            Math.random() * 7
+                        ) - 3;
 
-            person.hr =
-                Math.max(
-                    55,
-                    Math.min(
-                        150,
-                        person.hr + change
-                    )
+
+                    person.hr =
+                        Math.max(
+                            55,
+                            Math.min(
+                                150,
+                                person.hr + change
+                            )
+                        );
+
+
+                    /*
+                        Emergency devices
+                        continue reporting.
+                    */
+
+                    if (
+                        person.status ===
+                        "EMERGENCY"
+                    ) {
+
+                        person.lastSignal =
+                            simulatedMinutes;
+
+                    }
+
+                }
+            );
+
+
+            simulationTime.textContent =
+                formatSimulationTime();
+
+
+            if (
+                selectedPerson
+            ) {
+
+                selectPerson(
+                    selectedPerson
                 );
 
-        });
+            }
 
 
-        drawPeople();
+            addEvent(
+                "Simulation advanced +3 minutes."
+            );
 
 
-        if (selectedPerson) {
+            updatePopulation();
 
-            selectPerson(
-                selectedPerson
+            render();
+
+        }
+    );
+
+
+/* =========================================
+   BREAK LINK BUTTON
+========================================= */
+
+document
+    .getElementById("breakBtn")
+    .addEventListener(
+        "click",
+        () => {
+
+            const links =
+                getConnections();
+
+
+            if (
+                links.length === 0
+            ) {
+
+                return;
+
+            }
+
+
+            const random =
+                links[
+                    Math.floor(
+                        Math.random() *
+                        links.length
+                    )
+                ];
+
+
+            const id =
+                getLinkId(
+                    random.a,
+                    random.b
+                );
+
+
+            toggleLink(id);
+
+        }
+    );
+
+
+/* =========================================
+   EMERGENCY PACKET
+========================================= */
+
+function sendEmergencyPacket(
+    person
+) {
+
+    addEvent(
+        `Emergency packet created: ${person.id}`
+    );
+
+
+    sendPacketToCenter(
+        person,
+        "emergency"
+    );
+
+}
+
+
+/* =========================================
+   HAZARD PACKET
+========================================= */
+
+function sendHazardPacket() {
+
+    const packet =
+        document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "circle"
+        );
+
+
+    packet.setAttribute(
+        "r",
+        6
+    );
+
+    packet.classList.add(
+        "packet",
+        "hazard"
+    );
+
+
+    packetsGroup.appendChild(
+        packet
+    );
+
+
+    /*
+        Demonstration path from
+        flood sensor to control center.
+    */
+
+    animatePacket(
+        packet,
+        floodSensor.x,
+        floodSensor.y,
+        controlCenter.x,
+        controlCenter.y,
+        () => {
+
+            addEvent(
+                "Control Center received flood hazard."
             );
 
         }
+    );
 
-
-        addEvent(
-            `Simulation advanced +3 minutes.`
-        );
-
-    }
-);
+}
 
 
 /* =========================================
-   SEND ALIVE
+   PACKET TO CENTER
 ========================================= */
 
-aliveBtn.addEventListener(
-    "click",
-    () => {
-
-        if (!selectedPerson) {
-
-            selectedPerson = people[0];
-
-        }
-
-
-        addEvent(
-            `${selectedPerson.id} sent ALIVE beacon.`
-        );
-
-
-        sendPacket(
-            selectedPerson,
-            true
-        );
-
-    }
-);
-
-
-/* =========================================
-   PACKET ANIMATION
-========================================= */
-
-function sendPacket(
+function sendPacketToCenter(
     person,
-    alive = false
+    type
 ) {
 
     const packet =
@@ -639,20 +1377,25 @@ function sendPacket(
             "circle"
         );
 
+
     packet.setAttribute(
         "r",
         6
     );
+
 
     packet.classList.add(
         "packet"
     );
 
 
-    if (alive) {
+    if (
+        type === "alive"
+    ) {
 
-        packet.style.fill =
-            "#26e6a6";
+        packet.classList.add(
+            "alive"
+        );
 
     }
 
@@ -662,34 +1405,64 @@ function sendPacket(
     );
 
 
-    /*
-        For V1, demonstrate the packet
-        moving from the selected person
-        toward the Control Center.
-    */
+    animatePacket(
+        packet,
+        person.x,
+        person.y,
+        controlCenter.x,
+        controlCenter.y,
+        () => {
 
-    const startX = person.x;
-    const startY = person.y;
+            if (
+                type === "emergency"
+            ) {
 
-    const endX = controlCenter.x;
-    const endY = controlCenter.y;
+                addEvent(
+                    `${person.id} emergency packet received by Command Center.`
+                );
 
+            } else {
+
+                addEvent(
+                    `${person.id} ALIVE beacon received.`
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   PACKET ANIMATION
+========================================= */
+
+function animatePacket(
+    packet,
+    startX,
+    startY,
+    endX,
+    endY,
+    onComplete
+) {
 
     let progress = 0;
 
 
     function animate() {
 
-        progress += 0.015;
+        progress += 0.012;
 
 
-        if (progress >= 1) {
+        if (
+            progress >= 1
+        ) {
 
             packet.remove();
 
-            addEvent(
-                `${person.id} packet received by Control Center.`
-            );
+            onComplete();
 
             return;
 
@@ -732,29 +1505,111 @@ function sendPacket(
 
 
 /* =========================================
+   POPULATION
+========================================= */
+
+function updatePopulation() {
+
+    const total =
+        people.length;
+
+
+    const emergency =
+        people.filter(
+            p =>
+                p.status ===
+                "EMERGENCY"
+        ).length;
+
+
+    const missing =
+        people.filter(
+            p =>
+                p.status ===
+                "NO SIGNAL"
+        ).length;
+
+
+    const accounted =
+        total - missing;
+
+
+    document.getElementById(
+        "totalCount"
+    ).textContent =
+        total;
+
+
+    document.getElementById(
+        "accountedCount"
+    ).textContent =
+        accounted;
+
+
+    document.getElementById(
+        "emergencyCount"
+    ).textContent =
+        emergency;
+
+
+    document.getElementById(
+        "missingCount"
+    ).textContent =
+        missing;
+
+}
+
+
+/* =========================================
    EVENT LOG
 ========================================= */
 
 function addEvent(message) {
 
     const entry =
-        document.createElement("p");
+        document.createElement(
+            "div"
+        );
 
-    const time =
-        new Date()
-            .toLocaleTimeString(
-                [],
-                {
-                    hour: "2-digit",
-                    minute: "2-digit"
-                }
-            );
+
+    entry.classList.add(
+        "event"
+    );
+
 
     entry.textContent =
-        `${time} — ${message}`;
+        `${formatSimulationTime()} — ${message}`;
 
 
-    eventLog.prepend(entry);
+    eventLog.prepend(
+        entry
+    );
+
+}
+
+
+/* =========================================
+   SIMULATION CLOCK
+========================================= */
+
+function formatSimulationTime() {
+
+    const totalMinutes =
+        10 * 60 +
+        simulatedMinutes;
+
+
+    const hours =
+        Math.floor(
+            totalMinutes / 60
+        );
+
+
+    const minutes =
+        totalMinutes % 60;
+
+
+    return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
 
 }
 
@@ -767,30 +1622,36 @@ svg.addEventListener(
     "mousemove",
     event => {
 
-        if (!draggingPerson) return;
+        if (
+            !draggingPerson
+        ) {
+
+            return;
+
+        }
 
 
         const rect =
             svg.getBoundingClientRect();
 
 
-        const scaleX =
-            1200 / rect.width;
-
-        const scaleY =
-            750 / rect.height;
-
-
         const x =
-            (event.clientX - rect.left) *
-            scaleX;
+            (
+                event.clientX -
+                rect.left
+            ) *
+            (1200 / rect.width);
+
 
         const y =
-            (event.clientY - rect.top) *
-            scaleY;
+            (
+                event.clientY -
+                rect.top
+            ) *
+            (720 / rect.height);
 
 
-        draggingPerson.person.x =
+        draggingPerson.x =
             Math.max(
                 40,
                 Math.min(
@@ -800,11 +1661,11 @@ svg.addEventListener(
             );
 
 
-        draggingPerson.person.y =
+        draggingPerson.y =
             Math.max(
                 40,
                 Math.min(
-                    710,
+                    680,
                     y
                 )
             );
@@ -820,7 +1681,8 @@ window.addEventListener(
     "mouseup",
     () => {
 
-        draggingPerson = null;
+        draggingPerson =
+            null;
 
     }
 );
@@ -832,9 +1694,11 @@ window.addEventListener(
 
 function render() {
 
-    createConnections();
+    drawConnections();
 
     drawPeople();
+
+    drawHazard();
 
     drawControlCenter();
 
@@ -847,8 +1711,14 @@ function render() {
 
 render();
 
+updatePopulation();
+
+simulationTime.textContent =
+    formatSimulationTime();
+
+
 addEvent(
-    "SentinelNet mesh initialized."
+    "SentinelNet simulation initialized."
 );
 
 addEvent(

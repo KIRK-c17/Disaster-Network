@@ -4,107 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SentinelNet</title>
+    <title>SentinelNet Simulation</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header class="topbar">
-        <div>
-            <h1>SENTINELNET</h1>
-            <p>Disaster Population Accountability Network</p>
-        </div>
+<header class="topbar">
 
-        <div class="network-status">
-            <span class="status-dot"></span>
-            MESH NETWORK ONLINE
-        </div>
-    </header>
+    <div>
+        <h1>SENTINELNET</h1>
+        <p>Disaster Population Accountability & Emergency Mesh</p>
+    </div>
+
+    <div class="system-status">
+        <span id="statusDot"></span>
+        <span id="networkStatus">MESH NETWORK ONLINE</span>
+    </div>
+
+</header>
 
 
-    <main>
+<main>
 
-        <section class="network-section">
+    <!-- NETWORK -->
 
-            <div class="section-title">
-                <h2>LIVE MESH NETWORK</h2>
-                <span>15 ACTIVE DEVICES</span>
+    <section class="network-card">
+
+        <div class="network-header">
+
+            <div>
+                <h2>LIVE COMMUNITY MESH</h2>
+                <span>15 SENTINEL DEVICES</span>
             </div>
 
-            <div id="network-container">
-
-                <svg id="network"
-                     viewBox="0 0 1200 750"
-                     preserveAspectRatio="xMidYMid meet">
-
-                    <!-- Connection strings -->
-                    <g id="connections"></g>
-
-                    <!-- Moving communication packets -->
-                    <g id="packets"></g>
-
-                    <!-- People + Control Center -->
-                    <g id="nodes"></g>
-
-                </svg>
-
+            <div id="simulationTime">
+                10:00
             </div>
 
-        </section>
+        </div>
 
 
-        <section class="controls">
+        <div id="networkContainer">
 
-            <button id="disasterBtn">
-                DISASTER MODE
-            </button>
+            <svg
+                id="network"
+                viewBox="0 0 1200 720"
+                preserveAspectRatio="xMidYMid meet">
 
-            <button id="emergencyBtn">
-                TRIGGER EMERGENCY
-            </button>
+                <g id="connections"></g>
 
-            <button id="timeBtn">
-                +3 MINUTES
-            </button>
+                <g id="hazards"></g>
 
-            <button id="aliveBtn">
-                SEND ALIVE
-            </button>
+                <g id="packets"></g>
 
-        </section>
+                <g id="nodes"></g>
+
+                <g id="controlCenter"></g>
+
+            </svg>
+
+        </div>
+
+    </section>
 
 
-        <section class="information">
+    <!-- CONTROLS -->
 
-            <div class="panel">
+    <section class="controls">
 
-                <h2>SELECTED DEVICE</h2>
+        <button id="disasterBtn">
+            ⚠ DISASTER MODE
+        </button>
 
-                <div id="deviceInfo">
-                    <p>Select a person on the network.</p>
+        <button id="hazardBtn">
+            ⚠ FLOOD SENSOR
+        </button>
+
+        <button id="emergencyBtn">
+            🔴 TRIGGER EMERGENCY
+        </button>
+
+        <button id="aliveBtn">
+            🟢 SEND ALIVE
+        </button>
+
+        <button id="timeBtn">
+            +3 MINUTES
+        </button>
+
+        <button id="breakBtn">
+            ⛓ BREAK LINK
+        </button>
+
+    </section>
+
+
+    <!-- INFORMATION -->
+
+    <section class="dashboard">
+
+
+        <!-- DEVICE -->
+
+        <div class="panel">
+
+            <h3>SELECTED DEVICE</h3>
+
+            <div id="deviceInfo">
+
+                <div class="empty">
+                    Select a person from the network.
                 </div>
 
             </div>
 
+        </div>
 
-            <div class="panel">
 
-                <h2>NETWORK EVENTS</h2>
+        <!-- AI -->
 
-                <div id="eventLog">
-                    <p>System initialized.</p>
+        <div class="panel ai-panel">
+
+            <h3>🧠 SENTINEL AI</h3>
+
+            <div id="aiInfo">
+
+                <div class="ai-idle">
+                    AI monitoring active.
                 </div>
 
             </div>
 
-        </section>
-
-    </main>
+        </div>
 
 
-    <script src="app.js"></script>
+        <!-- POPULATION -->
+
+        <div class="panel">
+
+            <h3>POPULATION STATUS</h3>
+
+            <div class="population">
+
+                <div>
+                    <strong id="totalCount">15</strong>
+                    <span>TOTAL</span>
+                </div>
+
+                <div>
+                    <strong id="accountedCount">15</strong>
+                    <span>ACCOUNTED</span>
+                </div>
+
+                <div>
+                    <strong id="emergencyCount">0</strong>
+                    <span>EMERGENCY</span>
+                </div>
+
+                <div>
+                    <strong id="missingCount">0</strong>
+                    <span>NO SIGNAL</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EVENTS -->
+
+        <div class="panel event-panel">
+
+            <h3>NETWORK EVENTS</h3>
+
+            <div id="eventLog"></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="app.js"></script>
 
 </body>
 </html>
