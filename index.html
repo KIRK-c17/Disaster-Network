@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SentinelNet</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div>
+            <h1>SENTINELNET</h1>
+            <p>Disaster Population Accountability Network</p>
+        </div>
+
+        <div class="network-status">
+            <span class="status-dot"></span>
+            MESH NETWORK ONLINE
+        </div>
+    </header>
+
+
+    <main>
+
+        <section class="network-section">
+
+            <div class="section-title">
+                <h2>LIVE MESH NETWORK</h2>
+                <span>15 ACTIVE DEVICES</span>
+            </div>
+
+            <div id="network-container">
+
+                <svg id="network"
+                     viewBox="0 0 1200 750"
+                     preserveAspectRatio="xMidYMid meet">
+
+                    <!-- Connection strings -->
+                    <g id="connections"></g>
+
+                    <!-- Moving communication packets -->
+                    <g id="packets"></g>
+
+                    <!-- People + Control Center -->
+                    <g id="nodes"></g>
+
+                </svg>
+
+            </div>
+
+        </section>
+
+
+        <section class="controls">
+
+            <button id="disasterBtn">
+                DISASTER MODE
+            </button>
+
+            <button id="emergencyBtn">
+                TRIGGER EMERGENCY
+            </button>
+
+            <button id="timeBtn">
+                +3 MINUTES
+            </button>
+
+            <button id="aliveBtn">
+                SEND ALIVE
+            </button>
+
+        </section>
+
+
+        <section class="information">
+
+            <div class="panel">
+
+                <h2>SELECTED DEVICE</h2>
+
+                <div id="deviceInfo">
+                    <p>Select a person on the network.</p>
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h2>NETWORK EVENTS</h2>
+
+                <div id="eventLog">
+                    <p>System initialized.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="app.js"></script>
+
+</body>
+</html>

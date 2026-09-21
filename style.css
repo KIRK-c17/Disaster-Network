@@ -1,0 +1,418 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #071426;
+    color: #e8f4ff;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar {
+    height: 90px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 30px;
+
+    background: #0a1d35;
+
+    border-bottom: 1px solid #173d63;
+}
+
+.topbar h1 {
+    font-size: 26px;
+    letter-spacing: 4px;
+}
+
+.topbar p {
+    margin-top: 5px;
+    color: #8faec8;
+    font-size: 13px;
+}
+
+.network-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+
+    background: #26e6a6;
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 12px #26e6a6;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    padding: 20px;
+}
+
+.network-section {
+    background: #091b31;
+
+    border: 1px solid #173d63;
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+.section-title {
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+
+    background: #0c223c;
+
+    border-bottom: 1px solid #173d63;
+}
+
+.section-title h2 {
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.section-title span {
+    color: #5bd9ff;
+
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   NETWORK
+========================= */
+
+#network-container {
+    width: 100%;
+    height: 650px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #0c2947 0%,
+            #071426 65%,
+            #050e1b 100%
+        );
+
+    position: relative;
+}
+
+#network {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* =========================
+   CONNECTION STRINGS
+========================= */
+
+.connection {
+    stroke: #1d628b;
+
+    stroke-width: 1.4;
+
+    opacity: 0.55;
+
+    transition:
+        stroke 0.2s,
+        opacity 0.2s,
+        stroke-width 0.2s;
+}
+
+.connection:hover {
+    stroke: #5bd9ff;
+    opacity: 1;
+    stroke-width: 3;
+}
+
+.connection.failed {
+    stroke: #4b5360;
+
+    stroke-dasharray: 7 8;
+
+    opacity: 0.25;
+}
+
+
+/* =========================
+   PERSON NODES
+========================= */
+
+.person-node {
+    cursor: pointer;
+}
+
+.person-circle {
+    fill: #0b3555;
+
+    stroke: #4ccfff;
+
+    stroke-width: 2;
+
+    transition:
+        fill 0.2s,
+        stroke 0.2s,
+        transform 0.2s;
+}
+
+.person-node:hover .person-circle {
+    fill: #15587f;
+
+    stroke: #ffffff;
+
+    stroke-width: 3;
+}
+
+.person-label {
+    fill: #d9efff;
+
+    font-size: 12px;
+
+    text-anchor: middle;
+
+    pointer-events: none;
+}
+
+.person-heart {
+    fill: #ff617d;
+
+    font-size: 12px;
+
+    text-anchor: middle;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   CONTROL CENTER
+========================= */
+
+.control-center {
+    fill: #102f4c;
+
+    stroke: #66e4ff;
+
+    stroke-width: 4;
+}
+
+.control-center-ring {
+    fill: none;
+
+    stroke: #247ca5;
+
+    stroke-width: 2;
+
+    opacity: 0.7;
+}
+
+.control-label {
+    fill: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    text-anchor: middle;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   EMERGENCY
+========================= */
+
+.emergency .person-circle {
+    fill: #6b1728;
+
+    stroke: #ff526f;
+
+    animation: emergencyPulse 1s infinite;
+}
+
+@keyframes emergencyPulse {
+
+    0% {
+        filter: drop-shadow(0 0 3px #ff526f);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 18px #ff526f);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 3px #ff526f);
+    }
+}
+
+
+/* =========================
+   PACKET
+========================= */
+
+.packet {
+    fill: #5be7ff;
+
+    filter: drop-shadow(0 0 8px #5be7ff);
+}
+
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 15px;
+
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 13px 18px;
+
+    background: #0d2945;
+
+    color: #dff7ff;
+
+    border: 1px solid #205c82;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background: #124064;
+
+    border-color: #5bd9ff;
+}
+
+button.active {
+    background: #6b1728;
+
+    border-color: #ff526f;
+}
+
+
+/* =========================
+   INFORMATION PANELS
+========================= */
+
+.information {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    margin-top: 15px;
+}
+
+.panel {
+    min-height: 170px;
+
+    background: #091b31;
+
+    border: 1px solid #173d63;
+
+    border-radius: 10px;
+
+    padding: 20px;
+}
+
+.panel h2 {
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+
+    color: #69dfff;
+}
+
+#deviceInfo {
+    color: #b8d4e8;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+}
+
+#eventLog {
+    max-height: 130px;
+
+    overflow-y: auto;
+
+    color: #8fb3cb;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+
+    .topbar {
+        height: auto;
+
+        padding: 18px;
+
+        gap: 15px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .information {
+        grid-template-columns: 1fr;
+    }
+
+    #network-container {
+        height: 500px;
+    }
+
+}
