@@ -390,15 +390,30 @@ function getNodeVisualStatus(person) {
 function renderNodes() {
     nodesLayer.innerHTML = "";
 
-    renderNode(controlCenter);
-    renderNode(hazardSensor);
+    if (!controlCenter) {
+        return;
+    }
 
-    people.forEach(renderNode);
+    renderNode(controlCenter);
+
+    if (hazardSensor) {
+        renderNode(hazardSensor);
+    }
+
+    people.forEach(person => {
+        if (person) {
+            renderNode(person);
+        }
+    });
 
     updateConnectedCount();
 }
 
 function renderNode(node) {
+    if (!node || !nodesLayer) {
+        return;
+    }
+
     const group = createSvgElement("g");
 
     group.classList.add("node");
@@ -412,28 +427,44 @@ function renderNode(node) {
     }
 
     if (node.type === "person") {
-        group.classList.add(getNodeVisualStatus(node));
+        group.classList.add(
+            getNodeVisualStatus(node)
+        );
 
         if (node.commandIsolated) {
             group.classList.add("isolated");
         }
+
+        if (
+            selectedPerson &&
+            node.id === selectedPerson.id
+        ) {
+            group.classList.add("selected");
+        }
     }
 
     if (
-        selectedPerson &&
-        node.id === selectedPerson.id
+        node.type === "command" &&
+        selectedPerson === null
     ) {
-        group.classList.add("selected");
+        group.classList.add("command");
     }
 
-    const ring = createSvgElement("circle", {
-        cx: node.x,
-        cy: node.y,
-        r:
-            node.type === "command"
-                ? 37
-                : 25
-    });
+    const ringRadius =
+        node.type === "command"
+            ? 37
+            : node.type === "sensor"
+                ? 27
+                : 25;
+
+    const ring = createSvgElement(
+        "circle",
+        {
+            cx: node.x,
+            cy: node.y,
+            r: ringRadius
+        }
+    );
 
     ring.classList.add("node-ring");
 
@@ -446,16 +477,22 @@ function renderNode(node) {
                 ? 20
                 : 16;
 
-    const circle = createSvgElement("circle", {
-        cx: node.x,
-        cy: node.y,
-        r: radius
-    });
+    const circle = createSvgElement(
+        "circle",
+        {
+            cx: node.x,
+            cy: node.y,
+            r: radius
+        }
+    );
 
     circle.classList.add("node-circle");
 
     if (node.type === "command") {
-        circle.setAttribute("fill", "#123e58");
+        circle.setAttribute(
+            "fill",
+            "#123e58"
+        );
     } else if (node.type === "sensor") {
         circle.setAttribute(
             "fill",
@@ -463,29 +500,53 @@ function renderNode(node) {
                 ? "#49286d"
                 : "#20203d"
         );
-    } else if (node.status === "EMERGENCY") {
-        circle.setAttribute("fill", "#551d25");
-    } else if (node.status === "ASSISTANCE_REQUESTED") {
-        circle.setAttribute("fill", "#4b3a1d");
-    } else if (node.status === "UNRESOLVED") {
-        circle.setAttribute("fill", "#49351d");
+    } else if (
+        node.status === "EMERGENCY"
+    ) {
+        circle.setAttribute(
+            "fill",
+            "#551d25"
+        );
+    } else if (
+        node.status === "ASSISTANCE_REQUESTED"
+    ) {
+        circle.setAttribute(
+            "fill",
+            "#4b3a1d"
+        );
+    } else if (
+        node.status === "UNRESOLVED"
+    ) {
+        circle.setAttribute(
+            "fill",
+            "#49351d"
+        );
     } else {
-        circle.setAttribute("fill", "#12382f");
+        circle.setAttribute(
+            "fill",
+            "#12382f"
+        );
     }
 
     group.appendChild(circle);
 
-    const symbol = createSvgElement("text", {
-        x: node.x,
-        y: node.y + 4,
-        "text-anchor": "middle",
-        fill: "#ffffff",
-        "font-size":
-            node.type === "command"
-                ? "17"
-                : "11",
-        "font-weight": "bold"
-    });
+    const symbol = createSvgElement(
+        "text",
+        {
+            x: node.x,
+            y: node.y + 5,
+            "text-anchor": "middle",
+            fill: "#ffffff",
+            "font-size":
+                node.type === "command"
+                    ? "17"
+                    : node.type === "sensor"
+                        ? "11"
+                        : "11",
+            "font-weight": "bold",
+            "pointer-events": "none"
+        }
+    );
 
     symbol.textContent =
         node.type === "command"
@@ -496,10 +557,13 @@ function renderNode(node) {
 
     group.appendChild(symbol);
 
-    const label = createSvgElement("text", {
-        x: node.x,
-        y: node.y + radius + 15
-    });
+    const label = createSvgElement(
+        "text",
+        {
+            x: node.x,
+            y: node.y + radius + 15
+        }
+    );
 
     label.classList.add("node-label");
 
@@ -513,113 +577,183 @@ function renderNode(node) {
     group.appendChild(label);
 
     if (node.type === "person") {
-        const status = createSvgElement("text", {
-            x: node.x,
-            y: node.y + radius + 26
-        });
+        const status = createSvgElement(
+            "text",
+            {
+                x: node.x,
+                y: node.y + radius + 26
+            }
+        );
 
-        status.classList.add("node-status");
+        status.classList.add(
+            "node-status"
+        );
 
-        if (node.status === "EMERGENCY") {
-            status.textContent = "EMERGENCY";
-        } else if (node.status === "ASSISTANCE_REQUESTED") {
-            status.textContent = "ASSISTANCE";
-        } else if (node.status === "UNRESOLVED") {
-            status.textContent = "UNRESOLVED";
-        } else if (node.commandIsolated) {
-            status.textContent = "COMMAND CUT";
+        if (
+            node.status === "EMERGENCY"
+        ) {
+            status.textContent =
+                "EMERGENCY";
+        } else if (
+            node.status ===
+            "ASSISTANCE_REQUESTED"
+        ) {
+            status.textContent =
+                "ASSISTANCE";
+        } else if (
+            node.status === "UNRESOLVED"
+        ) {
+            status.textContent =
+                "UNRESOLVED";
+        } else if (
+            node.commandIsolated
+        ) {
+            status.textContent =
+                "COMMAND CUT";
         } else {
-            status.textContent = "ACCOUNTED";
+            status.textContent =
+                "ACCOUNTED";
         }
 
         group.appendChild(status);
 
-        const location = createSvgElement("text", {
-            x: node.x,
-            y: node.y + radius + 37
-        });
+        const location =
+            createSvgElement(
+                "text",
+                {
+                    x: node.x,
+                    y: node.y + radius + 37
+                }
+            );
 
-        location.classList.add("node-location");
-        location.textContent = node.zone;
+        location.classList.add(
+            "node-location"
+        );
+
+        location.textContent =
+            node.zone;
 
         group.appendChild(location);
     }
 
-    group.addEventListener("click", event => {
-        event.stopPropagation();
-
-        if (node.type === "person") {
-            selectPerson(node);
-        }
-    });
-
-    group.addEventListener("pointerdown", event => {
-        event.stopPropagation();
-
-        if (node.type !== "person") {
-            return;
-        }
-
-        dragState = {
-            node,
-            pointerId: event.pointerId
-        };
-
-        group.setPointerCapture(event.pointerId);
-    });
-
-    group.addEventListener("pointermove", event => {
-        if (
-            !dragState ||
-            dragState.node !== node
-        ) {
-            return;
-        }
-
-        const point = svgPoint(event);
-
-        node.x = Math.max(
-            30,
-            Math.min(
-                CONFIG.viewWidth - 30,
-                point.x
-            )
+    if (node.type === "person") {
+        group.addEventListener(
+            "click",
+            event => {
+                event.stopPropagation();
+                selectPerson(node);
+            }
         );
 
-        node.y = Math.max(
-            30,
-            Math.min(
-                CONFIG.viewHeight - 45,
-                point.y
-            )
+        group.addEventListener(
+            "pointerdown",
+            event => {
+                event.stopPropagation();
+
+                dragState = {
+                    node,
+                    pointerId:
+                        event.pointerId
+                };
+
+                if (
+                    typeof group.setPointerCapture ===
+                    "function"
+                ) {
+                    group.setPointerCapture(
+                        event.pointerId
+                    );
+                }
+            }
         );
 
-        updatePersonLocation(node);
-        renderAll();
-    });
+        group.addEventListener(
+            "pointermove",
+            event => {
+                if (
+                    !dragState ||
+                    dragState.node !== node
+                ) {
+                    return;
+                }
 
-    group.addEventListener("pointerup", event => {
-        if (
-            dragState &&
-            dragState.node === node
-        ) {
-            dragState = null;
+                const point =
+                    svgPoint(event);
 
-            updatePersonLocation(node);
+                node.x = Math.max(
+                    30,
+                    Math.min(
+                        CONFIG.viewWidth - 30,
+                        point.x
+                    )
+                );
 
-            logEvent(
-                `${node.id} moved to ${node.zone}. Network topology recalculated.`,
-                "packet"
-            );
+                node.y = Math.max(
+                    30,
+                    Math.min(
+                        CONFIG.viewHeight - 45,
+                        point.y
+                    )
+                );
 
-            checkNetworkChanges();
-            runAI();
-        }
-    });
+                updatePersonLocation(
+                    node
+                );
+
+                renderAll();
+            }
+        );
+
+        group.addEventListener(
+            "pointerup",
+            event => {
+                if (
+                    dragState &&
+                    dragState.node === node
+                ) {
+                    dragState = null;
+
+                    updatePersonLocation(
+                        node
+                    );
+
+                    logEvent(
+                        `${node.id} moved to ${node.zone}. Network topology recalculated.`,
+                        "packet"
+                    );
+
+                    checkNetworkChanges();
+                    runAI();
+                }
+            }
+        );
+
+        group.addEventListener(
+            "pointercancel",
+            () => {
+                if (
+                    dragState &&
+                    dragState.node === node
+                ) {
+                    dragState = null;
+                }
+            }
+        );
+    }
 
     nodesLayer.appendChild(group);
 }
+function renderAll() {
+    if (!svg || !nodesLayer || !linksLayer) {
+        return;
+    }
 
+    renderLinks();
+    renderNodes();
+    updateSelectedPanel();
+    updatePopulation();
+    updateConnectedCount();
+}
 function updatePersonLocation(person) {
     person.lastKnownLocation = {
         zone: person.zone,
@@ -3675,15 +3809,6 @@ function checkNetworkChanges() {
     updateConnectedCount();
     updatePopulation();
 }
-
-function renderAll() {
-    renderLinks();
-    renderNodes();
-    updateSelectedPanel();
-    updatePopulation();
-    updateConnectedCount();
-}
-
 document
     .getElementById("disasterBtn")
     .addEventListener(
