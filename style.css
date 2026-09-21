@@ -149,6 +149,10 @@ body {
     color: #ff7373;
 }
 
+.unresolved strong {
+    color: #ffbd55;
+}
+
 .stat-row {
     display: flex;
     justify-content: space-between;
@@ -167,6 +171,27 @@ body {
 
 .stat-row strong {
     color: white;
+}
+
+.gap-priority {
+    margin-top: 9px;
+    padding: 8px;
+    background: #171d26;
+    border-left: 3px solid #ffbd55;
+    border-radius: 3px;
+    color: #d9e6f3;
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+.gap-priority.high {
+    border-left-color: #ff6464;
+    background: #29181a;
+}
+
+.gap-priority.good {
+    border-left-color: #5be39a;
+    background: #11271e;
 }
 
 .control-btn {
@@ -371,8 +396,12 @@ body {
     animation: emergencyPulse 1s infinite;
 }
 
-.node.missing .node-circle {
+.node.unresolved .node-circle {
     stroke: #ffc35a;
+}
+
+.node.assistance .node-circle {
+    stroke: #ffd36a;
 }
 
 .node.active .node-circle {
@@ -538,6 +567,7 @@ body {
     justify-content: space-between;
     border-bottom: 1px solid #182a41;
     padding: 4px 0;
+    gap: 8px;
 }
 
 .info-row span {
@@ -546,6 +576,7 @@ body {
 
 .info-row strong {
     color: #dce9f6;
+    text-align: right;
 }
 
 .tag {
@@ -570,6 +601,11 @@ body {
 .tag.good {
     background: #173b2d;
     color: #74e8ac;
+}
+
+.tag.unresolved {
+    background: #44351c;
+    color: #ffd77c;
 }
 
 .muted {
@@ -656,6 +692,24 @@ body {
 
 .search-panel {
     min-height: 150px;
+}
+
+.recovery-box {
+    margin-top: 8px;
+    padding: 8px;
+    background: #111f31;
+    border: 1px solid #29415d;
+    border-radius: 4px;
+}
+
+.recovery-box.high {
+    border-color: #7e3333;
+    background: #291719;
+}
+
+.confidence {
+    font-weight: bold;
+    color: #8ee5ff;
 }
 
 ::-webkit-scrollbar {

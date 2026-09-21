@@ -11,7 +11,7 @@
 <header class="topbar">
     <div>
         <h1>◉ SENTINELNET</h1>
-        <p>Decentralized Disaster Population Accountability Network</p>
+        <p>AI-Driven Disaster Population Status Recovery Network</p>
     </div>
 
     <div class="system-status">
@@ -48,14 +48,37 @@
                 </div>
 
                 <div class="warning">
+                    <strong id="assistancePeople">0</strong>
+                    <span>Assistance</span>
+                </div>
+
+                <div class="danger">
                     <strong id="emergencyPeople">0</strong>
                     <span>Emergency</span>
                 </div>
 
-                <div class="danger">
-                    <strong id="missingPeople">0</strong>
-                    <span>No Signal</span>
+                <div class="unresolved">
+                    <strong id="unresolvedPeople">0</strong>
+                    <span>Unresolved</span>
                 </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>STATUS GAP</h2>
+
+            <div class="stat-row">
+                <span>Unresolved records</span>
+                <strong id="statusGapCount">0</strong>
+            </div>
+
+            <div class="stat-row">
+                <span>High priority gaps</span>
+                <strong id="priorityGapCount">0</strong>
+            </div>
+
+            <div id="gapPriority" class="gap-priority">
+                No unresolved status gaps.
             </div>
         </section>
 
@@ -113,7 +136,7 @@
             </button>
 
             <button id="searchBtn" class="control-btn search">
-                SEARCH SELECTED NODE
+                RECOVER SELECTED STATUS
             </button>
 
             <button id="aliveBtn" class="control-btn">
@@ -172,7 +195,7 @@
             <div class="legend">
                 <span>
                     <i class="legend-dot active"></i>
-                    Active
+                    Accounted
                 </span>
 
                 <span>
@@ -182,7 +205,7 @@
 
                 <span>
                     <i class="legend-dot missing"></i>
-                    No Signal
+                    Unresolved
                 </span>
 
                 <span>
@@ -224,10 +247,10 @@
     <aside class="sidebar right-sidebar">
 
         <section class="panel ai-panel">
-            <h2>◈ SENTINEL AI — SITUATION ANALYSIS</h2>
+            <h2>◈ SENTINEL AI — STATUS ANALYSIS</h2>
 
             <div id="aiStatus" class="ai-status">
-                Monitoring network...
+                Monitoring population status...
             </div>
 
             <div id="aiMessage" class="ai-message">
@@ -235,10 +258,10 @@
             </div>
 
             <div class="ai-note">
-                Prototype AI uses simulated,
-                rule-based situation analysis.
-                It does not make real emergency or
-                medical determinations.
+                Prototype AI combines simulated network,
+                location, heartbeat, movement, hazard,
+                and proximity evidence. It does not make
+                real emergency or medical determinations.
             </div>
         </section>
 
@@ -285,11 +308,11 @@
         </section>
 
         <section class="panel search-panel">
-            <h2>SEARCH / VERIFICATION</h2>
+            <h2>STATUS RECOVERY</h2>
 
             <div id="searchInfo">
                 <p class="muted">
-                    No active search.
+                    No active recovery request.
                 </p>
             </div>
         </section>
