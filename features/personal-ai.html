@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DisasterNetwork — SentinelNet Personal AI</title>
+
+    <link rel="stylesheet" href="../css/personal-ai.css">
+</head>
+
+<body>
+
+<header class="topbar">
+    <div>
+        <h1>DISASTERNETWORK</h1>
+        <p>SENTINELNET — PERSONAL AI SIMULATION</p>
+    </div>
+
+    <div class="system-status">
+        <div class="status-pill online">
+            ● AI ONLINE
+        </div>
+
+        <div class="status-pill mesh">
+            ● OFFLINE MODEL READY
+        </div>
+
+        <div class="time-display" id="simTime">
+            10:00
+        </div>
+    </div>
+</header>
+
+<nav class="feature-nav">
+    <a href="../index.html">
+        ← BACK TO DISASTERNETWORK
+    </a>
+</nav>
+
+<main class="layout">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar left-sidebar">
+
+        <section class="panel">
+            <h2>SENTINEL IDENTITY</h2>
+
+            <div class="identity-card">
+                <div class="avatar">SN</div>
+
+                <div>
+                    <strong id="sentinelName">SN-001</strong>
+                    <span>Maria Santos</span>
+                </div>
+            </div>
+
+            <div class="info-row">
+                <span>Location</span>
+                <strong id="locationValue">BLOCK 04</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Network</span>
+                <strong class="good-text" id="networkValue">
+                    CONNECTED
+                </strong>
+            </div>
+
+            <div class="info-row">
+                <span>AI Model</span>
+                <strong>OFFLINE-AI v1.0</strong>
+            </div>
+        </section>
+
+
+        <section class="panel">
+            <h2>BIOMETRIC STATUS</h2>
+
+            <div class="metric-card">
+                <div>
+                    <span>HEART RATE</span>
+                    <strong id="heartRate">82</strong>
+                    <small>BPM</small>
+                </div>
+
+                <div class="metric-state good" id="heartState">
+                    NORMAL
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div>
+                    <span>BODY STATUS</span>
+                    <strong id="bodyStatus">STABLE</strong>
+                </div>
+
+                <div class="metric-state good">
+                    NORMAL
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div>
+                    <span>MOTION</span>
+                    <strong id="motionStatus">ACTIVE</strong>
+                </div>
+
+                <div class="metric-state good">
+                    DETECTED
+                </div>
+            </div>
+        </section>
+
+
+        <section class="panel">
+            <h2>AI CONTROLS</h2>
+
+            <button class="control-btn primary" id="selfCheckBtn">
+                RUN AI SELF-ASSESSMENT
+            </button>
+
+            <button class="control-btn" id="askAiBtn">
+                ASK PERSONAL AI
+            </button>
+
+            <button class="control-btn warning-btn" id="simulateStressBtn">
+                SIMULATE STRESS
+            </button>
+
+            <button class="control-btn emergency" id="emergencyBtn">
+                SIMULATE EMERGENCY
+            </button>
+
+            <button class="control-btn" id="resetBtn">
+                RESET SENTINEL
+            </button>
+        </section>
+
+    </aside>
+
+
+    <!-- CENTER -->
+    <section class="ai-section">
+
+        <div class="ai-header">
+            <div>
+                <h2>PERSONAL AI CORE</h2>
+                <span>LOCAL INTELLIGENCE / OFFLINE OPERATION</span>
+            </div>
+
+            <div class="ai-core-status" id="aiCoreStatus">
+                ● ACTIVE
+            </div>
+        </div>
+
+
+        <div class="ai-main">
+
+            <div class="core-visual">
+
+                <div class="core-ring ring-one"></div>
+                <div class="core-ring ring-two"></div>
+                <div class="core-ring ring-three"></div>
+
+                <div class="ai-core">
+                    <span>AI</span>
+                    <small>CORE</small>
+                </div>
+
+            </div>
+
+
+            <div class="reasoning-panel">
+
+                <div class="reasoning-title">
+                    CURRENT AI ASSESSMENT
+                </div>
+
+                <div class="ai-message" id="aiMessage">
+                    Sentinel operating normally.
+                    Personal AI is continuously monitoring
+                    biometric status, location, network
+                    availability, and environmental context.
+                </div>
+
+                <div class="confidence-box">
+                    <div>
+                        <span>AI CONFIDENCE</span>
+                        <strong id="confidenceValue">94%</strong>
+                    </div>
+
+                    <div class="confidence-bar">
+                        <div id="confidenceBar"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="decision-section">
+
+            <div class="section-title">
+                AI DECISION PROCESS
+            </div>
+
+            <div class="decision-grid">
+
+                <div class="decision-card" id="detectCard">
+                    <div class="decision-number">01</div>
+                    <strong>DETECT</strong>
+                    <span>
+                        Gather available biometric,
+                        location, and sensor information.
+                    </span>
+                </div>
+
+                <div class="decision-card" id="analyzeCard">
+                    <div class="decision-number">02</div>
+                    <strong>ANALYZE</strong>
+                    <span>
+                        Compare current conditions against
+                        known emergency patterns.
+                    </span>
+                </div>
+
+                <div class="decision-card" id="decideCard">
+                    <div class="decision-number">03</div>
+                    <strong>DECIDE</strong>
+                    <span>
+                        Determine the safest recommended
+                        action for the wearer.
+                    </span>
+                </div>
+
+                <div class="decision-card" id="actCard">
+                    <div class="decision-number">04</div>
+                    <strong>ACT</strong>
+                    <span>
+                        Provide guidance and prepare
+                        emergency communication.
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="assistant-panel">
+
+            <div class="section-title">
+                PERSONAL AI ASSISTANT
+            </div>
+
+            <div class="chat-box" id="chatBox">
+                <div class="chat ai">
+                    <strong>PERSONAL AI</strong>
+                    <p>
+                        I am ready. I can continue assisting
+                        you even when internet connectivity
+                        is unavailable.
+                    </p>
+                </div>
+            </div>
+
+            <div class="question-controls">
+
+                <button data-question="status">
+                    CHECK MY STATUS
+                </button>
+
+                <button data-question="safe">
+                    AM I SAFE?
+                </button>
+
+                <button data-question="network">
+                    CHECK NETWORK
+                </button>
+
+                <button data-question="battery">
+                    CHECK BATTERY
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="sidebar right-sidebar">
+
+        <section class="panel">
+            <h2>WEARABLE STATUS</h2>
+
+            <div class="stat-row">
+                <span>AI</span>
+                <strong class="good-text">ACTIVE</strong>
+            </div>
+
+            <div class="stat-row">
+                <span>Offline Model</span>
+                <strong>READY</strong>
+            </div>
+
+            <div class="stat-row">
+                <span>GPS</span>
+                <strong id="gpsStatus">LOCKED</strong>
+            </div>
+
+            <div class="stat-row">
+                <span>Mesh Radio</span>
+                <strong id="radioStatus">CONNECTED</strong>
+            </div>
+
+            <div class="stat-row">
+                <span>Emergency Mode</span>
+                <strong id="emergencyStatus">STANDBY</strong>
+            </div>
+        </section>
+
+
+        <section class="panel">
+            <h2>BATTERY</h2>
+
+            <div class="battery-container">
+
+                <div class="battery">
+                    <div class="battery-level" id="batteryLevel"></div>
+                </div>
+
+                <strong id="batteryValue">78%</strong>
+
+            </div>
+
+            <div class="battery-state" id="batteryState">
+                NORMAL POWER
+            </div>
+        </section>
+
+
+        <section class="panel">
+            <h2>AI MEMORY</h2>
+
+            <div class="memory-item">
+                <span>LOCAL KNOWLEDGE</span>
+                <strong>AVAILABLE</strong>
+            </div>
+
+            <div class="memory-item">
+                <span>EMERGENCY GUIDE</span>
+                <strong>LOADED</strong>
+            </div>
+
+            <div class="memory-item">
+                <span>USER PROFILE</span>
+                <strong>LOADED</strong>
+            </div>
+
+            <div class="memory-item">
+                <span>LAST ASSESSMENT</span>
+                <strong id="lastAssessment">
+                    NORMAL
+                </strong>
+            </div>
+        </section>
+
+
+        <section class="panel event-panel">
+            <h2>AI EVENT LOG</h2>
+
+            <div class="event-log" id="eventLog">
+                <div class="event good">
+                    [10:00] AI CORE INITIALIZED
+                </div>
+
+                <div class="event">
+                    [10:00] OFFLINE MODEL LOADED
+                </div>
+
+                <div class="event">
+                    [10:00] BIOMETRIC MONITOR ACTIVE
+                </div>
+            </div>
+        </section>
+
+    </aside>
+
+</main>
+
+<script src="../js/personal-ai.js"></script>
+
+</body>
+</html>
