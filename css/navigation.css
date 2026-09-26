@@ -1,663 +1,934 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>DisasterNetwork — SentinelNet Navigation</title>
-
-    <link rel="stylesheet" href="../css/navigation.css">
-</head>
-
-<body>
-
-<header class="topbar">
-
-    <div>
-        <h1>DISASTERNETWORK</h1>
-        <p>SENTINELNET — OFFLINE NAVIGATION</p>
-    </div>
-
-    <div class="system-status">
-
-        <div class="status-pill online">
-            ● NAVIGATION AI ONLINE
-        </div>
-
-        <div class="status-pill mesh">
-            ● OFFLINE MAP LOADED
-        </div>
-
-        <div class="time-display" id="simTime">
-            10:00
-        </div>
-
-    </div>
-
-</header>
-
-
-<nav class="feature-nav">
-    <a href="../index.html">
-        ← BACK TO DISASTERNETWORK
-    </a>
-</nav>
-
-
-<main class="layout">
-
-
-    <!-- LEFT SIDEBAR -->
-
-    <aside class="sidebar left-sidebar">
-
-        <section class="panel">
-
-            <h2>NAVIGATION MODE</h2>
-
-            <button
-                class="mode-btn active"
-                data-mode="safe"
-            >
-                SAFE ROUTE
-            </button>
-
-            <button
-                class="mode-btn"
-                data-mode="fast"
-            >
-                FASTEST ROUTE
-            </button>
-
-            <button
-                class="mode-btn"
-                data-mode="shelter"
-            >
-                FIND SAFE SHELTER
-            </button>
-
-            <button
-                class="mode-btn"
-                data-mode="exit"
-            >
-                FIND EXIT ROUTE
-            </button>
-
-        </section>
-
-
-        <section class="panel">
-
-            <h2>DESTINATION</h2>
-
-            <label class="field-label">
-                SELECT DESTINATION
-            </label>
-
-            <select
-                class="control-select"
-                id="destinationSelect"
-            >
-
-                <option value="shelter">
-                    SAFE SHELTER
-                </option>
-
-                <option value="hospital">
-                    EMERGENCY HOSPITAL
-                </option>
-
-                <option value="command">
-                    COMMAND CENTER
-                </option>
-
-                <option value="evacuation">
-                    EVACUATION CENTER
-                </option>
-
-            </select>
-
-            <button
-                class="control-btn primary"
-                id="calculateBtn"
-            >
-                CALCULATE SAFE ROUTE
-            </button>
-
-            <button
-                class="control-btn warning-btn"
-                id="blockRoadBtn"
-            >
-                SIMULATE ROAD BLOCKAGE
-            </button>
-
-            <button
-                class="control-btn"
-                id="rerouteBtn"
-            >
-                RECALCULATE ROUTE
-            </button>
-
-        </section>
-
-
-        <section class="panel">
-
-            <h2>POSITION</h2>
-
-            <div class="stat-row">
-                <span>Sentinel</span>
-                <strong>SN-001</strong>
-            </div>
-
-            <div class="stat-row">
-                <span>Current Block</span>
-                <strong id="currentBlock">
-                    BLOCK 04
-                </strong>
-            </div>
-
-            <div class="stat-row">
-                <span>GPS</span>
-                <strong class="good">
-                    AVAILABLE
-                </strong>
-            </div>
-
-            <div class="stat-row">
-                <span>Internet</span>
-                <strong class="warning">
-                    OFFLINE
-                </strong>
-            </div>
-
-            <div class="stat-row">
-                <span>Offline Map</span>
-                <strong class="good">
-                    AVAILABLE
-                </strong>
-            </div>
-
-        </section>
-
-
-        <section class="panel">
-
-            <h2>ROUTE LOGIC</h2>
-
-            <div class="logic-step">
-
-                <span>01</span>
-
-                <div>
-                    <strong>LOCATE</strong>
-                    <small>Determine current position</small>
-                </div>
-
-            </div>
-
-            <div class="logic-step">
-
-                <span>02</span>
-
-                <div>
-                    <strong>SCAN</strong>
-                    <small>Check route hazards</small>
-                </div>
-
-            </div>
-
-            <div class="logic-step">
-
-                <span>03</span>
-
-                <div>
-                    <strong>PLAN</strong>
-                    <small>Calculate route</small>
-                </div>
-
-            </div>
-
-            <div class="logic-step">
-
-                <span>04</span>
-
-                <div>
-                    <strong>REROUTE</strong>
-                    <small>Avoid blocked areas</small>
-                </div>
-
-            </div>
-
-        </section>
-
-    </aside>
-
-
-    <!-- CENTER -->
-
-    <section class="navigation-section">
-
-
-        <div class="navigation-header">
-
-            <div>
-
-                <h2>OFFLINE NAVIGATION CORE</h2>
-
-                <span>
-                    LOCAL MAP / HAZARD-AWARE ROUTING
-                </span>
-
-            </div>
-
-            <div
-                class="navigation-status"
-                id="navigationStatus"
-            >
-                ● READY
-            </div>
-
-        </div>
-
-
-        <!-- MAP -->
-
-        <div class="map-container">
-
-            <div class="map-grid"></div>
-
-            <div class="road road-1"></div>
-            <div class="road road-2"></div>
-            <div class="road road-3"></div>
-            <div class="road road-4"></div>
-            <div class="road road-5"></div>
-            <div class="road road-6"></div>
-
-            <div class="block block-a">
-                BLOCK 01
-            </div>
-
-            <div class="block block-b">
-                BLOCK 02
-            </div>
-
-            <div class="block block-c">
-                BLOCK 03
-            </div>
-
-            <div class="block block-d">
-                BLOCK 04
-            </div>
-
-            <div class="block block-e">
-                BLOCK 05
-            </div>
-
-            <div class="block block-f">
-                BLOCK 06
-            </div>
-
-
-            <!-- HAZARD ZONES -->
-
-            <div
-                class="hazard-zone flood-zone"
-                id="floodZone"
-            >
-                FLOOD
-            </div>
-
-            <div
-                class="hazard-zone danger-zone"
-                id="dangerZone"
-            >
-                DANGER AREA
-            </div>
-
-
-            <!-- SAFE LOCATIONS -->
-
-            <div
-                class="map-location shelter"
-                id="shelterLocation"
-            >
-                <span>◆</span>
-                SAFE SHELTER
-            </div>
-
-            <div
-                class="map-location hospital"
-                id="hospitalLocation"
-            >
-                <span>✚</span>
-                HOSPITAL
-            </div>
-
-            <div
-                class="map-location command"
-                id="commandLocation"
-            >
-                <span>⌂</span>
-                COMMAND
-            </div>
-
-            <div
-                class="map-location evacuation"
-                id="evacuationLocation"
-            >
-                <span>▲</span>
-                EVAC CENTER
-            </div>
-
-
-            <!-- ROUTE -->
-
-            <svg
-                id="routeSvg"
-                class="route-svg"
-                viewBox="0 0 1000 650"
-                preserveAspectRatio="none"
-            >
-
-                <polyline
-                    id="routeLine"
-                    points=""
-                ></polyline>
-
-            </svg>
-
-
-            <!-- SENTINEL -->
-
-            <div
-                class="sentinel-marker"
-                id="sentinelMarker"
-            >
-
-                <div class="marker-pulse"></div>
-
-                <div class="marker-core">
-                    SN
-                </div>
-
-                <span>
-                    SN-001
-                </span>
-
-            </div>
-
-
-            <div class="map-label gps-label">
-                GPS POSITION LOCKED
-            </div>
-
-            <div class="map-label offline-label">
-                OFFLINE MAP
-            </div>
-
-        </div>
-
-
-        <!-- ROUTE INFORMATION -->
-
-        <div class="route-info">
-
-            <div class="route-card">
-
-                <span>ROUTE STATUS</span>
-
-                <strong id="routeStatus">
-                    NO ROUTE CALCULATED
-                </strong>
-
-            </div>
-
-
-            <div class="route-card">
-
-                <span>DISTANCE</span>
-
-                <strong id="routeDistance">
-                    —
-                </strong>
-
-            </div>
-
-
-            <div class="route-card">
-
-                <span>EST. TIME</span>
-
-                <strong id="routeTime">
-                    —
-                </strong>
-
-            </div>
-
-
-            <div class="route-card">
-
-                <span>ROUTE SAFETY</span>
-
-                <strong
-                    id="routeSafety"
-                    class="good"
-                >
-                    —
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <!-- NAVIGATION INSTRUCTION -->
-
-        <div class="instruction-panel">
-
-            <div class="instruction-icon">
-                ↑
-            </div>
-
-            <div>
-
-                <span>
-                    CURRENT NAVIGATION INSTRUCTION
-                </span>
-
-                <strong id="navigationInstruction">
-                    Select a destination and
-                    calculate a route.
-                </strong>
-
-            </div>
-
-        </div>
-
-
-    </section>
-
-
-    <!-- RIGHT SIDEBAR -->
-
-    <aside class="sidebar right-sidebar">
-
-
-        <section class="panel">
-
-            <h2>ROUTE ANALYSIS</h2>
-
-            <div class="stat-row">
-
-                <span>
-                    Route Engine
-                </span>
-
-                <strong class="good">
-                    ACTIVE
-                </strong>
-
-            </div>
-
-            <div class="stat-row">
-
-                <span>
-                    Offline Maps
-                </span>
-
-                <strong class="good">
-                    LOADED
-                </strong>
-
-            </div>
-
-            <div class="stat-row">
-
-                <span>
-                    Hazard Awareness
-                </span>
-
-                <strong class="good">
-                    ACTIVE
-                </strong>
-
-            </div>
-
-            <div class="stat-row">
-
-                <span>
-                    GPS Accuracy
-                </span>
-
-                <strong>
-                    HIGH
-                </strong>
-
-            </div>
-
-            <div class="stat-row">
-
-                <span>
-                    Rerouting
-                </span>
-
-                <strong id="reroutingStatus">
-                    STANDBY
-                </strong>
-
-            </div>
-
-        </section>
-
-
-        <section class="panel">
-
-            <h2>ROUTE SAFETY</h2>
-
-            <div
-                class="safety-box"
-                id="safetyBox"
-            >
-
-                <div class="safety-icon">
-                    ✓
-                </div>
-
-                <strong>
-                    NO ROUTE SELECTED
-                </strong>
-
-                <p>
-                    Calculate a route to begin
-                    hazard-aware navigation.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <section class="panel">
-
-            <h2>NEARBY CONDITIONS</h2>
-
-            <div class="condition-card">
-
-                <span>
-                    FLOOD ZONE
-                </span>
-
-                <strong
-                    id="floodCondition"
-                    class="warning"
-                >
-                    420 m
-                </strong>
-
-            </div>
-
-            <div class="condition-card">
-
-                <span>
-                    UNSTABLE AREA
-                </span>
-
-                <strong
-                    id="dangerCondition"
-                    class="danger"
-                >
-                    680 m
-                </strong>
-
-            </div>
-
-            <div class="condition-card">
-
-                <span>
-                    SAFE SHELTER
-                </span>
-
-                <strong class="good">
-                    530 m
-                </strong>
-
-            </div>
-
-        </section>
-
-
-        <section class="panel event-panel">
-
-            <h2>NAVIGATION EVENT LOG</h2>
-
-            <div
-                class="event-log"
-                id="eventLog"
-            >
-
-                <div class="event good">
-                    [10:00] OFFLINE MAP INITIALIZED
-                </div>
-
-                <div class="event">
-                    [10:00] GPS POSITION ACQUIRED
-                </div>
-
-                <div class="event">
-                    [10:00] ROUTE ENGINE READY
-                </div>
-
-            </div>
-
-        </section>
-
-    </aside>
-
-</main>
-
-
-<script src="../js/navigation.js"></script>
-
-</body>
-</html>
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050b16;
+    color: #e7edf7;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* TOPBAR */
+
+.topbar {
+    height: 76px;
+    background: #081426;
+    border-bottom: 1px solid #203453;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    z-index: 10;
+}
+
+.topbar h1 {
+    margin: 0;
+    color: #67d9ff;
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+
+.topbar p {
+    margin: 5px 0 0;
+    color: #7f94ad;
+    font-size: 12px;
+}
+
+.system-status {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.status-pill {
+    padding: 7px 11px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: .5px;
+}
+
+.status-pill.online {
+    background: #103522;
+    color: #5bea9b;
+}
+
+.status-pill.mesh {
+    background: #102f48;
+    color: #66d9ff;
+}
+
+.time-display {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    min-width: 65px;
+    text-align: center;
+}
+
+
+/* NAVIGATION */
+
+.feature-nav {
+    position: fixed;
+    top: 86px;
+    left: 255px;
+    z-index: 20;
+}
+
+.feature-nav a {
+    display: inline-block;
+    padding: 7px 11px;
+    border: 1px solid #294362;
+    border-radius: 5px;
+    background: #102137;
+    color: #8ee5ff;
+    text-decoration: none;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: .5px;
+}
+
+.feature-nav a:hover {
+    background: #18314d;
+    border-color: #4b789f;
+}
+
+
+/* LAYOUT */
+
+.layout {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 245px minmax(500px, 1fr) 285px;
+}
+
+.sidebar {
+    overflow-y: auto;
+    background: #07101e;
+    padding: 12px;
+}
+
+.left-sidebar {
+    border-right: 1px solid #1b2b45;
+}
+
+.right-sidebar {
+    border-left: 1px solid #1b2b45;
+}
+
+
+/* PANELS */
+
+.panel {
+    background: #0a1728;
+    border: 1px solid #1c304d;
+    border-radius: 7px;
+    padding: 12px;
+    margin-bottom: 11px;
+}
+
+.panel h2 {
+    margin: 0 0 12px;
+    color: #83a4c8;
+    font-size: 10px;
+    letter-spacing: 1.3px;
+}
+
+
+/* MODE BUTTONS */
+
+.mode-btn {
+    width: 100%;
+    padding: 9px 8px;
+    margin-bottom: 7px;
+    border: 1px solid #294362;
+    border-radius: 5px;
+    background: #102137;
+    color: #b9cee0;
+    font-size: 9px;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+}
+
+.mode-btn:hover {
+    background: #18314d;
+}
+
+.mode-btn.active {
+    background: #124364;
+    border-color: #2688b7;
+    color: #8ee5ff;
+}
+
+
+/* CONTROLS */
+
+.field-label {
+    display: block;
+    color: #7389a1;
+    font-size: 9px;
+    margin: 8px 0 5px;
+}
+
+.control-select {
+    width: 100%;
+    padding: 9px 8px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #294362;
+    background: #102137;
+    color: #d9e8f8;
+    font-size: 10px;
+    outline: none;
+}
+
+.control-select:focus {
+    border-color: #5bdcff;
+}
+
+.control-btn {
+    width: 100%;
+    padding: 10px 8px;
+    margin-top: 7px;
+    border: 1px solid #294362;
+    border-radius: 5px;
+    background: #102137;
+    color: #d9e8f8;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.control-btn:hover {
+    background: #18314d;
+    border-color: #4b789f;
+}
+
+.control-btn.primary {
+    background: #124364;
+    border-color: #2688b7;
+    color: #8ee5ff;
+}
+
+.control-btn.warning-btn {
+    color: #ffd67b;
+}
+
+
+/* STATS */
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #182941;
+    padding: 7px 0;
+    font-size: 9px;
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-row span {
+    color: #8195ad;
+}
+
+.stat-row strong {
+    color: white;
+}
+
+.stat-row strong.good,
+.good {
+    color: #5be39a;
+}
+
+.warning {
+    color: #ffd36a !important;
+}
+
+.danger {
+    color: #ff6868 !important;
+}
+
+
+/* LOGIC */
+
+.logic-step {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 0;
+    border-bottom: 1px solid #182941;
+}
+
+.logic-step:last-child {
+    border-bottom: none;
+}
+
+.logic-step > span {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #102f48;
+    border-radius: 4px;
+    color: #67d9ff;
+    font-size: 8px;
+}
+
+.logic-step strong {
+    display: block;
+    color: #dce9f6;
+    font-size: 9px;
+}
+
+.logic-step small {
+    display: block;
+    color: #667f99;
+    font-size: 8px;
+    margin-top: 3px;
+}
+
+
+/* CENTER */
+
+.navigation-section {
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background:
+        radial-gradient(
+            circle at center,
+            #0b1d32 0%,
+            #050b16 70%
+        );
+}
+
+.navigation-header {
+    height: 60px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    border-bottom: 1px solid #172b44;
+}
+
+.navigation-header h2 {
+    margin: 0 0 4px;
+    font-size: 13px;
+    color: #dbe8f5;
+    letter-spacing: 1px;
+}
+
+.navigation-header span {
+    color: #6f859e;
+    font-size: 10px;
+}
+
+.navigation-status {
+    color: #5be39a;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.navigation-status.warning {
+    color: #ffd36a;
+}
+
+.navigation-status.danger {
+    color: #ff6868;
+}
+
+
+/* MAP */
+
+.map-container {
+    position: relative;
+    flex: 1;
+    min-height: 380px;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            rgba(16, 39, 60, .35),
+            rgba(5, 11, 22, .65)
+        );
+}
+
+.map-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(
+            rgba(71, 111, 139, .08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(71, 111, 139, .08) 1px,
+            transparent 1px
+        );
+    background-size: 40px 40px;
+}
+
+
+/* ROADS */
+
+.road {
+    position: absolute;
+    background: #1d3a52;
+    box-shadow: 0 0 0 1px #294a62;
+}
+
+.road-1 {
+    width: 100%;
+    height: 15px;
+    top: 45%;
+    left: 0;
+    transform: rotate(-7deg);
+}
+
+.road-2 {
+    width: 100%;
+    height: 13px;
+    top: 67%;
+    left: 0;
+    transform: rotate(5deg);
+}
+
+.road-3 {
+    width: 13px;
+    height: 100%;
+    left: 29%;
+    top: 0;
+    transform: rotate(8deg);
+}
+
+.road-4 {
+    width: 12px;
+    height: 100%;
+    left: 56%;
+    top: 0;
+    transform: rotate(-10deg);
+}
+
+.road-5 {
+    width: 10px;
+    height: 100%;
+    left: 79%;
+    top: 0;
+    transform: rotate(7deg);
+}
+
+.road-6 {
+    width: 80%;
+    height: 10px;
+    left: 10%;
+    top: 27%;
+    transform: rotate(18deg);
+}
+
+
+/* BLOCKS */
+
+.block {
+    position: absolute;
+    padding: 8px;
+    color: #4e718b;
+    border: 1px solid #18364d;
+    background: rgba(8, 24, 39, .7);
+    font-size: 8px;
+    letter-spacing: .5px;
+}
+
+.block-a {
+    left: 7%;
+    top: 17%;
+}
+
+.block-b {
+    left: 37%;
+    top: 12%;
+}
+
+.block-c {
+    left: 65%;
+    top: 17%;
+}
+
+.block-d {
+    left: 17%;
+    top: 57%;
+}
+
+.block-e {
+    left: 44%;
+    top: 48%;
+}
+
+.block-f {
+    left: 70%;
+    top: 58%;
+}
+
+
+/* HAZARD ZONES */
+
+.hazard-zone {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 7px;
+    font-weight: bold;
+    letter-spacing: .5px;
+}
+
+.flood-zone {
+    width: 145px;
+    height: 110px;
+    left: 4%;
+    bottom: 5%;
+    background: rgba(60, 93, 123, .25);
+    border: 1px dashed #547d9d;
+    color: #74c9f1;
+}
+
+.danger-zone {
+    width: 160px;
+    height: 125px;
+    right: 3%;
+    top: 8%;
+    background: rgba(126, 48, 48, .2);
+    border: 1px dashed #8c4a4a;
+    color: #ff8585;
+}
+
+
+/* LOCATIONS */
+
+.map-location {
+    position: absolute;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-size: 7px;
+    font-weight: bold;
+    z-index: 4;
+    white-space: nowrap;
+}
+
+.map-location span {
+    margin-right: 4px;
+    font-size: 12px;
+}
+
+.shelter {
+    left: 72%;
+    bottom: 15%;
+    background: #153c2e;
+    border: 1px solid #55dba2;
+    color: #74e8ac;
+}
+
+.hospital {
+    right: 11%;
+    bottom: 28%;
+    background: #18354c;
+    border: 1px solid #62cfff;
+    color: #8ee5ff;
+}
+
+.command {
+    left: 47%;
+    top: 17%;
+    background: #18354c;
+    border: 1px solid #62cfff;
+    color: #8ee5ff;
+}
+
+.evacuation {
+    left: 12%;
+    top: 30%;
+    background: #44351c;
+    border: 1px solid #ffd36a;
+    color: #ffd77c;
+}
+
+
+/* ROUTE SVG */
+
+.route-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+#routeLine {
+    fill: none;
+    stroke: #5ddcff;
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 10 6;
+    filter: drop-shadow(0 0 4px rgba(93, 220, 255, .4));
+    animation: routeFlow 1s linear infinite;
+}
+
+#routeLine.blocked {
+    stroke: #ff6464;
+}
+
+@keyframes routeFlow {
+
+    to {
+        stroke-dashoffset: -16;
+    }
+
+}
+
+
+/* SENTINEL */
+
+.sentinel-marker {
+    position: absolute;
+    left: 28%;
+    top: 52%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+}
+
+.marker-core {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #103d55;
+    border: 2px solid #5ddcff;
+    color: #8ee5ff;
+    font-size: 8px;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+}
+
+.marker-pulse {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: -6px;
+    top: -6px;
+    border-radius: 50%;
+    border: 1px solid #5ddcff;
+    opacity: .5;
+    animation: markerPulse 2s infinite;
+}
+
+@keyframes markerPulse {
+
+    0% {
+        transform: scale(.7);
+        opacity: .8;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+
+}
+
+.sentinel-marker > span {
+    display: block;
+    margin-top: 5px;
+    color: #8eb1c9;
+    font-size: 7px;
+}
+
+
+/* MAP LABELS */
+
+.map-label {
+    position: absolute;
+    bottom: 10px;
+    padding: 5px 7px;
+    background: #081426;
+    border: 1px solid #233b56;
+    color: #6e8ba4;
+    font-size: 7px;
+}
+
+.gps-label {
+    left: 10px;
+}
+
+.offline-label {
+    right: 10px;
+}
+
+
+/* ROUTE INFO */
+
+.route-info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+    padding: 10px;
+    border-top: 1px solid #172b44;
+    border-bottom: 1px solid #172b44;
+}
+
+.route-card {
+    background: #0b1b2e;
+    border: 1px solid #1d3651;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.route-card span {
+    display: block;
+    color: #7188a0;
+    font-size: 7px;
+}
+
+.route-card strong {
+    display: block;
+    margin-top: 5px;
+    color: #dce9f5;
+    font-size: 10px;
+}
+
+
+/* INSTRUCTION */
+
+.instruction-panel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 54px;
+    padding: 0 14px;
+    background: #091728;
+    border-top: 1px solid #172b44;
+}
+
+.instruction-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background: #124364;
+    color: #8ee5ff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.instruction-panel span {
+    display: block;
+    color: #6f879f;
+    font-size: 7px;
+}
+
+.instruction-panel strong {
+    display: block;
+    margin-top: 4px;
+    color: #dceaf5;
+    font-size: 10px;
+}
+
+
+/* SAFETY */
+
+.safety-box {
+    padding: 12px;
+    background: #10291f;
+    border: 1px solid #25583f;
+    border-radius: 5px;
+}
+
+.safety-box.warning {
+    background: #302511;
+    border-color: #705a2d;
+}
+
+.safety-box.danger {
+    background: #321719;
+    border-color: #743637;
+}
+
+.safety-icon {
+    font-size: 20px;
+    color: #5be39a;
+}
+
+.safety-box.warning .safety-icon {
+    color: #ffd36a;
+}
+
+.safety-box.danger .safety-icon {
+    color: #ff6868;
+}
+
+.safety-box strong {
+    display: block;
+    margin-top: 6px;
+    color: #dce9f5;
+    font-size: 9px;
+}
+
+.safety-box p {
+    margin: 6px 0 0;
+    color: #728aa1;
+    font-size: 8px;
+    line-height: 1.5;
+}
+
+
+/* CONDITIONS */
+
+.condition-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #182941;
+}
+
+.condition-card:last-child {
+    border-bottom: none;
+}
+
+.condition-card span {
+    color: #71869d;
+    font-size: 8px;
+}
+
+.condition-card strong {
+    font-size: 8px;
+}
+
+
+/* EVENT LOG */
+
+.event-panel {
+    min-height: 190px;
+}
+
+.event-log {
+    height: 180px;
+    overflow-y: auto;
+    font-family: Consolas, monospace;
+    font-size: 8px;
+}
+
+.event {
+    padding: 5px 0;
+    border-bottom: 1px solid #14253a;
+    line-height: 1.35;
+    color: #71879e;
+}
+
+.event.good {
+    color: #7fe5b0;
+}
+
+.event.warning {
+    color: #ffd171;
+}
+
+.event.danger {
+    color: #ff8585;
+}
+
+.event.ai {
+    color: #74dfff;
+}
+
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #07101e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #213853;
+    border-radius: 4px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1050px) {
+
+    .layout {
+        grid-template-columns:
+            210px
+            minmax(400px, 1fr)
+            250px;
+    }
+
+}
+
+@media (max-width: 850px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .topbar {
+        height: auto;
+        min-height: 70px;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+
+    .feature-nav {
+        position: static;
+        padding: 8px 10px;
+        background: #07101e;
+        border-bottom: 1px solid #1b2b45;
+    }
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        max-height: none;
+        border: none;
+    }
+
+    .navigation-section {
+        height: 700px;
+    }
+
+    .route-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}

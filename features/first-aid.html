@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DisasterNetwork — First Aid</title>
+    <link rel="stylesheet" href="../css/first-aid.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div>
+        <div class="brand">DISASTERNETWORK</div>
+        <div class="subtitle">
+            SENTINELNET — OFFLINE FIRST-AID AI
+        </div>
+    </div>
+
+    <div class="top-status">
+
+        <span class="status-pill online">
+            ● FIRST-AID AI ONLINE
+        </span>
+
+        <span class="status-pill offline">
+            ● OFFLINE MEDICAL GUIDE
+        </span>
+
+        <span class="time-label" id="simTime">
+            10:00
+        </span>
+
+    </div>
+
+</header>
+
+
+<nav class="feature-nav">
+
+    <a href="../index.html">
+        ← BACK TO DISASTERNETWORK
+    </a>
+
+</nav>
+
+
+<main class="layout">
+
+
+    <!-- LEFT SIDEBAR -->
+
+    <aside class="sidebar left-sidebar">
+
+        <section class="panel">
+
+            <div class="panel-title">
+                SENTINEL SUBJECT
+            </div>
+
+            <div class="subject-card">
+
+                <div class="subject-id">
+                    SN-001
+                </div>
+
+                <div class="subject-name">
+                    Maria
+                </div>
+
+                <div class="subject-location">
+                    BLOCK 04
+                </div>
+
+                <div class="subject-connection">
+                    MESH CONNECTION:
+                    <strong>AVAILABLE</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="panel">
+
+            <div class="panel-title">
+                EMERGENCY CONDITION
+            </div>
+
+            <button
+                class="condition-btn"
+                id="stableBtn"
+            >
+                STABLE
+            </button>
+
+            <button
+                class="condition-btn warning-btn"
+                id="bleedingBtn"
+            >
+                SEVERE BLEEDING
+            </button>
+
+            <button
+                class="condition-btn warning-btn"
+                id="burnBtn"
+            >
+                SERIOUS BURN
+            </button>
+
+            <button
+                class="condition-btn danger-btn"
+                id="fractureBtn"
+            >
+                POSSIBLE FRACTURE
+            </button>
+
+            <button
+                class="condition-btn danger-btn"
+                id="unconsciousBtn"
+            >
+                UNCONSCIOUS PERSON
+            </button>
+
+            <button
+                class="condition-btn danger-btn"
+                id="cardiacBtn"
+            >
+                NO NORMAL BREATHING
+            </button>
+
+        </section>
+
+
+        <section class="panel">
+
+            <div class="panel-title">
+                VITAL MONITOR
+            </div>
+
+            <div class="vital-row">
+                <span>Heart Rate</span>
+                <strong id="heartRate">78 BPM</strong>
+            </div>
+
+            <div class="vital-row">
+                <span>Breathing</span>
+                <strong id="breathing">NORMAL</strong>
+            </div>
+
+            <div class="vital-row">
+                <span>Responsiveness</span>
+                <strong id="responsiveness">
+                    RESPONSIVE
+                </strong>
+            </div>
+
+            <div class="vital-row">
+                <span>Condition</span>
+                <strong id="conditionState">
+                    STABLE
+                </strong>
+            </div>
+
+        </section>
+
+    </aside>
+
+
+    <!-- CENTER -->
+
+    <section class="center">
+
+        <div class="panel aid-core">
+
+            <div class="core-header">
+
+                <div>
+
+                    <div class="core-title">
+                        OFFLINE FIRST-AID CORE
+                    </div>
+
+                    <div class="core-subtitle">
+                        LOCAL EMERGENCY GUIDANCE AND CONDITION ASSESSMENT
+                    </div>
+
+                </div>
+
+                <div
+                    class="core-state"
+                    id="overallState"
+                >
+                    SUBJECT STABLE
+                </div>
+
+            </div>
+
+
+            <div class="emergency-banner" id="emergencyBanner">
+
+                <div class="banner-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <strong id="bannerTitle">
+                        NO ACTIVE EMERGENCY
+                    </strong>
+
+                    <span id="bannerText">
+                        SentinelNet is monitoring the subject.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="aid-grid">
+
+
+                <div class="instruction-panel">
+
+                    <div class="section-title">
+                        AI FIRST-AID INSTRUCTIONS
+                    </div>
+
+                    <div
+                        class="instruction-list"
+                        id="instructionList"
+                    >
+
+                        <div class="instruction active">
+                            <span>01</span>
+
+                            <div>
+                                <strong>
+                                    ASSESS THE PERSON
+                                </strong>
+
+                                <p>
+                                    Check responsiveness,
+                                    breathing, and visible injuries.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="instruction">
+
+                            <span>02</span>
+
+                            <div>
+                                <strong>
+                                    REMAIN CALM
+                                </strong>
+
+                                <p>
+                                    Keep the person still and
+                                    maintain a safe environment.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="instruction">
+
+                            <span>03</span>
+
+                            <div>
+                                <strong>
+                                    REQUEST ASSISTANCE
+                                </strong>
+
+                                <p>
+                                    Send the emergency condition
+                                    through the DisasterNetwork.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="assessment-panel">
+
+                    <div class="section-title">
+                        AI ASSESSMENT
+                    </div>
+
+                    <div class="assessment-state">
+                        <span>CONDITION</span>
+
+                        <strong id="assessmentCondition">
+                            STABLE
+                        </strong>
+                    </div>
+
+                    <div class="assessment-state">
+                        <span>PRIORITY</span>
+
+                        <strong id="assessmentPriority">
+                            LOW
+                        </strong>
+                    </div>
+
+                    <div class="assessment-state">
+                        <span>AI CONFIDENCE</span>
+
+                        <strong id="assessmentConfidence">
+                            96%
+                        </strong>
+                    </div>
+
+
+                    <div class="confidence-bar">
+
+                        <div
+                            id="confidenceMeter"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="assessment-description"
+                         id="assessmentDescription">
+
+                        No immediate medical emergency
+                        detected.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="procedure-panel">
+
+                <div class="section-title">
+                    CURRENT PROCEDURE
+                </div>
+
+                <div class="procedure-number"
+                     id="procedureNumber">
+                    01
+                </div>
+
+                <div class="procedure-content">
+
+                    <h2 id="procedureTitle">
+                        Assess the person
+                    </h2>
+
+                    <p id="procedureText">
+                        Check whether the person responds
+                        and determine whether they are breathing normally.
+                    </p>
+
+                </div>
+
+                <button
+                    class="next-btn"
+                    id="nextStepBtn"
+                >
+                    NEXT STEP →
+                </button>
+
+            </div>
+
+
+            <div class="emergency-packet">
+
+                <div>
+
+                    <div class="section-title">
+                        EMERGENCY DATA PACKET
+                    </div>
+
+                    <div class="packet-status"
+                         id="packetStatus">
+                        READY
+                    </div>
+
+                </div>
+
+                <div class="packet-data">
+
+                    <span>
+                        SUBJECT:
+                        <strong>SN-001</strong>
+                    </span>
+
+                    <span>
+                        LOCATION:
+                        <strong>BLOCK 04</strong>
+                    </span>
+
+                    <span>
+                        HEART RATE:
+                        <strong id="packetHeartRate">
+                            78 BPM
+                        </strong>
+                    </span>
+
+                    <span>
+                        CONDITION:
+                        <strong id="packetCondition">
+                            STABLE
+                        </strong>
+                    </span>
+
+                </div>
+
+                <button
+                    class="send-btn"
+                    id="sendPacketBtn"
+                >
+                    SEND EMERGENCY PACKET
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RIGHT SIDEBAR -->
+
+    <aside class="sidebar right-sidebar">
+
+        <section class="panel">
+
+            <div class="panel-title">
+                AI MEDICAL SYSTEM
+            </div>
+
+            <div class="system-row">
+                <span>First-Aid Database</span>
+                <strong class="good">
+                    LOADED
+                </strong>
+            </div>
+
+            <div class="system-row">
+                <span>Offline AI</span>
+                <strong class="good">
+                    ACTIVE
+                </strong>
+            </div>
+
+            <div class="system-row">
+                <span>Vital Monitoring</span>
+                <strong class="good">
+                    ACTIVE
+                </strong>
+            </div>
+
+            <div class="system-row">
+                <span>Emergency Packet</span>
+                <strong class="good">
+                    READY
+                </strong>
+            </div>
+
+            <div class="system-row">
+                <span>Internet</span>
+                <strong class="offline-text">
+                    OFFLINE
+                </strong>
+            </div>
+
+        </section>
+
+
+        <section class="panel">
+
+            <div class="panel-title">
+                MEDICAL PRIORITY
+            </div>
+
+            <div
+                class="priority-display"
+                id="priorityDisplay"
+            >
+                LOW
+            </div>
+
+            <div
+                class="priority-description"
+                id="priorityDescription"
+            >
+                Continue normal monitoring.
+            </div>
+
+        </section>
+
+
+        <section class="panel">
+
+            <div class="panel-title">
+                FIRST-AID EVENT LOG
+            </div>
+
+            <div
+                class="event-log"
+                id="eventLog"
+            ></div>
+
+        </section>
+
+    </aside>
+
+</main>
+
+
+<script src="../js/first-aid.js"></script>
+
+</body>
+</html>

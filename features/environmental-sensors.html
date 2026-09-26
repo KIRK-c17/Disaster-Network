@@ -4,47 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DisasterNetwork — Environmental Sensors</title>
-
     <link rel="stylesheet" href="../css/environmental-sensors.css">
 </head>
 
 <body>
 
     <header class="topbar">
-
         <div>
             <div class="brand">DISASTERNETWORK</div>
-            <div class="subtitle">
-                SENTINELNET — ENVIRONMENTAL SENSOR SYSTEM
-            </div>
+            <div class="subtitle">SENTINELNET — ENVIRONMENTAL SENSORS</div>
         </div>
 
         <div class="top-status">
-
-            <span class="status-pill online">
-                ● SENSOR AI ONLINE
-            </span>
-
-            <span class="status-pill offline">
-                ● OFFLINE SENSOR PROCESSING
-            </span>
-
-            <span class="time-box">
-                SIM TIME:
-                <strong id="simTime">10:00</strong>
-            </span>
-
+            <span class="status-pill online">● SENSOR AI ONLINE</span>
+            <span class="status-pill offline">● OFFLINE MODE</span>
+            <span class="time-label" id="simTime">10:00</span>
         </div>
-
     </header>
 
-
     <nav class="feature-nav">
-        <a href="../index.html">
-            ← BACK TO DISASTERNETWORK
-        </a>
+        <a href="../index.html">← BACK TO DISASTERNETWORK</a>
     </nav>
-
 
     <main class="layout">
 
@@ -52,98 +32,99 @@
         <aside class="sidebar left-sidebar">
 
             <section class="panel">
+                <div class="panel-title">SENSOR NODE</div>
 
-                <div class="panel-title">
-                    SENSOR NETWORK
+                <div class="node-card">
+                    <div class="node-id">SN-001</div>
+                    <div class="node-name">Maria</div>
+                    <div class="node-location">BLOCK 04</div>
                 </div>
-
-                <div class="sensor-node active">
-                    <span class="node-indicator"></span>
-                    SN-001
-                    <small>PERSONAL SENSOR</small>
-                </div>
-
-                <div class="sensor-node active">
-                    <span class="node-indicator"></span>
-                    ENV-01
-                    <small>GROUND SENSOR</small>
-                </div>
-
-                <div class="sensor-node active">
-                    <span class="node-indicator"></span>
-                    ENV-02
-                    <small>WATER SENSOR</small>
-                </div>
-
-                <div class="sensor-node active">
-                    <span class="node-indicator"></span>
-                    ENV-03
-                    <small>AIR SENSOR</small>
-                </div>
-
             </section>
 
+            <section class="panel">
+                <div class="panel-title">SENSORS</div>
+
+                <div class="sensor-list">
+
+                    <div class="sensor-item active" data-sensor="temperature">
+                        <span class="sensor-dot"></span>
+                        <div>
+                            <strong>Temperature</strong>
+                            <small>Thermal sensor</small>
+                        </div>
+                        <b id="tempState">NORMAL</b>
+                    </div>
+
+                    <div class="sensor-item active" data-sensor="humidity">
+                        <span class="sensor-dot"></span>
+                        <div>
+                            <strong>Humidity</strong>
+                            <small>Moisture sensor</small>
+                        </div>
+                        <b id="humidityState">NORMAL</b>
+                    </div>
+
+                    <div class="sensor-item active" data-sensor="air">
+                        <span class="sensor-dot"></span>
+                        <div>
+                            <strong>Air Quality</strong>
+                            <small>Gas / smoke sensor</small>
+                        </div>
+                        <b id="airState">NORMAL</b>
+                    </div>
+
+                    <div class="sensor-item active" data-sensor="water">
+                        <span class="sensor-dot"></span>
+                        <div>
+                            <strong>Water Level</strong>
+                            <small>Flood sensor</small>
+                        </div>
+                        <b id="waterState">NORMAL</b>
+                    </div>
+
+                    <div class="sensor-item active" data-sensor="ground">
+                        <span class="sensor-dot"></span>
+                        <div>
+                            <strong>Ground Vibration</strong>
+                            <small>Seismic sensor</small>
+                        </div>
+                        <b id="groundState">NORMAL</b>
+                    </div>
+
+                    <div class="sensor-item active" data-sensor="pressure">
+                        <span class="sensor-dot"></span>
+                        <div>
+                            <strong>Pressure</strong>
+                            <small>Atmospheric sensor</small>
+                        </div>
+                        <b id="pressureState">NORMAL</b>
+                    </div>
+
+                </div>
+            </section>
 
             <section class="panel">
+                <div class="panel-title">SIMULATION</div>
 
-                <div class="panel-title">
-                    SENSOR CONTROLS
-                </div>
-
-                <button id="normalBtn" class="control-btn">
+                <button class="action-btn" id="normalBtn">
                     NORMAL CONDITIONS
                 </button>
 
-                <button id="floodBtn" class="control-btn">
+                <button class="action-btn warning-btn" id="floodBtn">
                     SIMULATE FLOOD
                 </button>
 
-                <button id="earthquakeBtn" class="control-btn">
+                <button class="action-btn danger-btn" id="earthquakeBtn">
                     SIMULATE EARTHQUAKE
                 </button>
 
-                <button id="volcanicBtn" class="control-btn">
+                <button class="action-btn danger-btn" id="volcanoBtn">
                     SIMULATE VOLCANIC EVENT
                 </button>
 
-                <button id="offlineBtn" class="control-btn">
-                    DISCONNECT SENSOR
+                <button class="action-btn warning-btn" id="stormBtn">
+                    SIMULATE STORM
                 </button>
-
-            </section>
-
-
-            <section class="panel">
-
-                <div class="panel-title">
-                    SENSOR LOGIC
-                </div>
-
-                <div class="logic-step">
-                    <span>01</span>
-                    COLLECT
-                </div>
-
-                <div class="logic-step">
-                    <span>02</span>
-                    VERIFY
-                </div>
-
-                <div class="logic-step">
-                    <span>03</span>
-                    CORRELATE
-                </div>
-
-                <div class="logic-step">
-                    <span>04</span>
-                    INTERPRET
-                </div>
-
-                <div class="logic-step">
-                    <span>05</span>
-                    ALERT
-                </div>
-
             </section>
 
         </aside>
@@ -152,224 +133,181 @@
         <!-- CENTER -->
         <section class="center">
 
-            <div class="section-header">
+            <div class="panel sensor-core">
 
-                <div>
-                    <div class="section-title">
-                        ENVIRONMENTAL SENSOR CORE
+                <div class="core-header">
+                    <div>
+                        <div class="core-title">ENVIRONMENTAL SENSOR CORE</div>
+                        <div class="core-subtitle">
+                            SENTINELNET OFFLINE ENVIRONMENTAL MONITORING
+                        </div>
                     </div>
 
-                    <div class="section-subtitle">
-                        Distributed environmental observation and AI hazard interpretation
-                    </div>
-                </div>
-
-                <div class="core-status" id="coreStatus">
-                    ● MONITORING
-                </div>
-
-            </div>
-
-
-            <!-- SENSOR CARDS -->
-            <div class="sensor-grid">
-
-                <div class="sensor-card" id="temperatureCard">
-
-                    <div class="sensor-card-header">
-                        <span>🌡 TEMPERATURE</span>
-                        <span class="sensor-state normal" id="temperatureState">
-                            NORMAL
-                        </span>
-                    </div>
-
-                    <div class="sensor-value">
-                        <span id="temperatureValue">29.4</span>
-                        <small>°C</small>
-                    </div>
-
-                    <div class="sensor-bar">
-                        <div id="temperatureBar"></div>
-                    </div>
-
-                    <div class="sensor-description">
-                        Ambient temperature
-                    </div>
-
-                </div>
-
-
-                <div class="sensor-card" id="humidityCard">
-
-                    <div class="sensor-card-header">
-                        <span>💧 HUMIDITY</span>
-                        <span class="sensor-state normal" id="humidityState">
-                            NORMAL
-                        </span>
-                    </div>
-
-                    <div class="sensor-value">
-                        <span id="humidityValue">72</span>
-                        <small>%</small>
-                    </div>
-
-                    <div class="sensor-bar">
-                        <div id="humidityBar"></div>
-                    </div>
-
-                    <div class="sensor-description">
-                        Relative humidity
-                    </div>
-
-                </div>
-
-
-                <div class="sensor-card" id="waterCard">
-
-                    <div class="sensor-card-header">
-                        <span>🌊 WATER LEVEL</span>
-                        <span class="sensor-state normal" id="waterState">
-                            NORMAL
-                        </span>
-                    </div>
-
-                    <div class="sensor-value">
-                        <span id="waterValue">18</span>
-                        <small>cm</small>
-                    </div>
-
-                    <div class="sensor-bar">
-                        <div id="waterBar"></div>
-                    </div>
-
-                    <div class="sensor-description">
-                        Local water accumulation
-                    </div>
-
-                </div>
-
-
-                <div class="sensor-card" id="airCard">
-
-                    <div class="sensor-card-header">
-                        <span>🌫 AIR QUALITY</span>
-                        <span class="sensor-state normal" id="airState">
-                            NORMAL
-                        </span>
-                    </div>
-
-                    <div class="sensor-value">
-                        <span id="airValue">32</span>
-                        <small>AQI</small>
-                    </div>
-
-                    <div class="sensor-bar">
-                        <div id="airBar"></div>
-                    </div>
-
-                    <div class="sensor-description">
-                        Air contamination index
-                    </div>
-
-                </div>
-
-
-                <div class="sensor-card" id="vibrationCard">
-
-                    <div class="sensor-card-header">
-                        <span>〽 GROUND VIBRATION</span>
-                        <span class="sensor-state normal" id="vibrationState">
-                            NORMAL
-                        </span>
-                    </div>
-
-                    <div class="sensor-value">
-                        <span id="vibrationValue">0.08</span>
-                        <small>g</small>
-                    </div>
-
-                    <div class="sensor-bar">
-                        <div id="vibrationBar"></div>
-                    </div>
-
-                    <div class="sensor-description">
-                        Ground movement
-                    </div>
-
-                </div>
-
-
-                <div class="sensor-card" id="pressureCard">
-
-                    <div class="sensor-card-header">
-                        <span>💨 PRESSURE</span>
-                        <span class="sensor-state normal" id="pressureState">
-                            NORMAL
-                        </span>
-                    </div>
-
-                    <div class="sensor-value">
-                        <span id="pressureValue">1008</span>
-                        <small>hPa</small>
-                    </div>
-
-                    <div class="sensor-bar">
-                        <div id="pressureBar"></div>
-                    </div>
-
-                    <div class="sensor-description">
-                        Atmospheric pressure
-                    </div>
-
-                </div>
-
-
-                <div class="sensor-card" id="smokeCard">
-
-                    <div class="sensor-card-header">
-                        <span>🔥 SMOKE / ASH</span>
-                        <span class="sensor-state normal" id="smokeState">
-                            NORMAL
-                        </span>
-                    </div>
-
-                    <div class="sensor-value">
-                        <span id="smokeValue">4</span>
-                        <small>ppm</small>
-                    </div>
-
-                    <div class="sensor-bar">
-                        <div id="smokeBar"></div>
-                    </div>
-
-                    <div class="sensor-description">
-                        Smoke and particulate detection
-                    </div>
-
-                </div>
-
-
-                <div class="sensor-card ai-card">
-
-                    <div class="sensor-card-header">
-                        <span>🧠 SENSOR AI</span>
-
-                        <span class="sensor-state normal" id="aiState">
-                            NORMAL
-                        </span>
-                    </div>
-
-                    <div class="ai-result" id="aiResult">
+                    <div class="core-state" id="overallState">
                         ENVIRONMENT STABLE
                     </div>
+                </div>
 
-                    <div class="ai-confidence">
-                        AI CONFIDENCE
-                        <strong id="aiConfidence">96%</strong>
+                <div class="sensor-grid">
+
+                    <div class="reading-card">
+                        <div class="reading-header">
+                            <span>TEMPERATURE</span>
+                            <span>°C</span>
+                        </div>
+                        <div class="reading-value" id="temperatureValue">29.4</div>
+                        <div class="meter">
+                            <div class="meter-fill" id="temperatureMeter"></div>
+                        </div>
+                        <div class="reading-status" id="temperatureStatus">
+                            NORMAL
+                        </div>
                     </div>
 
-                    <div class="confidence-bar">
-                        <div id="confidenceBar"></div>
+                    <div class="reading-card">
+                        <div class="reading-header">
+                            <span>HUMIDITY</span>
+                            <span>%</span>
+                        </div>
+                        <div class="reading-value" id="humidityValue">71</div>
+                        <div class="meter">
+                            <div class="meter-fill" id="humidityMeter"></div>
+                        </div>
+                        <div class="reading-status" id="humidityStatus">
+                            NORMAL
+                        </div>
+                    </div>
+
+                    <div class="reading-card">
+                        <div class="reading-header">
+                            <span>AIR QUALITY</span>
+                            <span>AQI</span>
+                        </div>
+                        <div class="reading-value" id="airValue">42</div>
+                        <div class="meter">
+                            <div class="meter-fill" id="airMeter"></div>
+                        </div>
+                        <div class="reading-status" id="airStatus">
+                            NORMAL
+                        </div>
+                    </div>
+
+                    <div class="reading-card">
+                        <div class="reading-header">
+                            <span>WATER LEVEL</span>
+                            <span>cm</span>
+                        </div>
+                        <div class="reading-value" id="waterValue">18</div>
+                        <div class="meter">
+                            <div class="meter-fill" id="waterMeter"></div>
+                        </div>
+                        <div class="reading-status" id="waterStatus">
+                            NORMAL
+                        </div>
+                    </div>
+
+                    <div class="reading-card">
+                        <div class="reading-header">
+                            <span>GROUND VIBRATION</span>
+                            <span>MM/S</span>
+                        </div>
+                        <div class="reading-value" id="groundValue">0.8</div>
+                        <div class="meter">
+                            <div class="meter-fill" id="groundMeter"></div>
+                        </div>
+                        <div class="reading-status" id="groundStatus">
+                            NORMAL
+                        </div>
+                    </div>
+
+                    <div class="reading-card">
+                        <div class="reading-header">
+                            <span>PRESSURE</span>
+                            <span>HPA</span>
+                        </div>
+                        <div class="reading-value" id="pressureValue">1008</div>
+                        <div class="meter">
+                            <div class="meter-fill" id="pressureMeter"></div>
+                        </div>
+                        <div class="reading-status" id="pressureStatus">
+                            NORMAL
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="environment-display">
+
+                    <div class="environment-map">
+
+                        <div class="map-grid"></div>
+
+                        <div class="terrain terrain-1"></div>
+                        <div class="terrain terrain-2"></div>
+
+                        <div class="water-zone" id="waterZone"></div>
+
+                        <div class="sensor-node node-main">
+                            <span></span>
+                            <label>SN-001</label>
+                        </div>
+
+                        <div class="sensor-node node-2">
+                            <span></span>
+                            <label>SENSOR A</label>
+                        </div>
+
+                        <div class="sensor-node node-3">
+                            <span></span>
+                            <label>SENSOR B</label>
+                        </div>
+
+                        <div class="sensor-node node-4">
+                            <span></span>
+                            <label>SENSOR C</label>
+                        </div>
+
+                        <div class="hazard-zone" id="hazardZone">
+                            <span id="hazardLabel">NO ACTIVE HAZARD</span>
+                        </div>
+
+                    </div>
+
+                    <div class="ai-analysis">
+
+                        <div class="analysis-title">
+                            SENTINELNET AI ENVIRONMENT ANALYSIS
+                        </div>
+
+                        <div class="analysis-state" id="analysisState">
+                            MONITORING ENVIRONMENT
+                        </div>
+
+                        <div class="analysis-text" id="analysisText">
+                            Environmental readings are within expected
+                            operating ranges. No significant hazard pattern
+                            detected.
+                        </div>
+
+                        <div class="confidence">
+                            <div class="confidence-header">
+                                <span>AI CONFIDENCE</span>
+                                <strong id="confidenceValue">96%</strong>
+                            </div>
+
+                            <div class="confidence-bar">
+                                <div id="confidenceMeter"></div>
+                            </div>
+                        </div>
+
+                        <div class="detected-pattern">
+                            <span>DETECTED PATTERN</span>
+                            <strong id="patternValue">
+                                NONE
+                            </strong>
+                        </div>
+
                     </div>
 
                 </div>
@@ -377,68 +315,26 @@
             </div>
 
 
-            <!-- ANALYSIS -->
-            <div class="analysis-grid">
-
-                <section class="panel analysis-panel">
-
-                    <div class="panel-title">
-                        ENVIRONMENTAL INTERPRETATION
-                    </div>
-
-                    <div class="analysis-main" id="analysisMain">
-                        No significant environmental anomaly detected.
-                    </div>
-
-                    <div class="analysis-details" id="analysisDetails">
-                        Sensor readings remain within expected operating ranges.
-                        The AI is continuing to monitor for correlated changes.
-                    </div>
-
-                </section>
-
-
-                <section class="panel hazard-panel">
-
-                    <div class="panel-title">
-                        DETECTED HAZARD
-                    </div>
-
-                    <div class="hazard-status normal" id="hazardStatus">
-                        NO HAZARD
-                    </div>
-
-                    <div class="hazard-description" id="hazardDescription">
-                        No environmental threat currently detected.
-                    </div>
-
-                </section>
-
-            </div>
-
-
-            <!-- SENSOR HISTORY -->
-            <section class="panel history-panel">
+            <div class="panel history-panel">
 
                 <div class="panel-title">
                     SENSOR HISTORY
                 </div>
 
                 <div class="history-chart" id="historyChart">
-
                     <div class="chart-line"></div>
-
-                    <div class="chart-label label-top">
-                        HIGH
-                    </div>
-
-                    <div class="chart-label label-bottom">
-                        LOW
-                    </div>
-
+                    <div class="chart-grid"></div>
                 </div>
 
-            </section>
+                <div class="chart-labels">
+                    <span>10:00</span>
+                    <span>10:03</span>
+                    <span>10:06</span>
+                    <span>10:09</span>
+                    <span>10:12</span>
+                </div>
+
+            </div>
 
         </section>
 
@@ -447,93 +343,69 @@
         <aside class="sidebar right-sidebar">
 
             <section class="panel">
+                <div class="panel-title">SENSOR SYSTEM</div>
 
-                <div class="panel-title">
-                    SENSOR SYSTEM
+                <div class="system-row">
+                    <span>Sensor Core</span>
+                    <strong class="good">ONLINE</strong>
                 </div>
 
                 <div class="system-row">
-                    <span>Sensor collection</span>
-                    <strong id="collectionStatus">
-                        ACTIVE
-                    </strong>
+                    <span>AI Analysis</span>
+                    <strong class="good">ACTIVE</strong>
                 </div>
 
                 <div class="system-row">
-                    <span>AI correlation</span>
-                    <strong>ACTIVE</strong>
+                    <span>Offline Processing</span>
+                    <strong class="good">READY</strong>
                 </div>
 
                 <div class="system-row">
-                    <span>Offline processing</span>
-                    <strong>READY</strong>
+                    <span>Hazard Detection</span>
+                    <strong class="good">ACTIVE</strong>
                 </div>
 
                 <div class="system-row">
-                    <span>Hazard detection</span>
-                    <strong id="hazardDetection">
-                        MONITORING
-                    </strong>
+                    <span>Command Link</span>
+                    <strong class="offline-text">OFFLINE</strong>
                 </div>
-
-                <div class="system-row">
-                    <span>Command reporting</span>
-                    <strong>
-                        READY
-                    </strong>
-                </div>
-
             </section>
 
 
             <section class="panel">
+                <div class="panel-title">HAZARD INDICATORS</div>
 
-                <div class="panel-title">
-                    SENSOR FUSION
+                <div class="hazard-indicator">
+                    <span>Flood</span>
+                    <strong id="floodIndicator">CLEAR</strong>
                 </div>
 
-                <div class="fusion-item">
-                    <span>Temperature</span>
-                    <b id="fusionTemp">NORMAL</b>
+                <div class="hazard-indicator">
+                    <span>Earthquake</span>
+                    <strong id="quakeIndicator">CLEAR</strong>
                 </div>
 
-                <div class="fusion-item">
-                    <span>Water</span>
-                    <b id="fusionWater">NORMAL</b>
+                <div class="hazard-indicator">
+                    <span>Volcanic</span>
+                    <strong id="volcanoIndicator">CLEAR</strong>
                 </div>
 
-                <div class="fusion-item">
-                    <span>Air</span>
-                    <b id="fusionAir">NORMAL</b>
+                <div class="hazard-indicator">
+                    <span>Storm</span>
+                    <strong id="stormIndicator">CLEAR</strong>
                 </div>
-
-                <div class="fusion-item">
-                    <span>Ground</span>
-                    <b id="fusionGround">NORMAL</b>
-                </div>
-
-                <div class="fusion-item">
-                    <span>Smoke / Ash</span>
-                    <b id="fusionSmoke">NORMAL</b>
-                </div>
-
             </section>
 
 
             <section class="panel">
-
-                <div class="panel-title">
-                    EVENT LOG
-                </div>
+                <div class="panel-title">SENSOR EVENT LOG</div>
 
                 <div class="event-log" id="eventLog"></div>
-
             </section>
 
         </aside>
 
     </main>
-
 
     <script src="../js/environmental-sensors.js"></script>
 
