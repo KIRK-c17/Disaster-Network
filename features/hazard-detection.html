@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DisasterNetwork — Hazard Detection</title>
+
+    <link rel="stylesheet" href="../css/hazard-detection.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div>
+        <h1>DISASTERNETWORK</h1>
+        <p>SENTINELNET — HAZARD DETECTION</p>
+    </div>
+
+    <div class="system-status">
+
+        <div class="status-pill online">
+            ● SENSOR AI ONLINE
+        </div>
+
+        <div class="status-pill mesh">
+            ● MULTI-HAZARD MODE
+        </div>
+
+        <div class="time-display" id="simTime">
+            10:00
+        </div>
+
+    </div>
+
+</header>
+
+
+<nav class="feature-nav">
+
+    <a href="../index.html">
+        ← BACK TO DISASTERNETWORK
+    </a>
+
+</nav>
+
+
+<main class="layout">
+
+
+    <!-- LEFT SIDEBAR -->
+
+    <aside class="sidebar left-sidebar">
+
+        <section class="panel">
+
+            <h2>HAZARD SELECTION</h2>
+
+            <button class="hazard-btn active" data-hazard="normal">
+                NORMAL CONDITIONS
+            </button>
+
+            <button class="hazard-btn" data-hazard="earthquake">
+                EARTHQUAKE
+            </button>
+
+            <button class="hazard-btn" data-hazard="flood">
+                FLOOD
+            </button>
+
+            <button class="hazard-btn" data-hazard="landslide">
+                LANDSLIDE
+            </button>
+
+            <button class="hazard-btn" data-hazard="volcanic">
+                VOLCANIC ERUPTION
+            </button>
+
+            <button class="hazard-btn" data-hazard="typhoon">
+                TYPHOON
+            </button>
+
+        </section>
+
+
+        <section class="panel">
+
+            <h2>DETECTION CONTROLS</h2>
+
+            <button
+                class="control-btn primary"
+                id="scanBtn"
+            >
+                RUN SENSOR SCAN
+            </button>
+
+            <button
+                class="control-btn"
+                id="confirmBtn"
+            >
+                MULTI-SENSOR CONFIRMATION
+            </button>
+
+            <button
+                class="control-btn emergency"
+                id="emergencyBtn"
+            >
+                TRIGGER EMERGENCY
+            </button>
+
+            <button
+                class="control-btn"
+                id="resetBtn"
+            >
+                RESET DETECTION
+            </button>
+
+        </section>
+
+
+        <section class="panel">
+
+            <h2>DETECTION LOGIC</h2>
+
+            <div class="logic-step">
+
+                <span>01</span>
+
+                <div>
+                    <strong>OBSERVE</strong>
+                    <small>Collect sensor readings</small>
+                </div>
+
+            </div>
+
+            <div class="logic-step">
+
+                <span>02</span>
+
+                <div>
+                    <strong>COMPARE</strong>
+                    <small>Identify abnormal patterns</small>
+                </div>
+
+            </div>
+
+            <div class="logic-step">
+
+                <span>03</span>
+
+                <div>
+                    <strong>CLASSIFY</strong>
+                    <small>Determine hazard type</small>
+                </div>
+
+            </div>
+
+            <div class="logic-step">
+
+                <span>04</span>
+
+                <div>
+                    <strong>VERIFY</strong>
+                    <small>Cross-check sensors</small>
+                </div>
+
+            </div>
+
+            <div class="logic-step">
+
+                <span>05</span>
+
+                <div>
+                    <strong>RESPOND</strong>
+                    <small>Generate warning</small>
+                </div>
+
+            </div>
+
+        </section>
+
+    </aside>
+
+
+    <!-- CENTER -->
+
+    <section class="detection-section">
+
+
+        <div class="detection-header">
+
+            <div>
+
+                <h2>HAZARD DETECTION CORE</h2>
+
+                <span>
+                    MULTI-SENSOR ANALYSIS / LOCAL AI
+                </span>
+
+            </div>
+
+            <div
+                class="detection-state"
+                id="detectionState"
+            >
+                ● MONITORING
+            </div>
+
+        </div>
+
+
+        <!-- MAIN DETECTION DISPLAY -->
+
+        <div class="detection-display">
+
+
+            <div class="hazard-visual">
+
+                <div class="radar-grid">
+
+                    <div class="radar-circle circle-one"></div>
+                    <div class="radar-circle circle-two"></div>
+                    <div class="radar-circle circle-three"></div>
+
+                    <div class="radar-cross horizontal"></div>
+                    <div class="radar-cross vertical"></div>
+
+                    <div
+                        class="radar-sweep"
+                        id="radarSweep"
+                    ></div>
+
+                    <div
+                        class="radar-center"
+                        id="radarCenter"
+                    >
+                        ✓
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="classification-panel">
+
+                <div class="classification-label">
+                    CURRENT CLASSIFICATION
+                </div>
+
+                <div
+                    class="hazard-name"
+                    id="hazardName"
+                >
+                    NO HAZARD
+                </div>
+
+                <div
+                    class="severity normal"
+                    id="severity"
+                >
+                    NORMAL
+                </div>
+
+
+                <div class="confidence-section">
+
+                    <div class="confidence-header">
+
+                        <span>AI CONFIDENCE</span>
+
+                        <strong id="confidence">
+                            99%
+                        </strong>
+
+                    </div>
+
+                    <div class="confidence-bar">
+
+                        <div
+                            id="confidenceBar"
+                            style="width: 99%"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="classification-message" id="classificationMessage">
+
+                    Environmental conditions are
+                    currently within normal parameters.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SENSOR READINGS -->
+
+        <div class="sensor-section">
+
+            <div class="section-title">
+                LIVE SENSOR READINGS
+            </div>
+
+            <div class="sensor-grid">
+
+
+                <div class="sensor-card">
+
+                    <div class="sensor-icon">
+                        SEISMIC
+                    </div>
+
+                    <div class="sensor-value">
+
+                        <strong id="seismicValue">
+                            0.02
+                        </strong>
+
+                        <span>
+                            g
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="sensor-status good"
+                        id="seismicStatus"
+                    >
+                        NORMAL
+                    </div>
+
+                </div>
+
+
+                <div class="sensor-card">
+
+                    <div class="sensor-icon">
+                        WATER
+                    </div>
+
+                    <div class="sensor-value">
+
+                        <strong id="waterValue">
+                            12
+                        </strong>
+
+                        <span>
+                            cm
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="sensor-status good"
+                        id="waterStatus"
+                    >
+                        NORMAL
+                    </div>
+
+                </div>
+
+
+                <div class="sensor-card">
+
+                    <div class="sensor-icon">
+                        SOIL
+                    </div>
+
+                    <div class="sensor-value">
+
+                        <strong id="soilValue">
+                            18
+                        </strong>
+
+                        <span>
+                            %
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="sensor-status good"
+                        id="soilStatus"
+                    >
+                        STABLE
+                    </div>
+
+                </div>
+
+
+                <div class="sensor-card">
+
+                    <div class="sensor-icon">
+                        AIR
+                    </div>
+
+                    <div class="sensor-value">
+
+                        <strong id="airValue">
+                            22
+                        </strong>
+
+                        <span>
+                            m/s
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="sensor-status good"
+                        id="airStatus"
+                    >
+                        NORMAL
+                    </div>
+
+                </div>
+
+
+                <div class="sensor-card">
+
+                    <div class="sensor-icon">
+                        GAS
+                    </div>
+
+                    <div class="sensor-value">
+
+                        <strong id="gasValue">
+                            18
+                        </strong>
+
+                        <span>
+                            ppm
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="sensor-status good"
+                        id="gasStatus"
+                    >
+                        NORMAL
+                    </div>
+
+                </div>
+
+
+                <div class="sensor-card">
+
+                    <div class="sensor-icon">
+                        PRESSURE
+                    </div>
+
+                    <div class="sensor-value">
+
+                        <strong id="pressureValue">
+                            1012
+                        </strong>
+
+                        <span>
+                            hPa
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="sensor-status good"
+                        id="pressureStatus"
+                    >
+                        NORMAL
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DETECTION PIPELINE -->
+
+        <div class="pipeline-section">
+
+            <div class="section-title">
+                DETECTION PIPELINE
+            </div>
+
+            <div class="pipeline">
+
+                <div
+                    class="pipeline-node"
+                    id="pipelineObserve"
+                >
+                    <div class="pipeline-number">
+                        01
+                    </div>
+
+                    <strong>OBSERVE</strong>
+
+                    <span>
+                        Sensor data
+                    </span>
+                </div>
+
+
+                <div class="pipeline-arrow">
+                    →
+                </div>
+
+
+                <div
+                    class="pipeline-node"
+                    id="pipelineCompare"
+                >
+                    <div class="pipeline-number">
+                        02
+                    </div>
+
+                    <strong>COMPARE</strong>
+
+                    <span>
+                        Pattern analysis
+                    </span>
+                </div>
+
+
+                <div class="pipeline-arrow">
+                    →
+                </div>
+
+
+                <div
+                    class="pipeline-node"
+                    id="pipelineClassify"
+                >
+                    <div class="pipeline-number">
+                        03
+                    </div>
+
+                    <strong>CLASSIFY</strong>
+
+                    <span>
+                        Hazard type
+                    </span>
+                </div>
+
+
+                <div class="pipeline-arrow">
+                    →
+                </div>
+
+
+                <div
+                    class="pipeline-node"
+                    id="pipelineVerify"
+                >
+                    <div class="pipeline-number">
+                        04
+                    </div>
+
+                    <strong>VERIFY</strong>
+
+                    <span>
+                        Sensor agreement
+                    </span>
+                </div>
+
+
+                <div class="pipeline-arrow">
+                    →
+                </div>
+
+
+                <div
+                    class="pipeline-node"
+                    id="pipelineRespond"
+                >
+                    <div class="pipeline-number">
+                        05
+                    </div>
+
+                    <strong>RESPOND</strong>
+
+                    <span>
+                        Warning
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESPONSE -->
+
+        <div class="response-panel">
+
+            <div class="section-title">
+                AI RESPONSE RECOMMENDATION
+            </div>
+
+            <div
+                class="response-box"
+                id="responseBox"
+            >
+
+                <strong>
+                    SYSTEM STATUS: NORMAL
+                </strong>
+
+                <p>
+                    Continue monitoring environmental
+                    conditions. No immediate hazard
+                    response is required.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- RIGHT SIDEBAR -->
+
+    <aside class="sidebar right-sidebar">
+
+
+        <section class="panel">
+
+            <h2>DETECTION STATUS</h2>
+
+            <div class="stat-row">
+
+                <span>
+                    Sensor Network
+                </span>
+
+                <strong class="good">
+                    ACTIVE
+                </strong>
+
+            </div>
+
+            <div class="stat-row">
+
+                <span>
+                    AI Classification
+                </span>
+
+                <strong id="classificationStatus">
+                    READY
+                </strong>
+
+            </div>
+
+            <div class="stat-row">
+
+                <span>
+                    Sensors Reporting
+                </span>
+
+                <strong id="sensorCount">
+                    6 / 6
+                </strong>
+
+            </div>
+
+            <div class="stat-row">
+
+                <span>
+                    Verification
+                </span>
+
+                <strong id="verificationStatus">
+                    STANDBY
+                </strong>
+
+            </div>
+
+            <div class="stat-row">
+
+                <span>
+                    Emergency
+                </span>
+
+                <strong id="emergencyStatus">
+                    STANDBY
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <section class="panel">
+
+            <h2>HAZARD PROFILE</h2>
+
+            <div
+                class="hazard-profile"
+                id="hazardProfile"
+            >
+
+                <span>
+                    CURRENT CONDITION
+                </span>
+
+                <strong>
+                    NORMAL
+                </strong>
+
+                <p>
+                    No abnormal environmental
+                    pattern detected.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="panel">
+
+            <h2>AI EVIDENCE</h2>
+
+            <div class="evidence-row">
+
+                <span>
+                    Primary Sensor
+                </span>
+
+                <strong id="primaryEvidence">
+                    NONE
+                </strong>
+
+            </div>
+
+            <div class="evidence-row">
+
+                <span>
+                    Supporting Sensors
+                </span>
+
+                <strong id="supportingEvidence">
+                    NONE
+                </strong>
+
+            </div>
+
+            <div class="evidence-row">
+
+                <span>
+                    Pattern Match
+                </span>
+
+                <strong id="patternEvidence">
+                    NONE
+                </strong>
+
+            </div>
+
+            <div class="evidence-row">
+
+                <span>
+                    Confidence
+                </span>
+
+                <strong id="evidenceConfidence">
+                    99%
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <section class="panel event-panel">
+
+            <h2>DETECTION EVENT LOG</h2>
+
+            <div
+                class="event-log"
+                id="eventLog"
+            >
+
+                <div class="event good">
+                    [10:00] SENSOR NETWORK INITIALIZED
+                </div>
+
+                <div class="event">
+                    [10:00] MULTI-HAZARD DETECTION READY
+                </div>
+
+                <div class="event">
+                    [10:00] ALL 6 SENSORS REPORTING
+                </div>
+
+            </div>
+
+        </section>
+
+    </aside>
+
+</main>
+
+
+<script src="../js/hazard-detection.js"></script>
+
+</body>
+</html>
