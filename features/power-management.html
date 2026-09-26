@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DisasterNetwork — SentinelNet Power Management</title>
+
+    <link rel="stylesheet" href="../css/power-management.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div class="brand">
+            <div class="brand-title">DISASTERNETWORK</div>
+
+            <div class="brand-subtitle">
+                SENTINELNET — AUTONOMOUS POWER MANAGEMENT
+            </div>
+        </div>
+
+        <div class="top-status">
+
+            <div class="status-pill online">
+                ● POWER SYSTEM ONLINE
+            </div>
+
+            <div class="status-pill">
+                ● ENERGY MANAGEMENT ACTIVE
+            </div>
+
+            <div class="status-pill">
+                TIME <span id="simTime">10:00</span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <nav class="feature-nav">
+        <a href="../index.html">
+            ← BACK TO DISASTERNETWORK
+        </a>
+    </nav>
+
+
+    <main class="layout">
+
+        <!-- LEFT SIDEBAR -->
+
+        <aside class="sidebar left-sidebar">
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    SENTINEL POWER SYSTEM
+                </div>
+
+                <div class="battery-card">
+
+                    <div class="battery-top">
+
+                        <div>
+                            <div class="device-id">
+                                SN-001
+                            </div>
+
+                            <div class="device-name">
+                                MARIA
+                            </div>
+                        </div>
+
+                        <div class="battery-percent">
+                            <span id="batteryPercent">
+                                87
+                            </span>%
+                        </div>
+
+                    </div>
+
+                    <div class="battery-shell">
+
+                        <div
+                            id="batteryFill"
+                            class="battery-fill"
+                        ></div>
+
+                    </div>
+
+                    <div class="battery-info">
+
+                        <span>
+                            EST. REMAINING
+                        </span>
+
+                        <strong id="remainingTime">
+                            18.4 H
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    POWER CONTROLS
+                </div>
+
+                <button
+                    id="normalModeBtn"
+                    class="action-btn"
+                >
+                    NORMAL OPERATION
+                </button>
+
+                <button
+                    id="disasterModeBtn"
+                    class="action-btn primary"
+                >
+                    ACTIVATE DISASTER MODE
+                </button>
+
+                <button
+                    id="lowPowerBtn"
+                    class="action-btn warning"
+                >
+                    FORCE LOW-POWER MODE
+                </button>
+
+                <button
+                    id="criticalBtn"
+                    class="action-btn danger"
+                >
+                    SIMULATE CRITICAL BATTERY
+                </button>
+
+                <button
+                    id="restoreBtn"
+                    class="action-btn restore"
+                >
+                    RESTORE FULL POWER
+                </button>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    POWER PRIORITIES
+                </div>
+
+                <div class="priority-list">
+
+                    <div class="priority-row">
+                        <span>EMERGENCY RADIO</span>
+                        <strong>#1</strong>
+                    </div>
+
+                    <div class="priority-row">
+                        <span>LOCAL AI</span>
+                        <strong>#2</strong>
+                    </div>
+
+                    <div class="priority-row">
+                        <span>HEART MONITOR</span>
+                        <strong>#3</strong>
+                    </div>
+
+                    <div class="priority-row">
+                        <span>GPS</span>
+                        <strong>#4</strong>
+                    </div>
+
+                    <div class="priority-row">
+                        <span>ENVIRONMENT</span>
+                        <strong>#5</strong>
+                    </div>
+
+                    <div class="priority-row">
+                        <span>DISPLAY</span>
+                        <strong>#6</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    SYSTEM MODE
+                </div>
+
+                <div class="mode-display">
+
+                    <div class="mode-label">
+                        CURRENT POWER MODE
+                    </div>
+
+                    <div
+                        id="powerMode"
+                        class="mode-value"
+                    >
+                        NORMAL
+                    </div>
+
+                    <div
+                        id="modeDescription"
+                        class="mode-description"
+                    >
+                        Full device functionality is available.
+                    </div>
+
+                </div>
+
+            </section>
+
+        </aside>
+
+
+        <!-- CENTER -->
+
+        <section class="center">
+
+            <div class="core-header">
+
+                <div>
+
+                    <div class="core-title">
+                        SENTINEL POWER MANAGEMENT CORE
+                    </div>
+
+                    <div class="core-subtitle">
+                        Autonomous energy allocation and battery preservation
+                    </div>
+
+                </div>
+
+                <div
+                    id="powerState"
+                    class="core-state"
+                >
+                    POWER RESERVE NORMAL
+                </div>
+
+            </div>
+
+
+            <!-- BATTERY VISUALIZATION -->
+
+            <div class="power-panel">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <div class="section-title">
+                            LIVE ENERGY STATUS
+                        </div>
+
+                        <div class="section-subtitle">
+                            Simulated Sentinel-W1 battery condition
+                        </div>
+
+                    </div>
+
+                    <div class="live-indicator">
+                        ● LIVE
+                    </div>
+
+                </div>
+
+
+                <div class="energy-display">
+
+                    <div class="large-battery">
+
+                        <div class="battery-cap"></div>
+
+                        <div class="large-battery-shell">
+
+                            <div
+                                id="largeBatteryFill"
+                                class="large-battery-fill"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="energy-number">
+
+                        <div
+                            id="largeBatteryPercent"
+                            class="large-percent"
+                        >
+                            87%
+                        </div>
+
+                        <div class="energy-label">
+                            REMAINING BATTERY
+                        </div>
+
+                        <div
+                            id="energyMessage"
+                            class="energy-message"
+                        >
+                            Energy reserve is sufficient for normal operation.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- POWER ALLOCATION -->
+
+            <div class="allocation-panel">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <div class="section-title">
+                            POWER ALLOCATION
+                        </div>
+
+                        <div class="section-subtitle">
+                            Current energy consumption by subsystem
+                        </div>
+
+                    </div>
+
+                    <div class="allocation-total">
+                        TOTAL LOAD
+                        <strong id="totalLoad">100%</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="allocation-list">
+
+                    <div class="allocation-row">
+
+                        <div class="allocation-name">
+                            <span class="allocation-icon">
+                                RF
+                            </span>
+
+                            <div>
+                                <strong>MESH RADIO</strong>
+                                <small>Emergency communication</small>
+                            </div>
+                        </div>
+
+                        <div class="allocation-meter">
+                            <span
+                                id="radioPowerBar"
+                                style="width: 28%"
+                            ></span>
+                        </div>
+
+                        <div
+                            id="radioPowerValue"
+                            class="allocation-value"
+                        >
+                            28%
+                        </div>
+
+                    </div>
+
+
+                    <div class="allocation-row">
+
+                        <div class="allocation-name">
+                            <span class="allocation-icon">
+                                AI
+                            </span>
+
+                            <div>
+                                <strong>LOCAL AI</strong>
+                                <small>Offline intelligence</small>
+                            </div>
+                        </div>
+
+                        <div class="allocation-meter">
+                            <span
+                                id="aiPowerBar"
+                                style="width: 22%"
+                            ></span>
+                        </div>
+
+                        <div
+                            id="aiPowerValue"
+                            class="allocation-value"
+                        >
+                            22%
+                        </div>
+
+                    </div>
+
+
+                    <div class="allocation-row">
+
+                        <div class="allocation-name">
+                            <span class="allocation-icon">
+                                HR
+                            </span>
+
+                            <div>
+                                <strong>HEART MONITOR</strong>
+                                <small>Vital monitoring</small>
+                            </div>
+                        </div>
+
+                        <div class="allocation-meter">
+                            <span
+                                id="heartPowerBar"
+                                style="width: 18%"
+                            ></span>
+                        </div>
+
+                        <div
+                            id="heartPowerValue"
+                            class="allocation-value"
+                        >
+                            18%
+                        </div>
+
+                    </div>
+
+
+                    <div class="allocation-row">
+
+                        <div class="allocation-name">
+                            <span class="allocation-icon">
+                                GPS
+                            </span>
+
+                            <div>
+                                <strong>GPS</strong>
+                                <small>Position tracking</small>
+                            </div>
+                        </div>
+
+                        <div class="allocation-meter">
+                            <span
+                                id="gpsPowerBar"
+                                style="width: 15%"
+                            ></span>
+                        </div>
+
+                        <div
+                            id="gpsPowerValue"
+                            class="allocation-value"
+                        >
+                            15%
+                        </div>
+
+                    </div>
+
+
+                    <div class="allocation-row">
+
+                        <div class="allocation-name">
+                            <span class="allocation-icon">
+                                ENV
+                            </span>
+
+                            <div>
+                                <strong>ENVIRONMENTAL SENSORS</strong>
+                                <small>Hazard monitoring</small>
+                            </div>
+                        </div>
+
+                        <div class="allocation-meter">
+                            <span
+                                id="environmentPowerBar"
+                                style="width: 10%"
+                            ></span>
+                        </div>
+
+                        <div
+                            id="environmentPowerValue"
+                            class="allocation-value"
+                        >
+                            10%
+                        </div>
+
+                    </div>
+
+
+                    <div class="allocation-row">
+
+                        <div class="allocation-name">
+                            <span class="allocation-icon">
+                                UI
+                            </span>
+
+                            <div>
+                                <strong>DISPLAY & UI</strong>
+                                <small>Visual interface</small>
+                            </div>
+                        </div>
+
+                        <div class="allocation-meter">
+                            <span
+                                id="displayPowerBar"
+                                style="width: 7%"
+                            ></span>
+                        </div>
+
+                        <div
+                            id="displayPowerValue"
+                            class="allocation-value"
+                        >
+                            7%
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- POWER STRATEGY -->
+
+            <div class="strategy-panel">
+
+                <div class="section-title">
+                    AUTONOMOUS POWER STRATEGY
+                </div>
+
+                <div class="section-subtitle">
+                    AI-controlled response to declining battery capacity
+                </div>
+
+
+                <div class="strategy-flow">
+
+                    <div
+                        id="strategyNormal"
+                        class="strategy-node active"
+                    >
+
+                        <div class="strategy-number">
+                            01
+                        </div>
+
+                        <div class="strategy-title">
+                            NORMAL
+                        </div>
+
+                        <div class="strategy-text">
+                            All systems operate normally.
+                        </div>
+
+                    </div>
+
+
+                    <div class="strategy-arrow">
+                        →
+                    </div>
+
+
+                    <div
+                        id="strategyReserve"
+                        class="strategy-node"
+                    >
+
+                        <div class="strategy-number">
+                            02
+                        </div>
+
+                        <div class="strategy-title">
+                            RESERVE
+                        </div>
+
+                        <div class="strategy-text">
+                            Nonessential consumption is reduced.
+                        </div>
+
+                    </div>
+
+
+                    <div class="strategy-arrow">
+                        →
+                    </div>
+
+
+                    <div
+                        id="strategyLow"
+                        class="strategy-node"
+                    >
+
+                        <div class="strategy-number">
+                            03
+                        </div>
+
+                        <div class="strategy-title">
+                            LOW POWER
+                        </div>
+
+                        <div class="strategy-text">
+                            Priority systems receive energy.
+                        </div>
+
+                    </div>
+
+
+                    <div class="strategy-arrow">
+                        →
+                    </div>
+
+
+                    <div
+                        id="strategyCritical"
+                        class="strategy-node"
+                    >
+
+                        <div class="strategy-number">
+                            04
+                        </div>
+
+                        <div class="strategy-title">
+                            CRITICAL
+                        </div>
+
+                        <div class="strategy-text">
+                            Emergency functions are preserved.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- OPERATING SYSTEMS -->
+
+            <div class="systems-panel">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <div class="section-title">
+                            POWER-AWARE SUBSYSTEM CONTROL
+                        </div>
+
+                        <div class="section-subtitle">
+                            Functions automatically adjusted according to battery reserve
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="system-grid">
+
+                    <div class="system-card">
+
+                        <div class="system-top">
+                            <strong>MESH RADIO</strong>
+
+                            <span
+                                id="radioState"
+                                class="system-state"
+                            >
+                                MAXIMUM PRIORITY
+                            </span>
+                        </div>
+
+                        <div class="system-description">
+                            Maintains emergency communication and
+                            Sentinel-to-Sentinel relay capability.
+                        </div>
+
+                    </div>
+
+
+                    <div class="system-card">
+
+                        <div class="system-top">
+                            <strong>LOCAL AI</strong>
+
+                            <span
+                                id="aiState"
+                                class="system-state"
+                            >
+                                ACTIVE
+                            </span>
+                        </div>
+
+                        <div class="system-description">
+                            Continues offline reasoning and local
+                            emergency decision support.
+                        </div>
+
+                    </div>
+
+
+                    <div class="system-card">
+
+                        <div class="system-top">
+                            <strong>HEART MONITOR</strong>
+
+                            <span
+                                id="heartState"
+                                class="system-state"
+                            >
+                                ACTIVE
+                            </span>
+                        </div>
+
+                        <div class="system-description">
+                            Preserves vital monitoring as a high-priority
+                            emergency function.
+                        </div>
+
+                    </div>
+
+
+                    <div class="system-card">
+
+                        <div class="system-top">
+                            <strong>GPS</strong>
+
+                            <span
+                                id="gpsState"
+                                class="system-state"
+                            >
+                                ACTIVE
+                            </span>
+                        </div>
+
+                        <div class="system-description">
+                            Maintains location updates while reducing
+                            unnecessary positioning activity.
+                        </div>
+
+                    </div>
+
+
+                    <div class="system-card">
+
+                        <div class="system-top">
+                            <strong>ENVIRONMENTAL SENSORS</strong>
+
+                            <span
+                                id="environmentState"
+                                class="system-state"
+                            >
+                                ACTIVE
+                            </span>
+                        </div>
+
+                        <div class="system-description">
+                            Continues collecting hazard and environmental
+                            information according to priority.
+                        </div>
+
+                    </div>
+
+
+                    <div class="system-card">
+
+                        <div class="system-top">
+                            <strong>DISPLAY</strong>
+
+                            <span
+                                id="displayState"
+                                class="system-state"
+                            >
+                                NORMAL
+                            </span>
+                        </div>
+
+                        <div class="system-description">
+                            Brightness and activity can be reduced first
+                            because visual output is noncritical.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EXPLANATION -->
+
+            <div class="explanation-panel">
+
+                <div class="section-title">
+                    POWER MANAGEMENT LOGIC
+                </div>
+
+                <div
+                    id="powerExplanation"
+                    class="explanation"
+                >
+                    The Sentinel continuously monitors its remaining
+                    energy and adjusts power allocation while preserving
+                    emergency-critical functions.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDEBAR -->
+
+        <aside class="sidebar right-sidebar">
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    BATTERY MONITOR
+                </div>
+
+                <div class="battery-stats">
+
+                    <div class="battery-stat">
+                        <span>BATTERY</span>
+                        <strong id="sideBattery">
+                            87%
+                        </strong>
+                    </div>
+
+                    <div class="battery-stat">
+                        <span>POWER DRAW</span>
+                        <strong id="powerDraw">
+                            100%
+                        </strong>
+                    </div>
+
+                    <div class="battery-stat">
+                        <span>RESERVE</span>
+                        <strong id="reserveLevel">
+                            NORMAL
+                        </strong>
+                    </div>
+
+                    <div class="battery-stat">
+                        <span>EST. RUNTIME</span>
+                        <strong id="sideRuntime">
+                            18.4 H
+                        </strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    AUTOMATIC ACTIONS
+                </div>
+
+                <div class="automatic-list">
+
+                    <div class="automatic-row">
+                        <span class="auto-dot active"></span>
+                        Preserve emergency radio
+                    </div>
+
+                    <div class="automatic-row">
+                        <span class="auto-dot active"></span>
+                        Maintain local AI
+                    </div>
+
+                    <div class="automatic-row">
+                        <span class="auto-dot active"></span>
+                        Maintain vital monitoring
+                    </div>
+
+                    <div class="automatic-row">
+                        <span
+                            id="displayAutoDot"
+                            class="auto-dot active"
+                        ></span>
+                        Reduce display consumption
+                    </div>
+
+                    <div class="automatic-row">
+                        <span
+                            id="gpsAutoDot"
+                            class="auto-dot"
+                        ></span>
+                        Reduce GPS activity
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    AI POWER DECISION
+                </div>
+
+                <div
+                    id="aiPowerDecision"
+                    class="ai-box"
+                >
+                    Battery reserve is sufficient.
+                    No power restrictions are currently required.
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    POWER EVENT LOG
+                </div>
+
+                <div
+                    id="eventLog"
+                    class="event-log"
+                ></div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <button
+                    id="threeMinBtn"
+                    class="cycle-btn"
+                >
+                    +3 MIN — POWER CHECK
+                </button>
+
+            </section>
+
+        </aside>
+
+    </main>
+
+
+    <script src="../js/power-management.js"></script>
+
+</body>
+</html>

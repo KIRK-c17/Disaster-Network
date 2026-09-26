@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DisasterNetwork — SentinelNet Offline Survival</title>
+
+    <link rel="stylesheet" href="../css/offline-survival.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div>
+        <h1>DISASTERNETWORK</h1>
+        <p>SENTINELNET — OFFLINE SURVIVAL AI</p>
+    </div>
+
+    <div class="system-status">
+
+        <div class="status-pill online">
+            ● SURVIVAL AI ONLINE
+        </div>
+
+        <div class="status-pill mesh">
+            ● OFFLINE DATABASE LOADED
+        </div>
+
+        <div class="time-display" id="simTime">
+            10:00
+        </div>
+
+    </div>
+
+</header>
+
+
+<nav class="feature-nav">
+
+    <a href="../index.html">
+        ← BACK TO DISASTERNETWORK
+    </a>
+
+</nav>
+
+
+<main class="layout">
+
+
+    <!-- LEFT SIDEBAR -->
+
+    <aside class="sidebar left-sidebar">
+
+
+        <section class="panel">
+
+            <h2>HAZARD TYPE</h2>
+
+            <button
+                class="hazard-btn active"
+                data-hazard="flood"
+            >
+                FLOOD
+            </button>
+
+            <button
+                class="hazard-btn"
+                data-hazard="earthquake"
+            >
+                EARTHQUAKE
+            </button>
+
+            <button
+                class="hazard-btn"
+                data-hazard="landslide"
+            >
+                LANDSLIDE
+            </button>
+
+            <button
+                class="hazard-btn"
+                data-hazard="volcanic"
+            >
+                VOLCANIC ERUPTION
+            </button>
+
+            <button
+                class="hazard-btn"
+                data-hazard="typhoon"
+            >
+                TYPHOON
+            </button>
+
+        </section>
+
+
+        <section class="panel">
+
+            <h2>SURVIVAL SITUATION</h2>
+
+            <label class="field-label">
+                SELECT CURRENT SITUATION
+            </label>
+
+            <select
+                class="control-select"
+                id="situationSelect"
+            >
+
+                <option value="immediate">
+                    IMMEDIATE DANGER
+                </option>
+
+                <option value="shelter">
+                    FIND / SECURE SHELTER
+                </option>
+
+                <option value="evacuation">
+                    EVACUATION
+                </option>
+
+                <option value="water">
+                    WATER / FOOD
+                </option>
+
+                <option value="communication">
+                    COMMUNICATION
+                </option>
+
+                <option value="monitoring">
+                    MONITORING / WAITING
+                </option>
+
+            </select>
+
+            <button
+                class="control-btn primary"
+                id="assessBtn"
+            >
+                ASSESS SURVIVAL PLAN
+            </button>
+
+            <button
+                class="control-btn warning-btn"
+                id="emergencyBtn"
+            >
+                REQUEST EMERGENCY ASSISTANCE
+            </button>
+
+        </section>
+
+
+        <section class="panel">
+
+            <h2>SENTINEL STATUS</h2>
+
+            <div class="stat-row">
+
+                <span>Sentinel</span>
+
+                <strong>
+                    SN-001
+                </strong>
+
+            </div>
+
+            <div class="stat-row">
+
+                <span>Current Block</span>
+
+                <strong id="currentBlock">
+                    BLOCK 04
+                </strong>
+
+            </div>
+
+            <div class="stat-row">
+
+                <span>GPS</span>
+
+                <strong class="good">
+                    AVAILABLE
+                </strong>
+
+            </div>
+
+            <div class="stat-row">
+
+                <span>Internet</span>
+
+                <strong class="warning">
+                    OFFLINE
+                </strong>
+
+            </div>
+
+            <div class="stat-row">
+
+                <span>Survival Database</span>
+
+                <strong class="good">
+                    AVAILABLE
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <section class="panel">
+
+            <h2>SURVIVAL CATEGORIES</h2>
+
+            <div class="category-item">
+
+                <span class="category-number">
+                    01
+                </span>
+
+                <div>
+                    <strong>
+                        IMMEDIATE DANGER
+                    </strong>
+
+                    <small>
+                        Reduce immediate exposure
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="category-item">
+
+                <span class="category-number">
+                    02
+                </span>
+
+                <div>
+                    <strong>
+                        SHELTER
+                    </strong>
+
+                    <small>
+                        Identify safer surroundings
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="category-item">
+
+                <span class="category-number">
+                    03
+                </span>
+
+                <div>
+                    <strong>
+                        RESOURCES
+                    </strong>
+
+                    <small>
+                        Manage water and food
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="category-item">
+
+                <span class="category-number">
+                    04
+                </span>
+
+                <div>
+                    <strong>
+                        COMMUNICATION
+                    </strong>
+
+                    <small>
+                        Maintain contact through mesh
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="category-item">
+
+                <span class="category-number">
+                    05
+                </span>
+
+                <div>
+                    <strong>
+                        EVACUATION
+                    </strong>
+
+                    <small>
+                        Move toward safer areas
+                    </small>
+                </div>
+
+            </div>
+
+        </section>
+
+    </aside>
+
+
+    <!-- CENTER -->
+
+    <section class="survival-section">
+
+
+        <div class="survival-header">
+
+            <div>
+
+                <h2>OFFLINE SURVIVAL CORE</h2>
+
+                <span>
+                    LOCAL KNOWLEDGE / HAZARD-AWARE SURVIVAL GUIDANCE
+                </span>
+
+            </div>
+
+            <div
+                class="survival-status"
+                id="survivalStatus"
+            >
+                ● READY
+            </div>
+
+        </div>
+
+
+        <!-- HAZARD DISPLAY -->
+
+        <div class="hazard-display">
+
+            <div class="hazard-display-main">
+
+                <span>
+                    CURRENT HAZARD
+                </span>
+
+                <strong id="hazardName">
+                    FLOOD
+                </strong>
+
+            </div>
+
+            <div class="hazard-display-info">
+
+                <div>
+
+                    <span>
+                        AI MODE
+                    </span>
+
+                    <strong>
+                        OFFLINE
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        DATABASE
+                    </span>
+
+                    <strong class="good">
+                        LOADED
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        INTERNET
+                    </span>
+
+                    <strong class="warning">
+                        UNAVAILABLE
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SURVIVAL ASSESSMENT -->
+
+        <div class="assessment-panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <h2>AI SURVIVAL ASSESSMENT</h2>
+
+                    <span>
+                        OFFLINE DECISION SUPPORT
+                    </span>
+
+                </div>
+
+                <div
+                    class="priority-badge"
+                    id="priorityBadge"
+                >
+                    HIGH
+                </div>
+
+            </div>
+
+
+            <div class="assessment-grid">
+
+                <div class="assessment-card">
+
+                    <span>
+                        SITUATION
+                    </span>
+
+                    <strong id="assessmentSituation">
+                        IMMEDIATE DANGER
+                    </strong>
+
+                </div>
+
+
+                <div class="assessment-card">
+
+                    <span>
+                        AI CONFIDENCE
+                    </span>
+
+                    <strong id="aiConfidence">
+                        95%
+                    </strong>
+
+                </div>
+
+
+                <div class="assessment-card">
+
+                    <span>
+                        SURVIVAL STATE
+                    </span>
+
+                    <strong
+                        id="survivalState"
+                        class="warning"
+                    >
+                        CAUTION
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="confidence-bar">
+
+                <div
+                    id="confidenceFill"
+                    class="confidence-fill"
+                ></div>
+
+            </div>
+
+
+            <p
+                class="assessment-description"
+                id="assessmentDescription"
+            >
+                Flood conditions detected. Prioritize moving away from
+                rising water and identify a safer location.
+            </p>
+
+        </div>
+
+
+        <!-- CURRENT SURVIVAL PROCEDURE -->
+
+        <div class="procedure-panel">
+
+            <div class="procedure-header">
+
+                <span>
+                    OFFLINE SURVIVAL PROCEDURE
+                </span>
+
+                <strong id="stepCounter">
+                    STEP 01 / 04
+                </strong>
+
+            </div>
+
+
+            <div class="procedure-content">
+
+                <div
+                    class="procedure-number"
+                    id="procedureNumber"
+                >
+                    01
+                </div>
+
+                <div>
+
+                    <h2 id="procedureTitle">
+                        MOVE AWAY FROM RISING WATER
+                    </h2>
+
+                    <p id="procedureText">
+                        Move toward a safer and higher location if
+                        flooding is increasing. Avoid entering
+                        rapidly moving water.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="next-step-btn"
+                id="nextStepBtn"
+            >
+                NEXT SURVIVAL STEP →
+            </button>
+
+        </div>
+
+
+        <!-- SURVIVAL CHECKLIST -->
+
+        <div class="checklist-panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <h2>SURVIVAL READINESS</h2>
+
+                    <span>
+                        LOCAL DEVICE CHECK
+                    </span>
+
+                </div>
+
+                <strong id="readinessPercent">
+                    60%
+                </strong>
+
+            </div>
+
+
+            <div class="readiness-grid">
+
+                <div
+                    class="readiness-item ready"
+                    id="shelterCheck"
+                >
+
+                    <span>✓</span>
+
+                    <div>
+                        <strong>SHELTER</strong>
+                        <small>Safer location identified</small>
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="readiness-item ready"
+                    id="waterCheck"
+                >
+
+                    <span>✓</span>
+
+                    <div>
+                        <strong>WATER</strong>
+                        <small>Supply status monitored</small>
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="readiness-item"
+                    id="communicationCheck"
+                >
+
+                    <span>!</span>
+
+                    <div>
+                        <strong>COMMUNICATION</strong>
+                        <small>Mesh connection available</small>
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="readiness-item"
+                    id="evacuationCheck"
+                >
+
+                    <span>!</span>
+
+                    <div>
+                        <strong>EVACUATION</strong>
+                        <small>Route not currently required</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EMERGENCY PACKET -->
+
+        <div class="packet-panel">
+
+            <div class="packet-header">
+
+                <div>
+
+                    <h2>SURVIVAL EMERGENCY PACKET</h2>
+
+                    <span>
+                        DATA PREPARED FOR SENTINELNET TRANSMISSION
+                    </span>
+
+                </div>
+
+                <div
+                    class="packet-status"
+                    id="packetStatus"
+                >
+                    NOT SENT
+                </div>
+
+            </div>
+
+
+            <div class="packet-grid">
+
+                <div>
+                    <span>SUBJECT</span>
+                    <strong>SN-001</strong>
+                </div>
+
+                <div>
+                    <span>LOCATION</span>
+                    <strong>BLOCK 04</strong>
+                </div>
+
+                <div>
+                    <span>HAZARD</span>
+                    <strong id="packetHazard">
+                        FLOOD
+                    </strong>
+                </div>
+
+                <div>
+                    <span>SITUATION</span>
+                    <strong id="packetSituation">
+                        IMMEDIATE DANGER
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <button
+                class="packet-btn"
+                id="sendPacketBtn"
+            >
+                SEND SURVIVAL PACKET THROUGH SENTINELNET
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- RIGHT SIDEBAR -->
+
+    <aside class="sidebar right-sidebar">
+
+
+        <section class="panel">
+
+            <h2>SURVIVAL AI STATUS</h2>
+
+            <div class="stat-row">
+
+                <span>
+                    Survival Engine
+                </span>
+
+                <strong class="good">
+                    ACTIVE
+                </strong>
+
+            </div>
+
+            <div class="stat-row">
+
+                <span>
+                    Offline Knowledge
+                </span>
+
+                <strong class="good">
+                    LOADED
+                </strong>
+
+            </div>
+
+            <div class="stat-row">
+
+                <span>
+                    Hazard Database
+                </span>
+
+                <strong class="good">
+                    READY
+                </strong>
+
+            </div>
+
+            <div class="stat-row">
+
+                <span>
+                    Internet
+                </span>
+
+                <strong class="warning">
+                    OFFLINE
+                </strong>
+
+            </div>
+
+            <div class="stat-row">
+
+                <span>
+                    Mesh Assistance
+                </span>
+
+                <strong
+                    id="meshStatus"
+                    class="good"
+                >
+                    AVAILABLE
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <section class="panel">
+
+            <h2>HAZARD CONDITIONS</h2>
+
+            <div class="condition-card">
+
+                <span>
+                    PRIMARY HAZARD
+                </span>
+
+                <strong
+                    id="primaryHazard"
+                    class="danger"
+                >
+                    FLOOD
+                </strong>
+
+            </div>
+
+
+            <div class="condition-card">
+
+                <span>
+                    IMMEDIATE RISK
+                </span>
+
+                <strong
+                    id="immediateRisk"
+                    class="warning"
+                >
+                    HIGH
+                </strong>
+
+            </div>
+
+
+            <div class="condition-card">
+
+                <span>
+                    OFFLINE GUIDANCE
+                </span>
+
+                <strong class="good">
+                    AVAILABLE
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <section class="panel">
+
+            <h2>AI RECOMMENDATION</h2>
+
+            <div class="recommendation-box">
+
+                <div class="recommendation-icon">
+                    !
+                </div>
+
+                <strong id="recommendationTitle">
+                    PRIORITIZE SAFETY
+                </strong>
+
+                <p id="recommendationText">
+                    Follow the current offline survival procedure
+                    and remain aware of changing conditions.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="panel event-panel">
+
+            <h2>SURVIVAL EVENT LOG</h2>
+
+            <div
+                class="event-log"
+                id="eventLog"
+            >
+
+                <div class="event good">
+                    [10:00] OFFLINE SURVIVAL DATABASE LOADED
+                </div>
+
+                <div class="event">
+                    [10:00] SENTINEL SN-001 IDENTIFIED
+                </div>
+
+                <div class="event">
+                    [10:00] HAZARD PROFILE READY
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <button
+            class="cycle-btn"
+            id="threeMinBtn"
+        >
+            +3 MIN — SURVIVAL CHECK
+        </button>
+
+    </aside>
+
+</main>
+
+
+<script src="../js/offline-survival.js"></script>
+
+</body>
+</html>

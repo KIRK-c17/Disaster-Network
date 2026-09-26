@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DisasterNetwork — SentinelNet Hardware</title>
+
+    <link rel="stylesheet" href="../css/hardware.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div class="brand">
+            <div class="brand-title">DISASTERNETWORK</div>
+            <div class="brand-subtitle">
+                SENTINELNET — WEARABLE HARDWARE SYSTEM
+            </div>
+        </div>
+
+        <div class="top-status">
+
+            <div class="status-pill online">
+                ● HARDWARE ONLINE
+            </div>
+
+            <div class="status-pill">
+                ● SENSOR BUS ACTIVE
+            </div>
+
+            <div class="status-pill">
+                TIME <span id="simTime">10:00</span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <nav class="feature-nav">
+        <a href="../index.html">
+            ← BACK TO DISASTERNETWORK
+        </a>
+    </nav>
+
+
+    <main class="layout">
+
+        <!-- LEFT SIDEBAR -->
+
+        <aside class="sidebar left-sidebar">
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    SENTINEL DEVICE
+                </div>
+
+                <div class="device-card">
+
+                    <div class="device-id">
+                        SN-001
+                    </div>
+
+                    <div class="device-name">
+                        MARIA
+                    </div>
+
+                    <div class="device-location">
+                        BLOCK 04
+                    </div>
+
+                    <div class="device-status">
+                        <span class="status-dot"></span>
+                        SYSTEM OPERATIONAL
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    HARDWARE CONTROLS
+                </div>
+
+                <button id="sensorTestBtn" class="action-btn primary">
+                    RUN SENSOR SELF-TEST
+                </button>
+
+                <button id="gpsBtn" class="action-btn">
+                    SIMULATE GPS FAILURE
+                </button>
+
+                <button id="radioBtn" class="action-btn">
+                    SIMULATE RADIO FAILURE
+                </button>
+
+                <button id="heartBtn" class="action-btn">
+                    SIMULATE HEART SENSOR FAILURE
+                </button>
+
+                <button id="restoreBtn" class="action-btn restore">
+                    RESTORE HARDWARE
+                </button>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    DEVICE CONDITIONS
+                </div>
+
+                <div class="condition-list">
+
+                    <div class="condition-row">
+                        <span>PROCESSOR</span>
+                        <strong id="processorCondition">
+                            NORMAL
+                        </strong>
+                    </div>
+
+                    <div class="condition-row">
+                        <span>GPS</span>
+                        <strong id="gpsCondition">
+                            LOCKED
+                        </strong>
+                    </div>
+
+                    <div class="condition-row">
+                        <span>MESH RADIO</span>
+                        <strong id="radioCondition">
+                            ACTIVE
+                        </strong>
+                    </div>
+
+                    <div class="condition-row">
+                        <span>HEART SENSOR</span>
+                        <strong id="heartCondition">
+                            ACTIVE
+                        </strong>
+                    </div>
+
+                    <div class="condition-row">
+                        <span>ENVIRONMENT</span>
+                        <strong id="environmentCondition">
+                            ACTIVE
+                        </strong>
+                    </div>
+
+                    <div class="condition-row">
+                        <span>STORAGE</span>
+                        <strong id="storageCondition">
+                            AVAILABLE
+                        </strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    HARDWARE IDENTIFICATION
+                </div>
+
+                <div class="spec-row">
+                    <span>DEVICE</span>
+                    <strong>SENTINEL-W1</strong>
+                </div>
+
+                <div class="spec-row">
+                    <span>PROCESSOR</span>
+                    <strong>LOCAL AI CORE</strong>
+                </div>
+
+                <div class="spec-row">
+                    <span>LOCATION</span>
+                    <strong>GPS + LOCAL DATA</strong>
+                </div>
+
+                <div class="spec-row">
+                    <span>NETWORK</span>
+                    <strong>MESH RADIO</strong>
+                </div>
+
+            </section>
+
+        </aside>
+
+
+        <!-- CENTER -->
+
+        <section class="center">
+
+            <div class="core-header">
+
+                <div>
+                    <div class="core-title">
+                        SENTINEL HARDWARE CORE
+                    </div>
+
+                    <div class="core-subtitle">
+                        Wearable device architecture and component interaction
+                    </div>
+                </div>
+
+                <div id="hardwareState" class="core-state">
+                    ALL SYSTEMS NORMAL
+                </div>
+
+            </div>
+
+
+            <!-- DEVICE ARCHITECTURE -->
+
+            <div class="architecture-panel">
+
+                <div class="section-header">
+
+                    <div>
+                        <div class="section-title">
+                            WEARABLE HARDWARE ARCHITECTURE
+                        </div>
+
+                        <div class="section-subtitle">
+                            Physical components of Sentinel-W1
+                        </div>
+                    </div>
+
+                    <div id="busStatus" class="bus-status">
+                        HARDWARE BUS ACTIVE
+                    </div>
+
+                </div>
+
+
+                <div class="hardware-layout">
+
+                    <!-- SENSOR SIDE -->
+
+                    <div class="component-column">
+
+                        <div class="column-label">
+                            INPUT SYSTEMS
+                        </div>
+
+                        <div
+                            class="component-card"
+                            data-component="heart"
+                            id="componentHeart"
+                        >
+                            <div class="component-icon">
+                                HR
+                            </div>
+
+                            <div class="component-info">
+                                <div class="component-name">
+                                    HEART-RATE SENSOR
+                                </div>
+
+                                <div class="component-description">
+                                    Measures pulse and provides
+                                    vital-status information.
+                                </div>
+
+                                <div class="component-status">
+                                    <span></span>
+                                    <strong id="heartCardStatus">
+                                        ACTIVE
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div
+                            class="component-card"
+                            data-component="environment"
+                            id="componentEnvironment"
+                        >
+                            <div class="component-icon">
+                                ENV
+                            </div>
+
+                            <div class="component-info">
+                                <div class="component-name">
+                                    ENVIRONMENTAL SENSORS
+                                </div>
+
+                                <div class="component-description">
+                                    Collects temperature,
+                                    pressure and environmental data.
+                                </div>
+
+                                <div class="component-status">
+                                    <span></span>
+                                    <strong>
+                                        ACTIVE
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div
+                            class="component-card"
+                            data-component="emergency"
+                            id="componentEmergency"
+                        >
+                            <div class="component-icon">
+                                SOS
+                            </div>
+
+                            <div class="component-info">
+                                <div class="component-name">
+                                    EMERGENCY INPUT
+                                </div>
+
+                                <div class="component-description">
+                                    Allows the wearer to manually
+                                    trigger an emergency event.
+                                </div>
+
+                                <div class="component-status">
+                                    <span></span>
+                                    <strong>
+                                        READY
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- PROCESSING -->
+
+                    <div class="processing-column">
+
+                        <div class="column-label">
+                            PROCESSING SYSTEM
+                        </div>
+
+                        <div
+                            class="processor-card"
+                            id="processorCard"
+                        >
+
+                            <div class="processor-core">
+                                AI
+                            </div>
+
+                            <div class="processor-title">
+                                LOCAL AI PROCESSOR
+                            </div>
+
+                            <div class="processor-description">
+                                Processes sensor information,
+                                executes offline intelligence,
+                                and controls local responses.
+                            </div>
+
+                            <div class="processor-status">
+                                <span></span>
+                                PROCESSING
+                            </div>
+
+                        </div>
+
+
+                        <div class="data-arrow">
+                            ↓
+                        </div>
+
+
+                        <div class="controller-card">
+
+                            <div class="controller-icon">
+                                MCU
+                            </div>
+
+                            <div class="controller-title">
+                                SYSTEM CONTROLLER
+                            </div>
+
+                            <div class="controller-description">
+                                Coordinates sensors,
+                                communications, storage,
+                                power and device functions.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- OUTPUT -->
+
+                    <div class="component-column">
+
+                        <div class="column-label">
+                            OUTPUT & COMMUNICATION
+                        </div>
+
+                        <div
+                            class="component-card"
+                            id="componentGPS"
+                        >
+                            <div class="component-icon">
+                                GPS
+                            </div>
+
+                            <div class="component-info">
+                                <div class="component-name">
+                                    GPS MODULE
+                                </div>
+
+                                <div class="component-description">
+                                    Provides geographic position
+                                    for navigation and emergency data.
+                                </div>
+
+                                <div class="component-status">
+                                    <span></span>
+                                    <strong id="gpsCardStatus">
+                                        LOCKED
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div
+                            class="component-card"
+                            id="componentRadio"
+                        >
+                            <div class="component-icon">
+                                RF
+                            </div>
+
+                            <div class="component-info">
+                                <div class="component-name">
+                                    MESH RADIO
+                                </div>
+
+                                <div class="component-description">
+                                    Sends and receives information
+                                    through nearby Sentinel devices.
+                                </div>
+
+                                <div class="component-status">
+                                    <span></span>
+                                    <strong id="radioCardStatus">
+                                        ACTIVE
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div
+                            class="component-card"
+                            id="componentStorage"
+                        >
+                            <div class="component-icon">
+                                MEM
+                            </div>
+
+                            <div class="component-info">
+                                <div class="component-name">
+                                    LOCAL STORAGE
+                                </div>
+
+                                <div class="component-description">
+                                    Stores offline maps, AI knowledge,
+                                    survival guides and queued data.
+                                </div>
+
+                                <div class="component-status">
+                                    <span></span>
+                                    <strong>
+                                        AVAILABLE
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DATA PIPELINE -->
+
+            <div class="pipeline-panel">
+
+                <div class="section-title">
+                    HARDWARE DATA PIPELINE
+                </div>
+
+                <div class="section-subtitle">
+                    How information moves through the wearable
+                </div>
+
+
+                <div class="pipeline">
+
+                    <div class="pipeline-node active">
+                        <div class="pipeline-number">
+                            01
+                        </div>
+
+                        <div class="pipeline-name">
+                            SENSE
+                        </div>
+
+                        <div class="pipeline-text">
+                            Sensors collect physical
+                            and environmental data.
+                        </div>
+                    </div>
+
+
+                    <div class="pipeline-arrow">
+                        →
+                    </div>
+
+
+                    <div class="pipeline-node active">
+                        <div class="pipeline-number">
+                            02
+                        </div>
+
+                        <div class="pipeline-name">
+                            PROCESS
+                        </div>
+
+                        <div class="pipeline-text">
+                            Local processor analyzes
+                            incoming information.
+                        </div>
+                    </div>
+
+
+                    <div class="pipeline-arrow">
+                        →
+                    </div>
+
+
+                    <div class="pipeline-node active">
+                        <div class="pipeline-number">
+                            03
+                        </div>
+
+                        <div class="pipeline-name">
+                            DECIDE
+                        </div>
+
+                        <div class="pipeline-text">
+                            AI determines whether
+                            action is required.
+                        </div>
+                    </div>
+
+
+                    <div class="pipeline-arrow">
+                        →
+                    </div>
+
+
+                    <div class="pipeline-node active">
+                        <div class="pipeline-number">
+                            04
+                        </div>
+
+                        <div class="pipeline-name">
+                            COMMUNICATE
+                        </div>
+
+                        <div class="pipeline-text">
+                            Radio transmits information
+                            through SentinelNet.
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LIVE READINGS -->
+
+            <div class="readings-panel">
+
+                <div class="section-header">
+
+                    <div>
+                        <div class="section-title">
+                            LIVE HARDWARE READINGS
+                        </div>
+
+                        <div class="section-subtitle">
+                            Simulated sensor and device values
+                        </div>
+                    </div>
+
+                    <div class="reading-state">
+                        LIVE
+                    </div>
+
+                </div>
+
+
+                <div class="reading-grid">
+
+                    <div class="reading-card">
+
+                        <div class="reading-label">
+                            HEART RATE
+                        </div>
+
+                        <div class="reading-value">
+                            <span id="heartRate">78</span>
+                            <small>BPM</small>
+                        </div>
+
+                        <div class="reading-bar">
+                            <span
+                                id="heartRateBar"
+                                style="width:52%"
+                            ></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="reading-card">
+
+                        <div class="reading-label">
+                            TEMPERATURE
+                        </div>
+
+                        <div class="reading-value">
+                            <span id="temperature">31.4</span>
+                            <small>°C</small>
+                        </div>
+
+                        <div class="reading-bar">
+                            <span
+                                id="temperatureBar"
+                                style="width:63%"
+                            ></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="reading-card">
+
+                        <div class="reading-label">
+                            PRESSURE
+                        </div>
+
+                        <div class="reading-value">
+                            <span id="pressure">1008</span>
+                            <small>hPa</small>
+                        </div>
+
+                        <div class="reading-bar">
+                            <span
+                                id="pressureBar"
+                                style="width:70%"
+                            ></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="reading-card">
+
+                        <div class="reading-label">
+                            GPS ACCURACY
+                        </div>
+
+                        <div class="reading-value">
+                            <span id="gpsAccuracy">4.2</span>
+                            <small>M</small>
+                        </div>
+
+                        <div class="reading-bar">
+                            <span
+                                id="gpsAccuracyBar"
+                                style="width:82%"
+                            ></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMPONENT EXPLANATION -->
+
+            <div class="explanation-panel">
+
+                <div class="section-title">
+                    HARDWARE OPERATION
+                </div>
+
+                <div
+                    id="hardwareExplanation"
+                    class="explanation"
+                >
+                    The Sentinel wearable continuously collects
+                    information from its sensors. The system controller
+                    passes the data to the local AI processor, which can
+                    analyze the information without requiring internet
+                    connectivity.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDEBAR -->
+
+        <aside class="sidebar right-sidebar">
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    COMPONENT MONITOR
+                </div>
+
+                <div class="monitor-list">
+
+                    <div class="monitor-row">
+                        <div>
+                            <strong>AI PROCESSOR</strong>
+                            <small>Local computation</small>
+                        </div>
+
+                        <span id="monitorAI">
+                            ONLINE
+                        </span>
+                    </div>
+
+
+                    <div class="monitor-row">
+                        <div>
+                            <strong>GPS</strong>
+                            <small>Position system</small>
+                        </div>
+
+                        <span id="monitorGPS">
+                            LOCKED
+                        </span>
+                    </div>
+
+
+                    <div class="monitor-row">
+                        <div>
+                            <strong>MESH RADIO</strong>
+                            <small>Communication</small>
+                        </div>
+
+                        <span id="monitorRadio">
+                            ACTIVE
+                        </span>
+                    </div>
+
+
+                    <div class="monitor-row">
+                        <div>
+                            <strong>HEART SENSOR</strong>
+                            <small>Vital monitoring</small>
+                        </div>
+
+                        <span id="monitorHeart">
+                            ACTIVE
+                        </span>
+                    </div>
+
+
+                    <div class="monitor-row">
+                        <div>
+                            <strong>ENVIRONMENT</strong>
+                            <small>Environmental sensing</small>
+                        </div>
+
+                        <span id="monitorEnvironment">
+                            ACTIVE
+                        </span>
+                    </div>
+
+
+                    <div class="monitor-row">
+                        <div>
+                            <strong>STORAGE</strong>
+                            <small>Offline data</small>
+                        </div>
+
+                        <span id="monitorStorage">
+                            READY
+                        </span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    HARDWARE BUS
+                </div>
+
+                <div class="bus-display">
+
+                    <div class="bus-line">
+                        <span class="bus-node active"></span>
+                        SENSOR BUS
+                    </div>
+
+                    <div class="bus-line">
+                        <span class="bus-node active"></span>
+                        PROCESSOR BUS
+                    </div>
+
+                    <div class="bus-line">
+                        <span
+                            id="radioBusNode"
+                            class="bus-node active"
+                        ></span>
+                        COMMUNICATION BUS
+                    </div>
+
+                    <div class="bus-line">
+                        <span class="bus-node active"></span>
+                        STORAGE BUS
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    AI HARDWARE INTERPRETATION
+                </div>
+
+                <div
+                    id="aiInterpretation"
+                    class="ai-box"
+                >
+                    All required hardware systems are operational.
+                    Sentinel-W1 is ready for continuous monitoring.
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    HARDWARE EVENT LOG
+                </div>
+
+                <div
+                    id="eventLog"
+                    class="event-log"
+                ></div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <button
+                    id="threeMinBtn"
+                    class="cycle-btn"
+                >
+                    +3 MIN — HARDWARE CHECK
+                </button>
+
+            </section>
+
+        </aside>
+
+    </main>
+
+
+    <script src="../js/hardware.js"></script>
+
+</body>
+</html>

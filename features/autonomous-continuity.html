@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DisasterNetwork — SentinelNet Autonomous Continuity</title>
+
+    <link rel="stylesheet" href="../css/autonomous-continuity.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div class="brand">
+            <div class="brand-title">DISASTERNETWORK</div>
+            <div class="brand-subtitle">
+                SENTINELNET — AUTONOMOUS CONTINUITY
+            </div>
+        </div>
+
+        <div class="top-status">
+
+            <div class="status-pill online">
+                ● CONTINUITY AI ONLINE
+            </div>
+
+            <div class="status-pill">
+                ● OFFLINE CORE READY
+            </div>
+
+            <div class="status-pill">
+                TIME <span id="simTime">10:00</span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <nav class="feature-nav">
+        <a href="../index.html">
+            ← BACK TO DISASTERNETWORK
+        </a>
+    </nav>
+
+
+    <main class="layout">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar left-sidebar">
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    INFRASTRUCTURE STATUS
+                </div>
+
+                <div class="system-list">
+
+                    <div class="system-row">
+                        <span>INTERNET</span>
+                        <strong id="internetStatus" class="good">
+                            AVAILABLE
+                        </strong>
+                    </div>
+
+                    <div class="system-row">
+                        <span>CELLULAR TOWER</span>
+                        <strong id="towerStatus" class="good">
+                            AVAILABLE
+                        </strong>
+                    </div>
+
+                    <div class="system-row">
+                        <span>COMMAND LINK</span>
+                        <strong id="commandStatus" class="good">
+                            CONNECTED
+                        </strong>
+                    </div>
+
+                    <div class="system-row">
+                        <span>LOCAL POWER</span>
+                        <strong id="powerStatus" class="good">
+                            NORMAL
+                        </strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    FAILURE SIMULATION
+                </div>
+
+                <button id="internetBtn" class="action-btn">
+                    SIMULATE INTERNET FAILURE
+                </button>
+
+                <button id="towerBtn" class="action-btn">
+                    SIMULATE TOWER FAILURE
+                </button>
+
+                <button id="commandBtn" class="action-btn">
+                    DISCONNECT COMMAND
+                </button>
+
+                <button id="powerBtn" class="action-btn warning">
+                    DEGRADE LOCAL POWER
+                </button>
+
+                <button id="autonomousBtn" class="action-btn primary">
+                    ACTIVATE AUTONOMOUS MODE
+                </button>
+
+                <button id="restoreBtn" class="action-btn restore">
+                    RESTORE INFRASTRUCTURE
+                </button>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    CONTINUITY STATE
+                </div>
+
+                <div id="continuityState" class="state-box normal">
+                    NORMAL
+                </div>
+
+                <div class="state-description" id="stateDescription">
+                    External infrastructure is available.
+                    SentinelNet is operating normally.
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    SENTINEL DEVICE
+                </div>
+
+                <div class="device-card">
+
+                    <div class="device-name">
+                        SN-001
+                    </div>
+
+                    <div class="device-person">
+                        MARIA
+                    </div>
+
+                    <div class="device-location">
+                        BLOCK 04
+                    </div>
+
+                    <div class="device-indicator">
+                        <span class="dot"></span>
+                        AUTONOMOUS CORE READY
+                    </div>
+
+                </div>
+
+            </section>
+
+        </aside>
+
+
+        <!-- CENTER -->
+        <section class="center">
+
+            <div class="core-header">
+
+                <div>
+                    <div class="core-title">
+                        AUTONOMOUS CONTINUITY CORE
+                    </div>
+
+                    <div class="core-subtitle">
+                        Infrastructure-independent Sentinel operation
+                    </div>
+                </div>
+
+                <div id="coreState" class="core-state">
+                    NORMAL OPERATION
+                </div>
+
+            </div>
+
+
+            <!-- CONTINUITY FLOW -->
+
+            <div class="continuity-flow">
+
+                <div class="flow-node active" id="flowInfrastructure">
+                    <div class="flow-icon">01</div>
+                    <div class="flow-title">
+                        EXTERNAL
+                        INFRASTRUCTURE
+                    </div>
+                    <div class="flow-text">
+                        Internet / cellular /
+                        command services
+                    </div>
+                </div>
+
+                <div class="flow-arrow">
+                    →
+                </div>
+
+                <div class="flow-node active" id="flowDetection">
+                    <div class="flow-icon">02</div>
+                    <div class="flow-title">
+                        FAILURE
+                        DETECTION
+                    </div>
+                    <div class="flow-text">
+                        Sentinel identifies
+                        unavailable services
+                    </div>
+                </div>
+
+                <div class="flow-arrow">
+                    →
+                </div>
+
+                <div class="flow-node" id="flowAI">
+                    <div class="flow-icon">03</div>
+                    <div class="flow-title">
+                        LOCAL AI
+                    </div>
+                    <div class="flow-text">
+                        Offline intelligence
+                        remains operational
+                    </div>
+                </div>
+
+                <div class="flow-arrow">
+                    →
+                </div>
+
+                <div class="flow-node" id="flowMesh">
+                    <div class="flow-icon">04</div>
+                    <div class="flow-title">
+                        SENTINELNET
+                    </div>
+                    <div class="flow-text">
+                        Local devices maintain
+                        communication
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- NETWORK -->
+            <div class="network-panel">
+
+                <div class="network-header">
+
+                    <div>
+                        <div class="section-title">
+                            CONTINUITY NETWORK
+                        </div>
+
+                        <div class="section-subtitle">
+                            Infrastructure failure simulation
+                        </div>
+                    </div>
+
+                    <div id="networkStatus" class="network-status">
+                        EXTERNAL LINK ACTIVE
+                    </div>
+
+                </div>
+
+
+                <div class="network-canvas">
+
+                    <svg
+                        id="networkSvg"
+                        viewBox="0 0 900 430"
+                        preserveAspectRatio="xMidYMid meet"
+                    >
+
+                        <!-- COMMAND CONNECTIONS -->
+
+                        <line
+                            id="lineCommand1"
+                            class="network-line command-line"
+                            x1="760"
+                            y1="215"
+                            x2="575"
+                            y2="110"
+                        />
+
+                        <line
+                            id="lineCommand2"
+                            class="network-line command-line"
+                            x1="760"
+                            y1="215"
+                            x2="575"
+                            y2="320"
+                        />
+
+                        <line
+                            id="lineCommand3"
+                            class="network-line command-line"
+                            x1="760"
+                            y1="215"
+                            x2="575"
+                            y2="215"
+                        />
+
+                        <!-- MESH CONNECTIONS -->
+
+                        <line
+                            class="network-line mesh-line"
+                            x1="575"
+                            y1="110"
+                            x2="390"
+                            y2="165"
+                        />
+
+                        <line
+                            class="network-line mesh-line"
+                            x1="575"
+                            y1="110"
+                            x2="390"
+                            y2="265"
+                        />
+
+                        <line
+                            class="network-line mesh-line"
+                            x1="575"
+                            y1="320"
+                            x2="390"
+                            y2="265"
+                        />
+
+                        <line
+                            class="network-line mesh-line"
+                            x1="390"
+                            y1="165"
+                            x2="390"
+                            y2="265"
+                        />
+
+                        <line
+                            class="network-line mesh-line"
+                            x1="390"
+                            y1="165"
+                            x2="210"
+                            y2="215"
+                        />
+
+                        <line
+                            class="network-line mesh-line"
+                            x1="390"
+                            y1="265"
+                            x2="210"
+                            y2="215"
+                        />
+
+                        <!-- COMMAND -->
+                        <g class="network-node command-node">
+
+                            <circle
+                                cx="760"
+                                cy="215"
+                                r="48"
+                            />
+
+                            <text
+                                x="760"
+                                y="210"
+                                text-anchor="middle"
+                            >
+                                COMMAND
+                            </text>
+
+                            <text
+                                x="760"
+                                y="230"
+                                text-anchor="middle"
+                                class="node-small"
+                            >
+                                CONTROL
+                            </text>
+
+                        </g>
+
+
+                        <!-- SENTINELS -->
+
+                        <g class="network-node sentinel-node main-node">
+
+                            <circle
+                                cx="575"
+                                cy="215"
+                                r="39"
+                            />
+
+                            <text
+                                x="575"
+                                y="211"
+                                text-anchor="middle"
+                            >
+                                SN-001
+                            </text>
+
+                            <text
+                                x="575"
+                                y="230"
+                                text-anchor="middle"
+                                class="node-small"
+                            >
+                                MARIA
+                            </text>
+
+                        </g>
+
+
+                        <g class="network-node sentinel-node">
+
+                            <circle
+                                cx="575"
+                                cy="110"
+                                r="34"
+                            />
+
+                            <text
+                                x="575"
+                                y="115"
+                                text-anchor="middle"
+                            >
+                                SN-002
+                            </text>
+
+                        </g>
+
+
+                        <g class="network-node sentinel-node">
+
+                            <circle
+                                cx="575"
+                                cy="320"
+                                r="34"
+                            />
+
+                            <text
+                                x="575"
+                                y="325"
+                                text-anchor="middle"
+                            >
+                                SN-003
+                            </text>
+
+                        </g>
+
+
+                        <g class="network-node sentinel-node">
+
+                            <circle
+                                cx="390"
+                                cy="165"
+                                r="34"
+                            />
+
+                            <text
+                                x="390"
+                                y="170"
+                                text-anchor="middle"
+                            >
+                                SN-004
+                            </text>
+
+                        </g>
+
+
+                        <g class="network-node sentinel-node">
+
+                            <circle
+                                cx="390"
+                                cy="265"
+                                r="34"
+                            />
+
+                            <text
+                                x="390"
+                                y="270"
+                                text-anchor="middle"
+                            >
+                                SN-005
+                            </text>
+
+                        </g>
+
+
+                        <g class="network-node sentinel-node">
+
+                            <circle
+                                cx="210"
+                                cy="215"
+                                r="34"
+                            />
+
+                            <text
+                                x="210"
+                                y="220"
+                                text-anchor="middle"
+                            >
+                                SN-006
+                            </text>
+
+                        </g>
+
+
+                        <!-- RELAY PATH -->
+
+                        <path
+                            id="relayPath"
+                            class="relay-path"
+                            d="M 575 215 L 390 165 L 210 215"
+                        />
+
+                    </svg>
+
+
+                    <div class="canvas-label local-label">
+                        LOCAL AUTONOMOUS ZONE
+                    </div>
+
+                    <div class="canvas-label command-label">
+                        COMMAND CENTER
+                    </div>
+
+                    <div id="relayIndicator" class="relay-indicator">
+                        RELAY INACTIVE
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- OPERATING STATUS -->
+
+            <div class="operating-panel">
+
+                <div class="section-title">
+                    AUTONOMOUS OPERATING STATUS
+                </div>
+
+                <div class="status-grid">
+
+                    <div class="status-card">
+                        <div class="status-card-title">
+                            LOCAL AI
+                        </div>
+
+                        <div id="aiHealth" class="health-value">
+                            ONLINE
+                        </div>
+
+                        <div class="health-bar">
+                            <span id="aiBar" style="width:100%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-card">
+                        <div class="status-card-title">
+                            LOCAL STORAGE
+                        </div>
+
+                        <div id="storageHealth" class="health-value">
+                            AVAILABLE
+                        </div>
+
+                        <div class="health-bar">
+                            <span id="storageBar" style="width:100%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-card">
+                        <div class="status-card-title">
+                            GPS
+                        </div>
+
+                        <div id="gpsHealth" class="health-value">
+                            LOCKED
+                        </div>
+
+                        <div class="health-bar">
+                            <span id="gpsBar" style="width:100%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-card">
+                        <div class="status-card-title">
+                            MESH RADIO
+                        </div>
+
+                        <div id="radioHealth" class="health-value">
+                            ACTIVE
+                        </div>
+
+                        <div class="health-bar">
+                            <span id="radioBar" style="width:100%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-card">
+                        <div class="status-card-title">
+                            SENSOR SYSTEM
+                        </div>
+
+                        <div id="sensorHealth" class="health-value">
+                            ACTIVE
+                        </div>
+
+                        <div class="health-bar">
+                            <span id="sensorBar" style="width:100%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-card">
+                        <div class="status-card-title">
+                            OPERATION
+                        </div>
+
+                        <div id="operationHealth" class="health-value">
+                            CONTINUOUS
+                        </div>
+
+                        <div class="health-bar">
+                            <span id="operationBar" style="width:100%"></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PACKET QUEUE -->
+
+            <div class="packet-panel">
+
+                <div class="packet-header">
+
+                    <div>
+                        <div class="section-title">
+                            LOCAL INFORMATION QUEUE
+                        </div>
+
+                        <div class="section-subtitle">
+                            Information retained when external services are unavailable
+                        </div>
+                    </div>
+
+                    <div id="packetCount" class="packet-count">
+                        0 PACKETS
+                    </div>
+
+                </div>
+
+
+                <div class="packet-list" id="packetList">
+
+                    <div class="empty-packet">
+                        No queued information.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="sidebar right-sidebar">
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    CONTINUITY ANALYSIS
+                </div>
+
+                <div class="analysis-box">
+
+                    <div class="analysis-label">
+                        CURRENT MODE
+                    </div>
+
+                    <div id="analysisMode" class="analysis-value">
+                        NORMAL
+                    </div>
+
+                    <div class="analysis-label">
+                        INFRASTRUCTURE
+                    </div>
+
+                    <div id="analysisInfrastructure" class="analysis-value">
+                        AVAILABLE
+                    </div>
+
+                    <div class="analysis-label">
+                        LOCAL OPERATION
+                    </div>
+
+                    <div id="analysisLocal" class="analysis-value">
+                        FULL
+                    </div>
+
+                    <div class="analysis-label">
+                        COMMUNICATION
+                    </div>
+
+                    <div id="analysisCommunication" class="analysis-value">
+                        COMMAND LINK
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    AUTONOMOUS FUNCTIONS
+                </div>
+
+                <div class="function-list">
+
+                    <div class="function-row">
+                        <span class="function-dot active"></span>
+                        LOCAL AI PROCESSING
+                    </div>
+
+                    <div class="function-row">
+                        <span class="function-dot active"></span>
+                        OFFLINE KNOWLEDGE
+                    </div>
+
+                    <div class="function-row">
+                        <span class="function-dot active"></span>
+                        SENSOR MONITORING
+                    </div>
+
+                    <div class="function-row">
+                        <span class="function-dot active"></span>
+                        LOCAL DECISION SUPPORT
+                    </div>
+
+                    <div class="function-row">
+                        <span id="relayDot" class="function-dot"></span>
+                        MESH RELAY
+                    </div>
+
+                    <div class="function-row">
+                        <span id="queueDot" class="function-dot"></span>
+                        PACKET QUEUE
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    AI CONTINUITY DECISION
+                </div>
+
+                <div class="ai-decision" id="aiDecision">
+                    External infrastructure is functioning.
+                    Continue normal operation.
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    EVENT LOG
+                </div>
+
+                <div class="event-log" id="eventLog">
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <button id="threeMinBtn" class="cycle-btn">
+                    +3 MIN — CONTINUITY CHECK
+                </button>
+            </section>
+
+        </aside>
+
+    </main>
+
+
+    <script src="../js/autonomous-continuity.js"></script>
+
+</body>
+</html>
