@@ -1,11 +1,9 @@
-style.css
 html,
 body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    min-height: 0;
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
     background: #050b16;
@@ -19,9 +17,6 @@ body {
 
 .topbar {
     height: 76px;
-    min-height: 76px;
-    flex-shrink: 0;
-    box-sizing: border-box;
     background: #081426;
     border-bottom: 1px solid #203453;
     display: flex;
@@ -81,30 +76,15 @@ body {
     text-align: center;
 }
 
-
-/* =========================================================
-   MAIN LAYOUT
-   ========================================================= */
-
 .layout {
-    flex: 1 1 auto;
+    flex: 1;
     min-height: 0;
-    height: calc(100vh - 76px);
-
     display: grid;
     grid-template-columns: 245px minmax(500px, 1fr) 285px;
-
-    overflow: hidden;
 }
 
 .sidebar {
-    min-height: 0;
-    height: 100%;
-    box-sizing: border-box;
-
     overflow-y: auto;
-    overflow-x: hidden;
-
     background: #07101e;
     padding: 12px;
 }
@@ -116,11 +96,6 @@ body {
 .right-sidebar {
     border-left: 1px solid #1b2b45;
 }
-
-
-/* =========================================================
-   PANELS
-   ========================================================= */
 
 .panel {
     background: #0a1728;
@@ -136,11 +111,6 @@ body {
     font-size: 10px;
     letter-spacing: 1.3px;
 }
-
-
-/* =========================================================
-   POPULATION
-   ========================================================= */
 
 .population-grid {
     display: grid;
@@ -183,11 +153,6 @@ body {
     color: #ffbd55;
 }
 
-
-/* =========================================================
-   STATUS / NETWORK
-   ========================================================= */
-
 .stat-row {
     display: flex;
     justify-content: space-between;
@@ -228,11 +193,6 @@ body {
     border-left-color: #5be39a;
     background: #11271e;
 }
-
-
-/* =========================================================
-   CONTROLS
-   ========================================================= */
 
 .control-btn {
     width: 100%;
@@ -283,38 +243,21 @@ body {
     color: #75ddff;
 }
 
-
-/* =========================================================
-   NETWORK CENTER
-   ========================================================= */
-
 .network-section {
     min-width: 0;
     min-height: 0;
-    height: 100%;
-
     display: flex;
     flex-direction: column;
-
-    overflow: hidden;
-
     background:
-        radial-gradient(
-            circle at center,
-            #0b1d32 0%,
-            #050b16 68%
-        );
+        radial-gradient(circle at center, #0b1d32 0%, #050b16 68%);
 }
 
 .network-header {
     height: 60px;
-    min-height: 60px;
     flex-shrink: 0;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 0 16px;
     border-bottom: 1px solid #172b44;
 }
@@ -366,13 +309,8 @@ body {
     background: #6ddcff;
 }
 
-
-/* =========================================================
-   NETWORK CANVAS
-   ========================================================= */
-
 .network-canvas {
-    flex: 1 1 auto;
+    flex: 1;
     min-height: 0;
     position: relative;
     overflow: hidden;
@@ -413,11 +351,6 @@ body {
     stroke-width: 2.2;
     opacity: .9;
 }
-
-
-/* =========================================================
-   NODES
-   ========================================================= */
 
 .node {
     cursor: grab;
@@ -520,11 +453,6 @@ body {
     }
 }
 
-
-/* =========================================================
-   PACKETS
-   ========================================================= */
-
 .packet {
     pointer-events: none;
 }
@@ -539,23 +467,14 @@ body {
     filter: drop-shadow(0 0 5px #5de1ff);
 }
 
-
-/* =========================================================
-   NETWORK FOOTER
-   ========================================================= */
-
 .network-footer {
     height: 30px;
-    min-height: 30px;
     flex-shrink: 0;
-
     padding: 0 13px;
     border-top: 1px solid #172b44;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     color: #607891;
     font-size: 9px;
 }
@@ -563,11 +482,6 @@ body {
 .network-footer strong {
     color: #8ab7d8;
 }
-
-
-/* =========================================================
-   AI PANEL
-   ========================================================= */
 
 .ai-panel {
     position: relative;
@@ -609,11 +523,6 @@ body {
     color: #657b91;
 }
 
-
-/* =========================================================
-   SENSOR
-   ========================================================= */
-
 .sensor-card {
     display: flex;
     justify-content: space-between;
@@ -645,11 +554,6 @@ body {
 .sensor-status.danger {
     color: #ff6868;
 }
-
-
-/* =========================================================
-   INFORMATION
-   ========================================================= */
 
 #packetInspector,
 #selectedDevice,
@@ -709,11 +613,6 @@ body {
     font-size: 10px;
 }
 
-
-/* =========================================================
-   EVENT LOG
-   ========================================================= */
-
 .event-panel {
     min-height: 230px;
 }
@@ -755,11 +654,6 @@ body {
     color: #b8baff;
 }
 
-
-/* =========================================================
-   DISASTER / SELECT
-   ========================================================= */
-
 .disaster-info {
     background: #111f31;
     border: 1px solid #29415d;
@@ -790,7 +684,6 @@ body {
     color: #d9e8f8;
     font-size: 10px;
     outline: none;
-    box-sizing: border-box;
 }
 
 .control-select:focus {
@@ -819,11 +712,6 @@ body {
     color: #8ee5ff;
 }
 
-
-/* =========================================================
-   SCROLLBARS
-   ========================================================= */
-
 ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -838,41 +726,6 @@ body {
     border-radius: 4px;
 }
 
-
-/* =========================================================
-   FEATURE NAVIGATION
-   ========================================================= */
-
-.feature-nav {
-    position: absolute;
-    top: 86px;
-    left: 255px;
-    z-index: 20;
-}
-
-.feature-nav a {
-    display: inline-block;
-    padding: 7px 11px;
-    border: 1px solid #294362;
-    border-radius: 5px;
-    background: #102137;
-    color: #8ee5ff;
-    text-decoration: none;
-    font-size: 9px;
-    font-weight: bold;
-    letter-spacing: .5px;
-}
-
-.feature-nav a:hover {
-    background: #18314d;
-    border-color: #4b789f;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
 @media (max-width: 1050px) {
     .layout {
         grid-template-columns: 210px minmax(400px, 1fr) 250px;
@@ -884,16 +737,8 @@ body {
 }
 
 @media (max-width: 850px) {
-
-    html,
     body {
-        height: auto;
-        min-height: 100%;
         overflow: auto;
-    }
-
-    body {
-        overflow-x: hidden;
     }
 
     .topbar {
@@ -909,23 +754,16 @@ body {
     }
 
     .layout {
-        height: auto;
-        min-height: 0;
         grid-template-columns: 1fr;
-        overflow: visible;
     }
 
     .sidebar {
-        height: auto;
         max-height: none;
-        overflow: visible;
         border: none;
     }
 
     .network-section {
         height: 600px;
-        min-height: 600px;
-        overflow: hidden;
     }
 
     .left-sidebar,
@@ -939,12 +777,5 @@ body {
 
     .node-location {
         display: none;
-    }
-
-    .feature-nav {
-        position: static;
-        padding: 8px 10px;
-        background: #07101e;
-        border-bottom: 1px solid #1b2b45;
     }
 }
