@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>DisasterNetwork — Disaster Response System</title>
+    <title>DisasterNetwork — Mesh Communication</title>
 
-    <link rel="stylesheet" href="mesh-network.css">
+    <link rel="stylesheet" href="../css/mesh-network.css">
 </head>
 
 <body>
@@ -15,32 +15,57 @@
     <!-- =========================================================
          TOP BAR
     ========================================================== -->
+
     <header class="topbar">
 
         <div class="brand">
-            <div class="brand-icon">◉</div>
+
+            <div class="brand-icon">
+                ◉
+            </div>
 
             <div>
                 <h1>DISASTERNETWORK</h1>
-                <span>AI-Driven Disaster Response and Continuity System</span>
+                <span>Mesh Emergency Communication</span>
             </div>
+
         </div>
+
 
         <div class="system-status">
 
             <div class="status-pill" id="cellularStatus">
+
                 <span class="status-dot"></span>
-                <span>Cellular / Internet: ONLINE</span>
+
+                <span>
+                    Cellular / Internet: ONLINE
+                </span>
+
             </div>
+
 
             <div class="status-pill" id="meshStatus">
+
                 <span class="status-dot"></span>
-                <span>Mesh Network: ACTIVE</span>
+
+                <span>
+                    Mesh Network: ACTIVE
+                </span>
+
             </div>
 
+
             <div class="status-pill">
-                <span>SIMULATION TIME</span>
-                <strong id="simTime">10:00</strong>
+
+                <span>
+                    SIMULATION TIME
+                </span>
+
+                <strong id="simTime">
+                    10:00
+                </strong>
+
             </div>
 
         </div>
@@ -48,110 +73,71 @@
     </header>
 
 
-    <!-- =========================================================
-         MAIN NAVIGATION
-    ========================================================== -->
-    <nav class="feature-navigation">
-
-        <a href="mesh-network.html" class="feature-link active">
-            <strong>01</strong>
-            <span>Mesh Network</span>
-        </a>
-
-        <a href="features/population-status.html" class="feature-link">
-            <strong>02</strong>
-            <span>Population Status</span>
-        </a>
-
-        <a href="features/personal-ai.html" class="feature-link">
-            <strong>03</strong>
-            <span>Personal AI</span>
-        </a>
-
-        <a href="features/hazard-detection.html" class="feature-link">
-            <strong>04</strong>
-            <span>Hazard Detection</span>
-        </a>
-
-        <a href="features/navigation.html" class="feature-link">
-            <strong>05</strong>
-            <span>Navigation</span>
-        </a>
-
-        <a href="features/environmental-sensors.html" class="feature-link">
-            <strong>06</strong>
-            <span>Environmental Sensors</span>
-        </a>
-
-        <a href="features/first-aid.html" class="feature-link">
-            <strong>07</strong>
-            <span>First Aid</span>
-        </a>
-
-        <a href="features/offline-survival.html" class="feature-link">
-            <strong>08</strong>
-            <span>Offline Survival</span>
-        </a>
-
-        <a href="features/autonomous-continuity.html" class="feature-link">
-            <strong>09</strong>
-            <span>Autonomous Continuity</span>
-        </a>
-
-        <a href="features/hardware.html" class="feature-link">
-            <strong>10</strong>
-            <span>Hardware</span>
-        </a>
-
-        <a href="features/power-management.html" class="feature-link">
-            <strong>11</strong>
-            <span>Power Management</span>
-        </a>
-
-    </nav>
-
 
     <!-- =========================================================
-         CURRENT FEATURE HEADER
+         FEATURE HEADER
     ========================================================== -->
+
     <section class="feature-header">
 
         <div>
-            <span class="eyebrow">DISASTERNETWORK / FEATURE 01</span>
 
-            <h2>Mesh Emergency Communication</h2>
+            <span class="eyebrow">
+                DISASTERNETWORK / MESH COMMUNICATION
+            </span>
+
+            <h2>
+                Mesh Emergency Communication
+            </h2>
 
             <p>
-                A decentralized communication layer that allows wearable
-                devices to send, receive, verify, relay, and observe
-                emergency information even when conventional infrastructure
-                becomes unavailable.
+                A decentralized communication network that allows
+                wearable devices to send, receive, verify, relay,
+                and observe emergency information without requiring
+                every device to connect directly to the command center.
             </p>
+
         </div>
 
+
         <div class="feature-state">
-            <span>SYSTEM STATE</span>
-            <strong>OPERATIONAL</strong>
+
+            <span>
+                NETWORK STATE
+            </span>
+
+            <strong>
+                OPERATIONAL
+            </strong>
+
         </div>
 
     </section>
 
 
+
     <!-- =========================================================
-         EXISTING MESH DASHBOARD
+         MAIN DASHBOARD
     ========================================================== -->
+
     <main class="dashboard">
+
 
         <!-- =====================================================
              LEFT SIDEBAR
         ====================================================== -->
+
         <aside class="sidebar left-sidebar">
+
+
+            <!-- POPULATION STATUS -->
 
             <section class="panel">
 
                 <div class="panel-title">
                     <span>POPULATION STATUS</span>
                 </div>
+
 
                 <div class="population-grid">
 
@@ -160,20 +146,24 @@
                         <strong id="totalCount">15</strong>
                     </div>
 
+
                     <div class="population-stat">
                         <span>Accounted</span>
                         <strong id="accountedCount">0</strong>
                     </div>
+
 
                     <div class="population-stat">
                         <span>Assistance</span>
                         <strong id="assistanceCount">0</strong>
                     </div>
 
+
                     <div class="population-stat">
                         <span>Emergency</span>
                         <strong id="emergencyCount">0</strong>
                     </div>
+
 
                     <div class="population-stat">
                         <span>Unresolved</span>
@@ -185,11 +175,15 @@
             </section>
 
 
+
+            <!-- STATUS GAP -->
+
             <section class="panel">
 
                 <div class="panel-title">
                     <span>STATUS GAP</span>
                 </div>
+
 
                 <div class="stats">
 
@@ -198,6 +192,7 @@
                         <strong id="gapCount">0</strong>
                     </div>
 
+
                     <div>
                         <span>High Priority Gaps</span>
                         <strong id="highPriorityGapCount">0</strong>
@@ -205,18 +200,26 @@
 
                 </div>
 
-                <div id="gapPriority" class="priority-message">
+
+                <div
+                    id="gapPriority"
+                    class="priority-message"
+                >
                     Population information is currently available.
                 </div>
 
             </section>
 
 
+
+            <!-- NETWORK -->
+
             <section class="panel">
 
                 <div class="panel-title">
                     <span>NETWORK</span>
                 </div>
+
 
                 <div class="stats">
 
@@ -225,15 +228,18 @@
                         <strong id="activeLinks">0</strong>
                     </div>
 
+
                     <div>
                         <span>Connected Nodes</span>
                         <strong id="connectedCount">0</strong>
                     </div>
 
+
                     <div>
                         <span>Packets</span>
                         <strong id="packetCount">0</strong>
                     </div>
+
 
                     <div>
                         <span>Verified Hops</span>
@@ -245,18 +251,30 @@
             </section>
 
 
+
+            <!-- SELECTED DEVICE -->
+
             <section class="panel">
 
                 <div class="panel-title">
                     <span>SELECTED DEVICE</span>
                 </div>
 
-                <div id="selectedDevice" class="selected-device">
-                    <p>No device selected.</p>
+
+                <div
+                    id="selectedDevice"
+                    class="selected-device"
+                >
+                    <p>
+                        No device selected.
+                    </p>
                 </div>
 
             </section>
 
+
+
+            <!-- NETWORK CONTROLS -->
 
             <section class="panel controls-panel">
 
@@ -264,33 +282,41 @@
                     <span>NETWORK CONTROLS</span>
                 </div>
 
+
                 <button id="activateDisasterMode">
                     Activate Disaster Mode
                 </button>
+
 
                 <button id="statusRequest">
                     +3 min Status Request
                 </button>
 
+
                 <button id="triggerEmergency">
                     Trigger Selected Emergency
                 </button>
+
 
                 <button id="simulateBlockEmergency">
                     Simulate Block Emergency
                 </button>
 
+
                 <button id="recoverSelected">
                     Recover Selected Status
                 </button>
+
 
                 <button id="sendAlive">
                     Send Alive Beacon
                 </button>
 
+
                 <button id="breakConnection">
                     Break Selected Command Connection
                 </button>
+
 
                 <button id="restoreConnections">
                     Restore All Connections
@@ -299,15 +325,20 @@
             </section>
 
 
+
+            <!-- DISASTER SIMULATION -->
+
             <section class="panel">
 
                 <div class="panel-title">
                     <span>DISASTER SIMULATION</span>
                 </div>
 
+
                 <label for="disasterType">
                     Disaster Type
                 </label>
+
 
                 <select id="disasterType">
 
@@ -338,12 +369,24 @@
                     Affected Block
                 </label>
 
+
                 <select id="affectedBlock">
 
-                    <option value="A">Block A</option>
-                    <option value="B">Block B</option>
-                    <option value="C">Block C</option>
-                    <option value="D">Block D</option>
+                    <option value="A">
+                        Block A
+                    </option>
+
+                    <option value="B">
+                        Block B
+                    </option>
+
+                    <option value="C">
+                        Block C
+                    </option>
+
+                    <option value="D">
+                        Block D
+                    </option>
 
                 </select>
 
@@ -352,23 +395,35 @@
         </aside>
 
 
+
         <!-- =====================================================
-             CENTER NETWORK
+             CENTER — MESH
         ====================================================== -->
+
         <section class="network-section">
+
 
             <div class="network-header">
 
                 <div>
-                    <span class="eyebrow">LIVE NETWORK</span>
-                    <h2>DISASTER MESH</h2>
+
+                    <span class="eyebrow">
+                        LIVE COMMUNICATION NETWORK
+                    </span>
+
+                    <h2>
+                        DISASTER MESH
+                    </h2>
+
                 </div>
+
 
                 <div id="routingStatus">
                     Multi-hop routing active
                 </div>
 
             </div>
+
 
 
             <div class="network-canvas">
@@ -390,6 +445,7 @@
             </div>
 
 
+
             <div class="network-footer">
 
                 <span>
@@ -397,10 +453,12 @@
                     <strong>185 m</strong>
                 </span>
 
+
                 <span>
                     Proximity Observation:
                     <strong>275 m</strong>
                 </span>
+
 
                 <span>
                     Drag wearable nodes to simulate movement
@@ -411,34 +469,52 @@
         </section>
 
 
+
         <!-- =====================================================
              RIGHT SIDEBAR
         ====================================================== -->
+
         <aside class="sidebar right-sidebar">
 
+
+            <!-- AI ANALYSIS -->
 
             <section class="panel ai-panel">
 
                 <div class="panel-title">
-                    <span>DISASTERNETWORK AI</span>
-                    <span id="aiState">MONITORING</span>
+
+                    <span>
+                        NETWORK AI
+                    </span>
+
+                    <span id="aiState">
+                        MONITORING
+                    </span>
+
                 </div>
 
+
                 <div id="aiAnalysis">
+
                     <p>
                         System is monitoring population status,
                         network connectivity, and emergency evidence.
                     </p>
+
                 </div>
 
             </section>
 
+
+
+            <!-- ACTIVE DISASTER -->
 
             <section class="panel disaster-panel">
 
                 <div class="panel-title">
                     <span>ACTIVE DISASTER</span>
                 </div>
+
 
                 <div id="activeDisaster">
                     No active disaster.
@@ -447,19 +523,27 @@
             </section>
 
 
+
+            <!-- HAZARD SENSOR -->
+
             <section class="panel sensor-panel">
 
                 <div class="panel-title">
                     <span>HAZARD SENSOR</span>
                 </div>
 
+
                 <div id="hazardSensorPanel">
 
-                    <strong>HAZARD-01</strong>
+                    <strong>
+                        HAZARD-01
+                    </strong>
+
 
                     <span>
                         Multi-Hazard Environmental Sensor
                     </span>
+
 
                     <div id="hazardSensorStatus">
                         NORMAL
@@ -470,11 +554,15 @@
             </section>
 
 
+
+            <!-- PACKET INSPECTOR -->
+
             <section class="panel packet-panel">
 
                 <div class="panel-title">
                     <span>PACKET INSPECTOR</span>
                 </div>
+
 
                 <div id="packetInspector">
                     No packet selected.
@@ -483,11 +571,15 @@
             </section>
 
 
+
+            <!-- STATUS RECOVERY -->
+
             <section class="panel recovery-panel">
 
                 <div class="panel-title">
                     <span>STATUS RECOVERY</span>
                 </div>
+
 
                 <div id="statusRecovery">
                     Select a device and initiate recovery.
@@ -496,11 +588,15 @@
             </section>
 
 
+
+            <!-- EVENT LOG -->
+
             <section class="panel events-panel">
 
                 <div class="panel-title">
                     <span>NETWORK EVENTS</span>
                 </div>
+
 
                 <div id="eventLog"></div>
 
@@ -511,25 +607,40 @@
     </main>
 
 
+
     <!-- =========================================================
-         SYSTEM FOOTER
+         FOOTER
     ========================================================== -->
+
     <footer class="system-footer">
 
         <div>
-            <strong>DISASTERNETWORK</strong>
-            <span>Decentralized Disaster Response System</span>
+
+            <strong>
+                DISASTERNETWORK
+            </strong>
+
+            <span>
+                Mesh Emergency Communication
+            </span>
+
         </div>
 
+
         <div>
-            Mesh Communication • Population Accountability •
-            Emergency Intelligence
+            Decentralized Communication • Multi-Hop Routing •
+            Information Verification
         </div>
 
     </footer>
 
 
-    <script src="app.js"></script>
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script src="../js/mesh-network.js"></script>
 
 </body>
 </html>
