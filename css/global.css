@@ -1,9 +1,7 @@
 /* =========================================================
    DISASTERNETWORK — GLOBAL LANDING PAGE
    ========================================================= */
-body {
-    background: red !important;
-}
+
 :root {
     --bg-main: #050b16;
     --bg-dark: #07101e;
