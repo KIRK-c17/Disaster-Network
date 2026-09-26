@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>DisasterNetwork — Mesh Emergency Communication</title>
+<title>DisasterNetwork — Mesh Emergency Communication</title>
 
-    <link rel="stylesheet" href="../css/mesh-network.css">
+<link rel="stylesheet" href="../css/mesh-network.css">
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 
     <div>
         <h1>◉ DISASTERNETWORK</h1>
-        <p>Mesh Emergency Communication Network</p>
+        <p>Mesh Emergency Communication & Population Status Recovery</p>
     </div>
 
     <div class="system-status">
@@ -37,103 +37,17 @@
 </header>
 
 
-<!-- FEATURE NAVIGATION -->
-
-<nav class="feature-nav">
-
-    <a href="../index.html" class="feature-home">
-        DISASTERNETWORK
-    </a>
-
-    <a href="mesh-network.html" class="active">
-        01 · MESH NETWORK
-    </a>
-
-    <a href="population-status.html">
-        02 · POPULATION STATUS
-    </a>
-
-    <a href="personal-ai.html">
-        03 · PERSONAL AI
-    </a>
-
-    <a href="hazard-detection.html">
-        04 · HAZARD DETECTION
-    </a>
-
-    <a href="navigation.html">
-        05 · NAVIGATION
-    </a>
-
-    <a href="environmental-sensors.html">
-        06 · ENVIRONMENTAL SENSORS
-    </a>
-
-    <a href="first-aid.html">
-        07 · FIRST AID
-    </a>
-
-    <a href="offline-survival.html">
-        08 · OFFLINE SURVIVAL
-    </a>
-
-    <a href="autonomous-continuity.html">
-        09 · AUTONOMOUS CONTINUITY
-    </a>
-
-    <a href="hardware.html">
-        10 · HARDWARE
-    </a>
-
-    <a href="power-management.html">
-        11 · POWER MANAGEMENT
-    </a>
-
-</nav>
-
-
-<!-- FEATURE INTRO -->
-
-<section class="feature-intro">
-
-    <div>
-
-        <span class="feature-number">
-            FEATURE 01
-        </span>
-
-        <h2>
-            Mesh Emergency Communication
-        </h2>
-
-        <p>
-            A decentralized communication system that allows DisasterNetwork
-            wearables to send, receive, verify, and relay emergency information
-            even when direct communication with the command center is unavailable.
-        </p>
-
-    </div>
-
-    <div class="feature-status">
-        <span>NETWORK MODE</span>
-        <strong>DECENTRALIZED MESH</strong>
-    </div>
-
-</section>
-
-
 <main class="layout">
 
 
-<!-- ========================================================= -->
-<!-- LEFT SIDEBAR -->
-<!-- ========================================================= -->
+<!-- =========================================================
+     LEFT SIDEBAR
+     ========================================================= -->
 
 <aside class="sidebar left-sidebar">
 
 
     <!-- POPULATION STATUS -->
-
     <section class="panel">
 
         <h2>POPULATION STATUS</h2>
@@ -171,7 +85,6 @@
 
 
     <!-- STATUS GAP -->
-
     <section class="panel">
 
         <h2>STATUS GAP</h2>
@@ -194,7 +107,6 @@
 
 
     <!-- NETWORK -->
-
     <section class="panel">
 
         <h2>NETWORK</h2>
@@ -223,7 +135,6 @@
 
 
     <!-- SELECTED DEVICE -->
-
     <section class="panel">
 
         <h2>SELECTED DEVICE</h2>
@@ -240,40 +151,55 @@
 
 
     <!-- CONTROLS -->
-
     <section class="panel">
 
         <h2>CONTROLS</h2>
 
-        <button id="disasterBtn" class="control-btn">
+        <button
+            id="disasterBtn"
+            class="control-btn">
             ACTIVATE DISASTER MODE
         </button>
 
-        <button id="threeMinBtn" class="control-btn primary">
+        <button
+            id="threeMinBtn"
+            class="control-btn primary">
             +3 MIN — COMMAND STATUS REQUEST
         </button>
 
-        <button id="emergencyBtn" class="control-btn emergency">
+        <button
+            id="emergencyBtn"
+            class="control-btn emergency">
             TRIGGER SELECTED EMERGENCY
         </button>
 
-        <button id="blockEmergencyBtn" class="control-btn emergency">
+        <button
+            id="blockEmergencyBtn"
+            class="control-btn emergency">
             SIMULATE BLOCK EMERGENCY
         </button>
 
-        <button id="searchBtn" class="control-btn search">
+        <button
+            id="searchBtn"
+            class="control-btn search">
             RECOVER SELECTED STATUS
         </button>
 
-        <button id="aliveBtn" class="control-btn">
+        <button
+            id="aliveBtn"
+            class="control-btn">
             SEND ALIVE BEACON
         </button>
 
-        <button id="breakBtn" class="control-btn warning-btn">
+        <button
+            id="breakBtn"
+            class="control-btn warning-btn">
             BREAK SELECTED COMMAND CONNECTION
         </button>
 
-        <button id="restoreBtn" class="control-btn">
+        <button
+            id="restoreBtn"
+            class="control-btn">
             RESTORE ALL CONNECTIONS
         </button>
 
@@ -281,16 +207,19 @@
 
 
     <!-- DISASTER SIMULATION -->
-
     <section class="panel">
 
         <h2>DISASTER SIMULATION</h2>
 
-        <label class="field-label">
+        <label
+            class="field-label"
+            for="disasterType">
             Disaster type
         </label>
 
-        <select id="disasterType" class="control-select">
+        <select
+            id="disasterType"
+            class="control-select">
 
             <option value="EARTHQUAKE">
                 Earthquake
@@ -315,11 +244,15 @@
         </select>
 
 
-        <label class="field-label">
+        <label
+            class="field-label"
+            for="disasterBlock">
             Affected block
         </label>
 
-        <select id="disasterBlock" class="control-select">
+        <select
+            id="disasterBlock"
+            class="control-select">
 
             <option value="Block A">
                 Block A
@@ -341,13 +274,14 @@
 
     </section>
 
+
 </aside>
 
 
 
-<!-- ========================================================= -->
-<!-- CENTER NETWORK -->
-<!-- ========================================================= -->
+<!-- =========================================================
+     MAIN NETWORK SECTION
+     ========================================================= -->
 
 <section class="network-section">
 
@@ -356,9 +290,7 @@
 
         <div>
 
-            <h2>
-                LIVE DISASTERNETWORK MESH
-            </h2>
+            <h2>LIVE SENTINEL MESH</h2>
 
             <span id="networkMessage">
                 All wearable nodes are operating normally.
@@ -394,25 +326,29 @@
     </div>
 
 
-    <!-- SVG NETWORK -->
 
-    <div id="networkCanvas" class="network-canvas">
+    <!-- NETWORK CANVAS -->
+    <div
+        id="networkCanvas"
+        class="network-canvas">
 
         <svg
             id="networkSvg"
             viewBox="0 0 1000 700"
-            preserveAspectRatio="none"
-        >
+            preserveAspectRatio="none">
 
-            <!-- COMMUNICATION LINKS -->
+            <!--
+                DO NOT RENAME THESE GROUP IDS.
+
+                app.js dynamically inserts:
+                - communication links
+                - animated packets
+                - wearable/command/sensor nodes
+            -->
 
             <g id="linksLayer"></g>
 
-            <!-- PACKETS MOVING THROUGH NETWORK -->
-
             <g id="packetsLayer"></g>
-
-            <!-- WEARABLE / COMMAND / SENSOR NODES -->
 
             <g id="nodesLayer"></g>
 
@@ -421,11 +357,15 @@
     </div>
 
 
+
+    <!-- NETWORK FOOTER -->
     <div class="network-footer">
 
         <span>
             Communication range:
-            <strong id="rangeDisplay">185 m</strong>
+            <strong id="rangeDisplay">
+                185 m
+            </strong>
         </span>
 
         <span>
@@ -438,30 +378,34 @@
 
     </div>
 
+
 </section>
 
 
 
-<!-- ========================================================= -->
-<!-- RIGHT SIDEBAR -->
-<!-- ========================================================= -->
+<!-- =========================================================
+     RIGHT SIDEBAR
+     ========================================================= -->
 
 <aside class="sidebar right-sidebar">
 
 
     <!-- SENTINEL AI -->
-
     <section class="panel ai-panel">
 
         <h2>
             ◈ SENTINEL AI — STATUS ANALYSIS
         </h2>
 
-        <div id="aiStatus" class="ai-status">
+        <div
+            id="aiStatus"
+            class="ai-status">
             Monitoring population status...
         </div>
 
-        <div id="aiMessage" class="ai-message">
+        <div
+            id="aiMessage"
+            class="ai-message">
             Waiting for operational data.
         </div>
 
@@ -469,25 +413,23 @@
 
             Prototype AI combines simulated network,
             location, heartbeat, movement, hazard,
-            and proximity evidence.
-
-            It does not make real emergency
-            or medical determinations.
+            and proximity evidence. It does not make
+            real emergency or medical determinations.
 
         </div>
 
     </section>
 
 
-    <!-- ACTIVE DISASTER -->
 
+    <!-- ACTIVE DISASTER -->
     <section class="panel">
 
-        <h2>
-            ACTIVE DISASTER
-        </h2>
+        <h2>ACTIVE DISASTER</h2>
 
-        <div id="disasterInfo" class="disaster-info">
+        <div
+            id="disasterInfo"
+            class="disaster-info">
 
             No disaster currently simulated.
 
@@ -496,13 +438,11 @@
     </section>
 
 
-    <!-- HAZARD SENSOR -->
 
+    <!-- HAZARD SENSOR -->
     <section class="panel">
 
-        <h2>
-            HAZARD SENSOR
-        </h2>
+        <h2>HAZARD SENSOR</h2>
 
         <div class="sensor-card">
 
@@ -518,29 +458,33 @@
 
             </div>
 
-            <div id="hazardStatus" class="sensor-status">
+            <div
+                id="hazardStatus"
+                class="sensor-status">
+
                 NORMAL
+
             </div>
 
         </div>
 
+
         <button
             id="hazardBtn"
-            class="control-btn hazard-btn"
-        >
+            class="control-btn hazard-btn">
+
             ACTIVATE SELECTED HAZARD
+
         </button>
 
     </section>
 
 
-    <!-- PACKET INSPECTOR -->
 
+    <!-- PACKET INSPECTOR -->
     <section class="panel">
 
-        <h2>
-            PACKET INSPECTOR
-        </h2>
+        <h2>PACKET INSPECTOR</h2>
 
         <div id="packetInspector">
 
@@ -553,13 +497,11 @@
     </section>
 
 
-    <!-- STATUS RECOVERY -->
 
+    <!-- STATUS RECOVERY -->
     <section class="panel search-panel">
 
-        <h2>
-            STATUS RECOVERY
-        </h2>
+        <h2>STATUS RECOVERY</h2>
 
         <div id="searchInfo">
 
@@ -572,27 +514,40 @@
     </section>
 
 
-    <!-- NETWORK EVENTS -->
 
+    <!-- NETWORK EVENTS -->
     <section class="panel event-panel">
 
-        <h2>
-            NETWORK EVENTS
-        </h2>
+        <h2>NETWORK EVENTS</h2>
 
-        <div id="eventLog" class="event-log"></div>
+        <div
+            id="eventLog"
+            class="event-log">
+        </div>
 
     </section>
 
 
 </aside>
 
+
 </main>
 
 
-<!-- ========================================================= -->
-<!-- JAVASCRIPT -->
-<!-- ========================================================= -->
+
+<!-- =========================================================
+     JAVASCRIPT
+     =========================================================
+
+     mesh-network.html is inside:
+
+        /features/
+
+     Therefore the JavaScript path goes one level up:
+
+        ../js/mesh-network.js
+
+     ========================================================= -->
 
 <script src="../js/mesh-network.js"></script>
 
